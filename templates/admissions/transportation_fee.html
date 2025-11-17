@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Transportation Fee - Joy University{% endblock %}
+
+{% block content %}
+<div class="transport-fee-page">
+    <!-- Hero Banner -->
+    <div class="hero-banner mb-5">
+        <img src="{% static 'images/transportation.jpg' %}" alt="University Transportation" class="w-100">
+    </div>
+
+    <div class="container py-5">
+        <!-- Routes and Fees -->
+        <div class="routes-section">
+            <!-- Kaliyakkavilai Route -->
+            <div class="route-block mb-5">
+                <h2 class="route-title">BUS ROUTE – KALIYAKKAVILAI Via NAGERCOIL</h2>
+                <div class="table-responsive">
+                    <table class="route-table">
+                        <thead>
+                            <tr>
+                                <th>Place Name</th>
+                                <th>Per Semester (In Rs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Nithiravilai</td><td>42,768</td></tr>
+                            <tr><td>Puthukkadai</td><td>39,072</td></tr>
+                            <tr><td>Kaliyakkavilai</td><td>35,376</td></tr>
+                            <tr><td>Kuzhithurai</td><td>31,152</td></tr>
+                            <tr><td>Marthandam</td><td>30,096</td></tr>
+                            <tr><td>Swamiyar Madam</td><td>26,928</td></tr>
+                            <tr><td>Alagiyamandapam</td><td>23,232</td></tr>
+                            <tr><td>Thuckalay</td><td>21,648</td></tr>
+                            <tr><td>Villukuri</td><td>20,988</td></tr>
+                            <tr><td>Chungankadai</td><td>19,239</td></tr>
+                            <tr><td>Parvathipuram</td><td>18,073</td></tr>
+                            <tr><td>Vadaseri</td><td>14,575</td></tr>
+                            <tr><td>Vellamadam</td><td>11,077</td></tr>
+                            <tr><td>Thovalai</td><td>10,494</td></tr>
+                            <tr><td>Aralvaimozhi</td><td>10,000</td></tr>
+                            <tr><td>Kavalkinaru</td><td>7,500</td></tr>
+                            <tr><td>Vadakangulam</td><td>5,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tirunelveli Route -->
+            <div class="route-block mb-5">
+                <h2 class="route-title">BUS ROUTE – TIRUNELVELI NEW</h2>
+                <div class="table-responsive">
+                    <table class="route-table">
+                        <thead>
+                            <tr>
+                                <th>Place Name</th>
+                                <th>Per Semester (In Rs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Thalayuthu</td><td>42,240</td></tr>
+                            <tr><td>Thachanallur</td><td>39,072</td></tr>
+                            <tr><td>Tirunelveli Junction, KTC Nager</td><td>36,960</td></tr>
+                            <tr><td>Palayamkottai</td><td>35,112</td></tr>
+                            <tr><td>Melapalayam</td><td>34,320</td></tr>
+                            <tr><td>Tirunelveli New Bus Stand</td><td>33,792</td></tr>
+                            <tr><td>Moontradaipu</td><td>29,040</td></tr>
+                            <tr><td>Nanguneri</td><td>20,988</td></tr>
+                            <tr><td>Perumalanji, Thalapathisamuthiram</td><td>17,490</td></tr>
+                            <tr><td>Vallioor - Bye Pass</td><td>13,992</td></tr>
+                            <tr><td>Panagudi - Bye Pass</td><td>12,243</td></tr>
+                            <tr><td>Kavalkinaru</td><td>7,500</td></tr>
+                            <tr><td>Vadakankulam</td><td>5,000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Additional routes will be added similarly -->
+            
+            <p class="note mt-4">* Fee shall be suitably revised in subsequent years based upon actual costs.</p>
+        </div>
+
+      
+<style>
+    .transport-fee-page {
+        background-color: #fff;
+    }
+
+    .hero-banner {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    .banner-overlay h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .route-title {
+        color: #b31b24;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #b31b24;
+    }
+
+    .route-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .route-table th,
+    .route-table td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+    }
+
+    .route-table th {
+        background-color: #b31b24;
+        color: white;
+        font-weight: 600;
+    }
+
+    .route-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .route-table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .note {
+        font-style: italic;
+        color: #666;
+    }
+
+    .contact-info-container {
+        border-radius: 8px;
+    }
+
+    .contact-block {
+        margin-bottom: 1rem;
+    }
+
+    .contact-block h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .banner-overlay h1 {
+            font-size: 2rem;
+        }
+
+        .route-title {
+            font-size: 1.3rem;
+        }
+
+        .route-table {
+            font-size: 0.9rem;
+        }
+
+        .route-table th,
+        .route-table td {
+            padding: 0.75rem;
+        }
+    }
+</style>
+{% endblock %}

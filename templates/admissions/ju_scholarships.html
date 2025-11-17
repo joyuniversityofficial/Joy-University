@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}JU Scholarships - Joy University{% endblock %}
+
+{% block content %}
+<div class="scholarships-page">
+    <!-- Hero Banner -->
+    <div class="hero-banner mb-5">
+        <img src="{% static 'images/scholarship.jpg' %}" alt="Joy Scholarships" class="w-100">
+    </div>
+
+    <div class="container py-5">
+        <!-- Scholarships Content -->
+        <div class="scholarships-details">
+            <h2 class="section-title">Overview</h2>
+            <p>
+                We recognize and appreciate the talent that each student brings to the campus and therefore strive to nurture an environment that provides a holistic learning experience for all. The Joy scholarships aim to support meritorious students including those who may face financial, physical, or other challenges that may otherwise prevent them from pursuing their academic goals.
+            </p>
+            <p>
+                At Joy University, we believe that every student has the potential to succeed, and our scholarship opportunities are just one of the ways in which we demonstrate this commitment and extend our support to students. Students can avail the scholarship opportunities, subject to meeting certain eligibility criteria which may include academic performance, specific skills or talent, and financial need.
+            </p>
+
+            <h2 class="section-title mt-5">Scholarship Categories</h2>
+            <ul class="category-list mb-4">
+                <li>Merit-based Scholarships</li>
+                <li>Category-based Scholarships</li>
+                <li>Alumni Scholarships</li>
+                <li>Employee Scholarships</li>
+            </ul>
+
+            <!-- Merit-Based Scholarships Section -->
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Merit-Based Scholarships (Undergraduate)</h3>
+                <div class="table-responsive">
+                    <table class="scholarship-table">
+                        <thead>
+                            <tr>
+                                <th>Eligibility (Class X & XII %)</th>
+                                <th>Tuition Fee Waiver</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>95% & above (Both X & XII)</td>
+                                <td>50% throughout duration</td>
+                                <td>First 100 eligible students only</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">JOYAT Based Scholarships</h3>
+                <div class="table-responsive">
+                    <table class="scholarship-table">
+                        <thead>
+                            <tr>
+                                <th>JOYAT %</th>
+                                <th>Eligibility (X & XII %)</th>
+                                <th>Tuition Fee Waiver (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>90% & above</td><td>80% & above</td><td>25%</td></tr>
+                            <tr><td>80% & above</td><td>75% & above</td><td>20%</td></tr>
+                            <tr><td>70% & above</td><td>70% & above</td><td>15%</td></tr>
+                        </tbody>
+                    </table>
+                    <h4 class="sub-title mt-4">JOYAT Free Ships (First Year Only)</h4>
+                    <table class="scholarship-table">
+                        <thead>
+                            <tr>
+                                <th>JOYAT %</th>
+                                <th>Eligibility (X & XII %)</th>
+                                <th>Free Ship Amount (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>69.99% – 60%</td><td>60% Above</td><td>15,000</td></tr>
+                            <tr><td>59.99% – 50%</td><td>—</td><td>10,000</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="note">
+                        * Free ships: first-come-first-serve, first year only. Applicant must pay 50% annual tuition at enrolment & get Scholarship Committee approval.
+                    </p>
+                </div>
+            </div>
+
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Programme Specific Scholarships</h3>
+                <!-- B.A. LL. B. & B.B.A. LL. B. Table -->
+                <h4>B.A. LL. B. (Hons.) and B.B.A. LL. B. (Hons.)</h4>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>CLAT Score</th>
+                            <th>Eligibility (X & XII %)</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>100</td><td>70% & Above</td><td>50%</td></tr>
+                        <tr><td>80 to 99.99</td><td>70% & Above</td><td>35%</td></tr>
+                        <tr><td>60 to 79.99</td><td>70% & Above</td><td>25%</td></tr>
+                    </tbody>
+                </table>
+                <!-- B Tech Table -->
+                <h4 class="mt-4">B Tech</h4>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>JEE (Main)</th>
+                            <th>Eligibility (X & XII %)</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>>95 percentile</td><td>70% & Above</td><td>50%</td></tr>
+                        <tr><td>>90 &lt;95 percentile</td><td>70% & Above</td><td>25%</td></tr>
+                    </tbody>
+                </table>
+                <!-- CUET Table -->
+                <h4 class="mt-4">CUET (All UG Programmes)</h4>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>CUET %</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>90% & above</td><td>30%</td></tr>
+                        <tr><td>80% to 89.9%</td><td>20%</td></tr>
+                        <tr><td>70% to 79.9%</td><td>15%</td></tr>
+                    </tbody>
+                </table>
+                <!-- B. Des. Table -->
+                <h4 class="mt-4">B. Des (Design Programmes)</h4>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>Test/Rank/Percentile</th>
+                            <th>Eligibility</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>UCEED 200+ score</td><td>75%</td><td>35%</td></tr>
+                        <tr><td>UCEED 150+ percentile</td><td>75%</td><td>25%</td></tr>
+                        <tr><td>NIFT Rank 1–3000</td><td>65%</td><td>35%</td></tr>
+                        <tr><td>NID DAT 90+ percentile</td><td>70%</td><td>50%</td></tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Merit-Based PG Scholarships -->
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Merit-Based Scholarships (Postgraduate)</h3>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>MBA Entrance Test</th>
+                            <th>Eligibility (X, XII, Grad. %)</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CAT/XAT 90+ percentile</td><td>60%</td><td>50%</td></tr>
+                        <tr><td>CAT/XAT 80+ percentile</td><td>—</td><td>25%</td></tr>
+                        <tr><td>GMAT 650+</td><td>—</td><td>50%</td></tr>
+                        <tr><td>GMAT 600+</td><td>—</td><td>25%</td></tr>
+                        <tr><td>NMAT 240+</td><td>—</td><td>50%</td></tr>
+                        <tr><td>NMAT 220+</td><td>—</td><td>35%</td></tr>
+                        <tr><td>NMAT 200+</td><td>—</td><td>25%</td></tr>
+                        <tr><td>NMAT 180+</td><td>—</td><td>10%</td></tr>
+                        <tr><td>JOYAT 25+</td><td>—</td><td>10%</td></tr>
+                    </tbody>
+                </table>
+                <h4 class="sub-title mt-4">Scholarships for Women</h4>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th>Eligibility (XII, Graduation)</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CAT/XAT 70+ percentile</td><td>60%</td><td>15%</td></tr>
+                        <tr><td>GMAT 550+</td><td>—</td><td>15%</td></tr>
+                        <tr><td>JOYAT 25+</td><td>—</td><td>10%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Category-Based Scholarships Section -->
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Category-Based Scholarships</h3>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>Reservation / Category</th>
+                            <th>Eligibility</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SC/ST (UG)</td><td>70% & Above (X, XII)</td><td>20%</td></tr>
+                        <tr><td>Differently Abled (UG)</td><td>50% & Above (X, XII)</td><td>50%</td></tr>
+                        <tr><td>Defence / Paramilitary (UG)</td><td>70% & Above (X, XII)</td><td>15%</td></tr>
+                        <tr><td>International Level Player (UG)</td><td>50% & Above (X, XII)</td><td>100%</td></tr>
+                        <tr><td>National Level Player (UG)</td><td>50% & Above (X, XII)</td><td>75%</td></tr>
+                        <tr><td>State Level Player (UG)</td><td>50% & Above (X, XII)</td><td>60%</td></tr>
+                        <tr><td>Domicile TN (UG)</td><td>70% & Above (X, XII)</td><td>5%</td></tr>
+                        <!-- Add PG rows as needed -->
+                    </tbody>
+                </table>
+                <p class="note">
+                    * Domicile & sports scholarships (all categories) not applicable for UG & PG Nursing & Law courses.
+                </p>
+            </div>
+
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Foreign National Student Scholarships</h3>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>UG / PG Eligibility %</th>
+                            <th>Tuition Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>UG: >80% (XII), PG: >60% (UG)</td><td>50%</td></tr>
+                        <tr><td>UG: >70% (XII), PG: >55% (UG)</td><td>30%</td></tr>
+                    </tbody>
+                </table>
+                <p class="note">
+                    * Must participate and be selected through admission selection.
+                </p>
+            </div>
+            
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Performing Arts / Talent Scholarships</h3>
+                <table class="scholarship-table">
+                    <thead>
+                        <tr>
+                            <th>Programme</th>
+                            <th>Eligibility (X/XII/Grad.)</th>
+                            <th>Criteria</th>
+                            <th>Fee Waiver (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>All UG Programmes</td>
+                            <td>55% or Equivalent</td>
+                            <td>South Zone, State/National Youth Festival - 1st/2nd/3rd position</td>
+                            <td>50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Alumni Scholarships</h3>
+                <ul class="category-list">
+                    <li>All Joy/Rajas Group Alumni: 15% waiver (all UG, PG, Executive, Ph.D)</li>
+                    <li>Alumni’s Spouse/Children/Siblings (UG): 15% waiver (60% in X & XII)</li>
+                    <li>Alumni’s Spouse/Children/Siblings (PG/Executive): 15% waiver (60% in X, XII, Grad)</li>
+                </ul>
+            </div>
+            
+            <div class="scholarship-block mb-5">
+                <h3 class="sub-title">Staff Scholarships</h3>
+                <ul class="category-list">
+                    <li>Employees (Spouse/Children/Siblings, UG): 15% waiver (60% in X & XII)</li>
+                    <li>Employees (Spouse/Children/Siblings, PG/Executive): 15% waiver (60% in X, XII, Grad)</li>
+                    <li>Employee-referred students (UG): 10% waiver (60% in X & XII)</li>
+                    <li>Employee-referred students (PG/Executive): 10% waiver (60% in X, XII, Grad)</li>
+                </ul>
+            </div>
+            
+            <!-- Definitions, Guidelines, Application, Renewal -->
+            <div class="definitions-block mb-5">
+                <h3 class="sub-title">Definitions</h3>
+                <ul>
+                    <li><strong>Differently Abled:</strong> As per RPwD Act, 2016; 40% permanent disability & UID required.</li>
+                    <li><strong>Defence & Paramilitary:</strong> Indian Armed Forces, paramilitary personnel and dependents.</li>
+                    <li><strong>Sports International/National Level:</strong> Only with certified participation and victory by appropriate authorities.</li>
+                    <li><strong>Domicile:</strong> Minimum 7 years schooling in TN, passed 10th/12th in TN; counted by years studied.</li>
+                </ul>
+            </div>
+
+            <div class="application-block mb-5">
+                <h3 class="sub-title">Application Process</h3>
+                <ul>
+                    <li>Participate in Joy Selection Process and secure admission.</li>
+                    <li>Complete programme registration and verify eligibility.</li>
+                    <li>Download & submit the scholarship application form with all documents.</li>
+                    <li>Committee evaluation and personal interview; award communicated directly.</li>
+                    <li>Check University notifications regularly for updates.</li>
+                </ul>
+            </div>
+
+            <div class="renewal-block mb-5">
+                <h3 class="sub-title">Scholarship Renewal Conditions</h3>
+                <ul>
+                    <li>Maintain minimum 6.5 GPA each semester.</li>
+                    <li>No backlogs; no disciplinary action.</li>
+                    <li>Renewal application by 30th July each year, with all mark sheets.</li>
+                    <li>No gap in academics during the programme.</li>
+                    <li>Final decisions by Scholarship Committee and University are binding.</li>
+                </ul>
+            </div>
+        </div>
+
+
+<style>
+    .scholarships-page {
+        background-color: #fff;
+    }
+
+    .hero-banner {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    .banner-overlay h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .section-title, .sub-title {
+        color: #b31b24;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #b31b24;
+    }
+
+    .sub-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #b31b24;
+        padding-bottom: 0.25rem;
+    }
+
+    .scholarship-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .scholarship-table th,
+    .scholarship-table td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+    }
+
+    .scholarship-table th {
+        background-color: #b31b24;
+        color: white;
+        font-weight: 600;
+    }
+
+    .scholarship-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .scholarship-table tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    .category-list {
+        list-style: disc;
+        margin-left: 2rem;
+        color: #b31b24;
+    }
+
+    .note {
+        font-style: italic;
+        color: #666;
+    }
+
+    .contact-info-container {
+        border-radius: 8px;
+    }
+
+    .contact-block {
+        margin-bottom: 1rem;
+    }
+
+    .contact-block h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .banner-overlay h1 {
+            font-size: 2rem;
+        }
+
+        .section-title, .route-title, .sub-title {
+            font-size: 1.3rem;
+        }
+
+        .scholarship-table, .route-table {
+            font-size: 0.9rem;
+        }
+
+        .scholarship-table th,
+        .scholarship-table td,
+        .route-table th,
+        .route-table td {
+            padding: 0.75rem;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .applications {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.app-info {
+  flex: 3;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.apply-btn, .continue {
+  background-color: #ff6b35;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.continue {
+  background: none;
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+.journey {
+  flex: 1;
+  text-align: left;
+}
+
+.journey ul {
+  list-style: none;
+  padding: 0;
+}
+
+.journey li {
+  padding: 5px 0;
+  position: relative;
+}
+
+.journey li.active {
+  color: #00a86b;
+  font-weight: bold;
+}
+
+</style>
+<header class="topbar">
+  <h2>All Application Form(s)</h2>
+  <p>Welcome <span class="highlight">{{ application.name }}</span></p>
+  <div class="top-icons">
+    <button class="help-btn">?</button>
+    <div class="profile" onclick="toggleDropdown()">
+      <span>{{ initials }}</span>
+      <div class="dropdown-menu" id="logout-dropdown">
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="applications">
+  {% for school_app in school_applications %}
+  <div class="app-card">
+    <div class="app-info">
+      <h3>{{ school_app.title }} Application Form</h3>
+      <div class="details">
+        <p><strong>Application No.</strong><br>{% if school_app.application %}{{ school_app.application.application_number }}{% else %}-{% endif %}</p>
+        <p><strong>Application Submitted On</strong><br>{% if school_app.application %}{{ school_app.application.created_at|date:"d M Y" }}{% else %}-{% endif %}</p>
+        <p><strong>Course</strong><br>{% if school_app.application %}{{ school_app.application.course }}{% else %}-{% endif %}</p>
+        <p><strong>Specialization</strong><br>{% if school_app.application %}{{ school_app.application.specialization }}{% else %}-{% endif %}</p>
+        <p><strong>Application Fees</strong><br>₹1023.60</p>
+      </div>
+      <div class="action">
+        {% if school_app.application %}
+          {% if school_app.application.status == 'completed' %}
+            <a href="{% url 'details' %}?app_id={{ school_app.application.id }}" class="apply-btn">Proceed to Enrollment</a>
+          {% elif school_app.application.status == 'enrolled' %}
+            <a href="{% url 'application_submitted' %}" class="apply-btn">View Enrollment</a>
+          {% else %}
+            <a href="{% url 'details' %}?app_id={{ school_app.application.id }}" class="continue">Continue Application →</a>
+          {% endif %}
+        {% else %}
+          {% if enrolled_school_name %}
+            <span class="apply-btn" style="background-color: #ccc; cursor: not-allowed;">You have already enrolled with {{ enrolled_school_name }}</span>
+          {% else %}
+            {% if school_app.school %}
+              <a href="{% url 'details' %}?school={{ school_app.school.id }}" class="apply-btn">Apply Now</a>
+            {% else %}
+              <a href="{% url 'application_form' %}?edit=1&app_id={{ school_app.application.id }}" class="apply-btn">Apply Now</a>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <div class="journey">
+      <h4>Enrolment Journey</h4>
+      <ul>
+        {% if school_app.application %}
+          <li class="{% if school_app.application.status == 'initiated' or school_app.application.status == 'completed' or school_app.application.status == 'enrolled' %}active{% endif %}">Application Initiated</li>
+          <li class="{% if school_app.application.status == 'completed' or school_app.application.status == 'enrolled' %}active{% endif %}">Application Completed</li>
+          <li class="{% if school_app.application.status == 'enrolled' %}active{% endif %}">Enrolled</li>
+        {% else %}
+          <li>Application Initiated</li>
+          <li>Application Completed</li>
+          <li>Enrolled</li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

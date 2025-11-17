@@ -1,0 +1,550 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Engineering and Technology - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+            <img class="top-banner" src="{% static 'images/engineering.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+           
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Engineering and Technology</h1>
+            <h2>Overview</h2>
+            <p>The Department of Engineering and Technology encompasses a broad spectrum of conventional engineering disciplines including Mechanical, Electrical, Civil, Electronics and allied fields. The programs are designed to blend strong theoretical foundations with practical, hands-on learning, preparing students for industry, research and entrepreneurial ventures. The department emphasizes multidisciplinary collaboration, innovation and lifelong learning to develop engineers who can adapt to evolving technologies and societal needs.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+            
+            <h2>B.Tech.</h2>
+            <ul>
+                <li>Aeronautical Engineering</li>
+                <li>Biomedical Engineering</li>
+                <li>Biotechnology</li>
+                <li>Civil Engineering</li>
+                <li>Electronics & Communication Engineering</li>
+                <li>Mechanical Engineering</li>
+                <li>Mechanical Engineering (AI & Machine Learning)</li>
+                <li>Mechanical Engineering (Robotics & Automation)</li>
+                <li>Mechatronics</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Tech.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aeronautical Engineering</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 with Maths, Physics, Chemistry and English as mandatory subjects with minimum 60% in PCM aggregate marks and minimum 50% in every subject.</li>
+                                <li>Candidates scoring JEE mains >80 percentile are eligible for direct offer.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Biotechnology</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Biomedical Engineering</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Civil Engineering</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Electronics & Communication Engineering</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mechanical Engineering</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mechanical Engineering (AI & Machine Learning)</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mechanical Engineering (Robotics & Automation)</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mechatronics</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <p>The Graduates of the department will be able to:</p>
+            <ul>
+                <li>Demonstrate deep understanding of core concepts across conventional Engineering Domains.</li>
+                <li>Apply scientific, mathematical and engineering principles to solve complex technical problems.</li>
+                <li>Design systems, components or processes that meet desired needs within realistic constraints.</li>
+                <li>Use modern engineering tools, techniques and software effectively.</li>
+                <li>Communicate technical ideas clearly.</li>
+                <li>Function effectively in teams and multidisciplinary settings.</li>
+                <li>Understand professional, ethical and social responsibilities.</li>
+                <li>Engage in independent and lifelong learning to keep pace with technological advancement.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <p>The department envisions producing graduates who are:</p>
+            <ul>
+                <li>Technically Proficient with a strong grasp of engineering fundamentals.</li>
+                <li>Innovative Problem-Solvers who are able to think critically and creatively.</li>
+                <li>Ethically Grounded thereby upholding professional and social responsibilities.</li>
+                <li>Effective Communicators skilled in conveying technical and non-technical ideas.</li>
+                <li>Collaborative Team Players who are capable of contributing in diverse environments.</li>
+                <li>Lifelong Learners committed to personal and professional growth.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <p>The department focuses on equipping students with modern industry expectations and global trends to stay in sync with</p>
+            <ul>
+                <li>Exposure to automation, robotics and smart manufacturing.</li>
+                <li>Proficiency in industry-standard tools such as AutoCAD, MATLAB, SolidWorks, PLCs, ETABS, etc.</li>
+                <li>Data analysis, technical computing and basic programming (Python, C/C++, etc.).</li>
+                <li>Understanding of sustainability, green technologies and smart infrastructure.</li>
+                <li>Project management, entrepreneurship and innovation frameworks.</li>
+                <li>Knowledge of safety standards, quality assurance and compliance regulations.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>Engineering is not just about machines, circuits, or buildings — it’s about solving problems for humanity. The department’s educational philosophy integrates technical education with ethical values, environmental consciousness and societal impact. It promotes a student-centered approach where learning is experiential, interdisciplinary and driven by curiosity and critical inquiry.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To deliver comprehensive, up-to-date education in all conventional engineering domains.</li>
+                <li>To develop professionals with strong analytical, design and problem-solving abilities.</li>
+                <li>To foster innovation, entrepreneurship and research culture among students and faculty.</li>
+                <li>To build partnerships with industry and research organizations for real-world exposure.</li>
+                <li>To instill a sense of ethical responsibility, environmental stewardship and global citizenship.</li>
+                <li>To enable graduates to lead and adapt in a technologically dynamic and interconnected world.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dr. Mukesh Kumar, M.Tech, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>mukeshkumar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. Nandhakumar.R</td>
+                        <td>Assistant Professor</td>
+                        <td>nandhakumar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. Prabhu, M.E</td>
+                        <td>Teaching Assistant</td>
+                        <td>prabhu@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. R Manikandan, B.E</td>
+                        <td>Lab Instructor</td>
+                        <td>manikandan.soci@joyuniversity.co.in</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

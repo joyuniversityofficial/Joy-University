@@ -1,0 +1,334 @@
+{% load static %}
+
+<!-- FontAwesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/application_form.css' %}">
+
+<div class="application-form-page">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="label">Mobile:</span> +91 7997999202 | +91 7997999203
+      </div>
+      <div class="contact-item">
+        <span class="label">Whatsapp:</span> +91 7997999202
+      </div>
+    </div>
+
+    <div class="logo-section">
+<img src="{% static 'images/joy_university.png' %}" alt="College Logo" class="college-logo">
+    </div>
+
+    <div class="contact-info">
+      <div class="email-address">
+        <span class="label">Email ID :</span> joyuniversityenquiry@gmail.com
+      </div>
+      <div class="address">
+        <span class="label">Address :</span> Joy University, Raja Nagar, Vadakangulam, Near Kanyakumari, Tirunelveli Dist. – 627116, TN
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay Container for Background and Form -->
+  <div class="overlay-container">
+    <!-- Background Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('{% static 'images/1.jpg' %}');"></div>
+        <div class="swiper-slide" style="background-image: url('{% static 'images/2.jpg' %}');"></div>
+        <div class="swiper-slide" style="background-image: url('{% static 'images/3.jpg' %}');"></div>
+        <div class="swiper-slide" style="background-image: url('{% static 'images/4.jpg' %}');"></div>
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Form Overlay Section -->
+    <div class="form-overlay">
+      <div class="container">
+        <div class="form-section">
+          <form method="post">
+            {% csrf_token %}
+            <h2 class="admissions-banner">🎓 Admissions Open 2025-2026</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-user"></i>
+                  <input class="name-input" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" placeholder="Enter Name *" value="{{ form.name.value|default:'' }}">
+                </div>
+                {% if form.name.errors %}<div class="error">{{ form.name.errors }}</div>{% endif %}
+              </div>
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-envelope"></i>
+                  <input class="email-input" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}" placeholder="Candidate's Email*" value="{{ form.email.value|default:'' }}">
+                </div>
+                {% if form.email.errors %}<div class="error">{{ form.email.errors }}</div>{% endif %}
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-phone"></i>
+                  <div class="mobile-container">
+<select name="{{ form.country_code.html_name }}" id="{{ form.country_code.id_for_label }}" class="country-code-select">
+{% for code, label in form.country_code.field.choices %}
+<option value="{{ code }}" {% if code == '+91' %}selected{% endif %}>{{ label }}</option>
+{% endfor %}
+</select>
+                    <input class="mobile-input" name="{{ form.mobile.html_name }}" id="{{ form.mobile.id_for_label }}" placeholder="Enter Candidate's Mobile Number *" value="{{ form.mobile.value|default:'' }}">
+                  </div>
+                </div>
+                {% if form.mobile.errors %}<div class="error">{{ form.mobile.errors }}</div>{% endif %}
+              </div>
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <select name="{{ form.state.html_name }}" id="{{ form.state.id_for_label }}">
+                    <option value="" disabled selected>Select State *</option>
+                    {% for state in states %}
+                      <option value="{{ state }}">{{ state }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-city"></i>
+                  <select name="{{ form.city.html_name }}" id="{{ form.city.id_for_label }}">
+                    <option value="" disabled selected>Select City *</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-school"></i>
+                  <select name="{{ form.school.html_name }}" id="{{ form.school.id_for_label }}">
+                    <option value="" disabled selected>Select School Applying for *</option>
+                    {% for school in schools %}
+                      <option value="{{ school }}">{{ school }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                  <select name="{{ form.course.html_name }}" id="{{ form.course.id_for_label }}" disabled>
+                    <option value="" disabled selected>Select Course *</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-icon">
+                  <i class="fas fa-certificate"></i>
+                  <select name="{{ form.specialization.html_name }}" id="{{ form.specialization.id_for_label }}" disabled>
+                    <option value="" disabled selected>Select Specialization *</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <canvas id="captchaCanvas" width="120" height="40"
+            style="border:1px solid #ccc; border-radius:4px;"></canvas>
+  </div>
+  <div class="form-group col-md-6">
+    <div class="captcha-input-wrapper">
+      <input type="text" class="form-control" id="textinput" name="captcha" placeholder="Enter Captcha">
+      <i class="fas fa-refresh" onclick="location.reload()" style="cursor:pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 20px; color: #b71c1c;" title="Captcha not visible?"></i>
+    </div>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="checkbox-group">
+    {{ form.authorization }}
+    <label for="{{ form.authorization.id_for_label }}" style="color:#fff;">
+      I authorize Joy University and its representatives to contact me via Email, SMS, WhatsApp, or Call for updates and notifications, even if I am on DND/NDNC *
+    </label>
+  </div>
+</div>
+
+<button type="submit" class="submit-btn">APPLY NOW</button>
+
+<div style="text-align: center;" class="form-row login-link">
+  <a   href="{% url 'login' %}">Already have an Account? Login</a>
+</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper-container', {
+      loop: true,
+      autoplay: { delay: 3000, disableOnInteraction: false },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  });
+</script>
+
+
+
+<script>
+let generatedCaptcha = "{{ captcha_text|safe }}";
+
+function generateCaptcha() {
+  const canvas = document.getElementById('captchaCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Fill background
+  const bgColor = `rgb(${200 + Math.random()*55}, ${200 + Math.random()*55}, ${200 + Math.random()*55})`;
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Draw server-provided text
+  for (let i = 0; i < generatedCaptcha.length; i++) {
+    const char = generatedCaptcha[i];
+
+    // Random font size and rotation
+    const fontSize = 20 + Math.random() * 8;
+    const x = 10 + i * 18;
+    const y = 25 + Math.random() * 10;
+    const angle = (Math.random() - 0.5) * 0.5;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.font = `${fontSize}px Verdana`;
+    ctx.fillStyle = `hsl(${Math.random() * 360}, 80%, 30%)`;
+    ctx.fillText(char, 0, 0);
+    ctx.restore();
+  }
+
+  // Add noise lines
+  for (let i = 0; i < 5; i++) {
+    ctx.strokeStyle = `hsl(${Math.random() * 360}, 70%, 50%)`;
+    ctx.beginPath();
+    ctx.moveTo(Math.random() * 120, Math.random() * 40);
+    ctx.lineTo(Math.random() * 120, Math.random() * 40);
+    ctx.stroke();
+  }
+
+  // Add dots
+  for (let i = 0; i < 30; i++) {
+    ctx.fillStyle = `rgba(0,0,0,${Math.random()})`;
+    ctx.fillRect(Math.random() * 120, Math.random() * 40, 1, 1);
+  }
+}
+
+function validcap() {
+  const userInput = document.getElementById('textinput').value.trim();
+  if (userInput === generatedCaptcha) {
+    alert("Form validated successfully!");
+    return true;
+  } else {
+    alert("Please enter a valid captcha.");
+    location.reload(); // refresh page to get new captcha
+    return false;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', generateCaptcha);
+
+// Cascading dropdowns for school, course, specialization
+document.addEventListener('DOMContentLoaded', function() {
+  const schoolSelect = document.getElementById('{{ form.school.id_for_label }}');
+  const courseSelect = document.getElementById('{{ form.course.id_for_label }}');
+  const specializationSelect = document.getElementById('{{ form.specialization.id_for_label }}');
+
+  // Data from Django context
+  const coursesData = {{ courses_json|safe }};
+  const specializationsData = {{ specializations_json|safe }};
+
+  // Function to populate select options
+  function populateSelect(selectElement, options) {
+    selectElement.innerHTML = '<option value="" disabled selected>Select ' + selectElement.name.charAt(0).toUpperCase() + selectElement.name.slice(1) + ' *</option>';
+    options.forEach(option => {
+      const opt = document.createElement('option');
+      opt.value = option;
+      opt.textContent = option;
+      selectElement.appendChild(opt);
+    });
+  }
+
+  // On school change
+  schoolSelect.addEventListener('change', function() {
+    const selectedSchool = this.value;
+    if (selectedSchool && coursesData[selectedSchool]) {
+      populateSelect(courseSelect, coursesData[selectedSchool]);
+      courseSelect.disabled = false;
+      specializationSelect.innerHTML = '<option value="" disabled selected>Select Specialization *</option>';
+      specializationSelect.disabled = true;
+    } else {
+      courseSelect.innerHTML = '<option value="" disabled selected>Select Course *</option>';
+      courseSelect.disabled = true;
+      specializationSelect.innerHTML = '<option value="" disabled selected>Select Specialization *</option>';
+      specializationSelect.disabled = true;
+    }
+  });
+
+  // On course change
+  courseSelect.addEventListener('change', function() {
+    const selectedSchool = schoolSelect.value;
+    const selectedCourse = this.value;
+    if (selectedSchool && selectedCourse && specializationsData[selectedSchool] && specializationsData[selectedSchool][selectedCourse]) {
+      populateSelect(specializationSelect, specializationsData[selectedSchool][selectedCourse]);
+      specializationSelect.disabled = false;
+    } else {
+      specializationSelect.innerHTML = '<option value="" disabled selected>Select Specialization *</option>';
+      specializationSelect.disabled = true;
+    }
+  });
+});
+
+// AJAX for city dropdown based on state selection
+document.addEventListener('DOMContentLoaded', function() {
+  const stateSelect = document.getElementById('{{ form.state.id_for_label }}');
+  const citySelect = document.getElementById('{{ form.city.id_for_label }}');
+
+  stateSelect.addEventListener('change', function() {
+    const selectedState = this.value;
+    if (selectedState) {
+      fetch(`/get-cities/?state=${encodeURIComponent(selectedState)}`)
+        .then(response => response.json())
+        .then(data => {
+          citySelect.innerHTML = '<option value="" disabled selected>Select City *</option>';
+          data.cities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+          });
+        })
+        .catch(error => console.error('Error fetching cities:', error));
+    } else {
+      citySelect.innerHTML = '<option value="" disabled selected>Select City *</option>';
+    }
+  });
+});
+</script>
+

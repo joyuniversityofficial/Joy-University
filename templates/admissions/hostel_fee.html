@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Hostel Fee Structure - Joy University{% endblock %}
+
+{% block content %}
+<div class="hostel-fee-page">
+    <!-- Hero Banner -->
+    <div class="hero-banner mb-5">
+        <img src="{% static 'images/hostel.jpg' %}" alt="Hostel Life at Joy University" class="w-100">
+
+    </div>
+
+    <div class="container py-5">
+        <!-- Main Fee Structure -->
+        <div class="fee-section mb-5">
+            <h2 class="section-title text-danger">Fee Structure for Food and Accommodation: 2025-26</h2>
+            
+            <div class="table-responsive">
+                <table class="fee-table">
+                    <thead>
+                        <tr class="bg-danger text-white">
+                            <th>Rooms</th>
+                            <th>Occupants per room</th>
+                            <th>Fee per Student</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Non-Premium rooms with attached washrooms</td>
+                            <td>4</td>
+                            <td>Rs. 90,000 per annum</td>
+                        </tr>
+                        <tr>
+                            <td>Non-Premium rooms with attached washrooms</td>
+                            <td>3</td>
+                            <td>Rs. 1,10,000 per annum</td>
+                        </tr>
+                        <tr>
+                            <td>Non-Premium rooms with attached washrooms</td>
+                            <td>2</td>
+                            <td>Rs. 1,40,000 per annum</td>
+                        </tr>
+                        <tr>
+                            <td>Premium rooms with attached washrooms</td>
+                            <td>4</td>
+                            <td>Rs. 1,00,000 per annum</td>
+                        </tr>
+                        <tr>
+                            <td>Premium AC rooms with attached washrooms and other additional facilities</td>
+                            <td>3</td>
+                            <td>Rs. 1,25,000 per annum</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p class="note mt-3">*Subject to availability and on a first-come, first-served basis.</p>
+        </div>
+
+        <!-- Additional Charges -->
+        <div class="additional-charges mb-5">
+            <div class="charge-card mb-3">
+                <div class="charge-item">
+                    <span class="charge-label">Hostel Admission Charges(One time, Non-refundable)</span>
+                    <span class="charge-amount">10000</span>
+                </div>
+            </div>
+            <div class="charge-card">
+                <div class="charge-item">
+                    <span class="charge-label">Hostel Caution Deposit (One time, refundable)</span>
+                    <span class="charge-amount">15000</span>
+                </div>
+            </div>
+        </div>
+
+       
+<style>
+    .hostel-fee-page {
+        background-color: #fff;
+    }
+
+    .hero-banner {
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+    }
+
+    .fee-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .fee-table th,
+    .fee-table td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+    }
+
+    .fee-table th {
+        background-color: #b31b24;
+        color: white;
+        font-weight: 600;
+    }
+
+    .fee-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .note {
+        font-style: italic;
+        color: #666;
+    }
+
+    .charge-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .charge-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .charge-label {
+        font-weight: 500;
+    }
+
+    .charge-amount {
+        font-weight: 600;
+        color: #b31b24;
+    }
+
+    .contact-info-container {
+        border-radius: 8px;
+    }
+
+    .contact-block {
+        margin-bottom: 1rem;
+    }
+
+    .contact-block h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .fee-table {
+            font-size: 0.9rem;
+        }
+
+        .charge-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+        }
+    }
+</style>
+{% endblock %}

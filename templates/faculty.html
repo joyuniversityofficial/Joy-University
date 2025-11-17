@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+.faculty-container {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.faculty-card {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start; 
+}
+
+.faculty-name {
+    color: #a31f2b;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.faculty-qualifications {
+    font-style: normal;
+    margin: 0 0 5px 0;
+}
+
+.faculty-designation {
+    font-weight: normal;
+    margin: 0 0 15px 0;
+}
+
+.faculty-description {
+    text-align: justify;
+    margin-top: 10px;
+}
+
+.faculty-photo {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.faculty-card:hover {
+    background-color: #b22222;
+    color: white;
+}
+
+.faculty-card:hover .faculty-name {
+    color: white;
+}
+
+.faculty-card:hover .read-more-btn {
+    background-color: white;
+    color: #b22222;
+}
+
+.read-more-btn {
+    background-color: #b22222;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    background-color: white;
+    color: #b22222;
+}
+</style>
+
+<h2 style="color:#a31f2b; text-align:center; margin-top:20px;">Outstanding Faculty of Eminence</h2>
+
+<div style="max-width: 900px; margin: 20px auto;">
+    {% for faculty in page_obj %}
+    <div class="faculty-container">
+        <div class="faculty-card">
+            <div>
+                {% if faculty.photo %}
+                    <img src="{{ faculty.photo.url }}" alt="{{ faculty.name }}" class="faculty-photo">
+                {% else %}
+                    <img src="{% static 'images/default_faculty_photo.png' %}" alt="Default Photo" class="faculty-photo">
+                {% endif %}
+            </div>
+            <div style="flex: 1;">
+                <h3 class="faculty-name">{{ faculty.name }}</h3>
+                <p class="faculty-qualifications">{{ faculty.qualifications|linebreaksbr }}</p>
+                <p class="faculty-designation">{{ faculty.designation }}</p>
+                <div class="description-preview faculty-description" id="preview-{{ forloop.counter }}">
+                    {{ faculty.description|truncatechars:100|linebreaksbr }}
+                </div>
+                <div class="description-full faculty-description" id="full-{{ forloop.counter }}" style="display: none;">
+                    {{ faculty.description|linebreaksbr }}
+                </div>
+                <button class="read-more-btn" id="btn-{{ forloop.counter }}" onclick="toggleDescription({{ forloop.counter }})">Read More</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pagination -->
+    <div class="pagination" style="text-align: center; margin-top: 20px;">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" style="margin: 0 5px; padding: 5px 10px; background-color: #a31f2b; color: white; text-decoration: none; border-radius: 5px;">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" style="margin: 0 5px; padding: 5px 10px; background-color: #a31f2b; color: white; text-decoration: none; border-radius: 5px;">Previous</a>
+        {% endif %}
+
+        <span style="margin: 0 10px;">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" style="margin: 0 5px; padding: 5px 10px; background-color: #a31f2b; color: white; text-decoration: none; border-radius: 5px;">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" style="margin: 0 5px; padding: 5px 10px; background-color: #a31f2b; color: white; text-decoration: none; border-radius: 5px;">Last</a>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function toggleDescription(id) {
+    const preview = document.getElementById('preview-' + id);
+    const full = document.getElementById('full-' + id);
+    const btn = document.getElementById('btn-' + id);
+
+    if (full.style.display === 'none') {
+        preview.style.display = 'none';
+        full.style.display = 'block';
+        btn.textContent = 'Read Less';
+    } else {
+        preview.style.display = 'block';
+        full.style.display = 'none';
+        btn.textContent = 'Read More';
+    }
+}
+</script>
+{% endblock %}

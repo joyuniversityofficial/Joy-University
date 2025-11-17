@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ transportation.title }} - Transportation{% endblock %}
+{% block content %}
+<style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; }
+    .container { width: 90vw; margin: 40px auto; }
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+    .gallery img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 2px 14px rgba(0,0,0,0.1);
+    }
+    .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .back-link:hover {
+        background: #0056b3;
+    }
+</style>
+<div class="container">
+    <a href="{% url 'transportation' %}" class="back-link">Back to Transportation</a>
+    <h1 style="text-align: center;">{{ transportation.title }}</h1>
+    <div class="gallery">
+    {% for image_url in gallery_images %}
+        <img src="{{ image_url }}" alt="{{ transportation.title }}">
+    {% empty %}
+        <p>No images available for this transportation item.</p>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

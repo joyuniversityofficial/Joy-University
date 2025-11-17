@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; }
+        .container { width: 90vw; margin: 40px auto; }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .event-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 14px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 370px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .event-card img {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+        }
+        .event-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 30px;
+            color: #fff;
+            width: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.85) 70%, rgba(0,0,0,0.1) 100%);
+        }
+        .event-title {
+            font-size: 1.25em;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+        .event-date {
+            font-size: 1em;
+            color: #e8e8e8;
+            font-weight: 500;
+        }
+        @media (max-width: 600px) {
+            .event-card { width: 98vw; }
+            .container { width: 99vw; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="grid">
+        {% for event in events %}
+            <div class="event-card">
+                <img src="{{ event.image.url }}" alt="{{ event.title }}">
+                <div class="event-info">
+                    <div class="event-title">{{ event.title }}</div>
+                    <div class="event-date">
+                        {{ event.date|date:"F d, Y" }}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No events found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

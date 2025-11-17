@@ -1,0 +1,54 @@
+{% extends 'enrollment/base.html' %}
+
+{% block content %}
+<style>
+.submitted-section {
+    text-align: center;
+    margin-top: 50px;
+}
+.submitted-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.submitted-section p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.submitted-section .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.footer {
+    margin-top: 30px;
+    text-align: center;
+}
+.footer button {
+    background-color: #4B9F4A;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.footer button a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+</style>
+<div class="submitted-section">
+    <h2>Application Submitted Successfully!</h2>
+    <p>Your application number is: <strong>{{ enrollment.application_number }}</strong></p>
+    <p>You will receive a call from our team shortly.</p>
+    <a href="{% url 'dashboard' %}" class="btn">Back to Dashboard</a>
+    <div class="footer">
+    <button><a href="{% url 'preview_pdf' %}" class="print-btn">Download / Print PDF</a></button>
+</div>
+</div>
+{% endblock %}

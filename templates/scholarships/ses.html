@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}JU Talent Quest Scholarship - Joy University{% endblock %}
+
+{% block content %}
+<div class="scholarship-page">
+    <div class="container py-5">
+        <!-- Header Section -->
+        <div class="text-center mb-5">
+            <h1 class="scholarship-title text-danger mb-3">JU Talent Quest Scholarship</h1>
+            <h2 class="scholarship-subtitle">An Exclusive Opportunity to Earn Merit-Based Scholarships!</h2>
+        </div>
+
+        <!-- Description Section -->
+        <div class="scholarship-description mb-5">
+            <p class="lead text-center">
+                Joy University proudly announces the Scholastic Excellence Scholarship Exam (JU-SES) 2025, an exclusive 
+                opportunity for aspiring students to secure up to 50% tuition fee waiver for their entire course duration of UG Courses 
+                at JU!
+            </p>
+            <p class="text-center">
+                JU-SES is one-of-a-kind merit-based scholarship that recognizes and rewards academic brilliance. This scholarship is 
+                separate from the existing scholarships listed on the university website, offering students a chance to secure up to 50% 
+                tuition fee waiver for their entire UG course duration!
+            </p>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="row">
+            <!-- Left Column - Registration Form -->
+            <div class="col-md-5">
+                <div class="registration-form bg-light p-4 rounded-3">
+                    <h3 class="text-danger mb-4">Talent Exam Registration</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mobile" class="form-label">Mobile</label>
+                            <input type="tel" class="form-control" id="mobile" placeholder="Contact Number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Id</label>
+                            <input type="email" class="form-control" id="email" placeholder="E-Mail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examDate" class="form-label">Exam Date</label>
+                            <select class="form-select" id="examDate" required>
+                                <option value="30th April 2025">30th April 2025</option>
+                                <option value="20th May 2025">20th May 2025</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-4">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column - Details -->
+            <div class="col-md-7">
+                <div class="scholarship-details">
+                    <h3 class="text-danger mb-4">Exam Dates:</h3>
+                    <ul>
+                        <li>1st Test: 30th April 2025</li>
+                        <li>2nd Test: 20th May 2025</li>
+                    </ul>
+
+                    <h3 class="text-danger mt-5 mb-4">Why is JU-SES Special?</h3>
+                    <ul>
+                        <li><strong>Exclusive Merit-Based Scholarship:</strong> This is an extraordinary opportunity to secure financial support based purely on academic excellence.</li>
+                        <li><strong>Independent of Other Scholarships:</strong> Students can still apply for other existing scholarships at Joy University as per eligibility.</li>
+                        <li><strong>Multiple Chances to Win:</strong> Appear in either of both exam dates for a better percentile ranking.</li>
+                    </ul>
+
+                    <h3 class="text-danger mt-5 mb-4">Eligibility & Benefits:</h3>
+                    <ul>
+                        <li>Students ranked as per percentile-based merit order will be awarded a 50% tuition fee waiver for the entire course duration (4/3 years as per program)</li>
+                        <li>Students meeting the minimum percentile but not securing a scholarship will be placed on a waiting list, making them eligible for other university scholarships.</li>
+                        <li>Special consideration for a one-time fixed fee waiver may be granted to waiting list candidates who do not qualify for other scholarship categories.</li>
+                    </ul>
+
+                    <div class="text-center mt-5">
+                        <h3 class="text-danger">Register Now & Take Your First Step Towards a Bright Future!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map and Contact Section -->
+        <div class="map-contact-section mt-5">
+            <!-- Map -->
+            <div class="map-container mb-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.8561111111113!2d76.9459722!3d10.8261111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDQ5JzM0LjAiTiA3NsKwNTYnNDUuNSJF!5e0!3m2!1sen!2sin!4v1625136000000!5m2!1sen!2sin" 
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-container bg-danger text-white p-5">
+                <div class="row">
+                    <!-- Locate Us -->
+                    <div class="col-md-4">
+                        <div class="contact-block">
+                            <h4><i class="fas fa-map-marker-alt me-2"></i> Locate Us</h4>
+                            <p>Joy University, Raja Nagar, Vadakankulam, Near Kanyakumari,<br>
+                            Tamilvelven Dist. – 627116 Tamil Nadu</p>
+                        </div>
+                    </div>
+
+                    <!-- Call -->
+                    <div class="col-md-4">
+                        <div class="contact-block">
+                            <h4><i class="fas fa-phone-alt me-2"></i> Call</h4>
+                            <p>+91 7997999202<br>
+                            +91 7029 288 288</p>
+                        </div>
+                    </div>
+
+                    <!-- Mail -->
+                    <div class="col-md-4">
+                        <div class="contact-block">
+                            <h4><i class="fas fa-envelope me-2"></i> Mail</h4>
+                            <p>joyuniversityenquiry@gmail.com<br>
+                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .scholarship-page {
+        background-color: #fff;
+        padding: 40px 0;
+    }
+    
+    .scholarship-title {
+        color: #b31b24;
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    
+    .scholarship-subtitle {
+        color: #b31b24;
+        font-size: 1.5rem;
+    }
+    
+    .scholarship-description {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .registration-form {
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    
+    .scholarship-details ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .scholarship-details ul li {
+        margin-bottom: 1rem;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .scholarship-details ul li::before {
+        content: "•";
+        color: #b31b24;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .btn-primary {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0b5ed7;
+        border-color: #0b5ed7;
+    }
+    
+    @media (max-width: 768px) {
+        .scholarship-title {
+            font-size: 2rem;
+        }
+        
+        .scholarship-subtitle {
+            font-size: 1.2rem;
+        }
+        
+        .col-md-7 {
+            margin-top: 2rem;
+        }
+
+        .contact-block {
+            margin-bottom: 2rem;
+        }
+    }
+
+    /* Map and Contact Styles */
+    .map-container {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-info-container {
+        border-radius: 8px;
+        background-color: #b31b24 !important;
+    }
+
+    .contact-block {
+        margin-bottom: 1rem;
+    }
+
+    .contact-block h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .contact-block p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+    .contact-block i {
+        font-size: 1.2rem;
+    }
+</style>
+{% endblock %}

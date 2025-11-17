@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .organogram-container {
+    font-family: serif;
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .top-level {
+    background-color: #d98c2c;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 0 auto 10px auto;
+    width: 180px;
+    border-radius: 10px;
+  }
+  .middle-level {
+    background-color: #d98c2c;
+    color: black;
+    font-weight: bold;
+    padding: 8px 15px;
+    margin: 0 10px;
+    width: 160px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+  .registrar {
+    background-color: #b22222;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin: 20px auto 10px auto;
+    width: 140px;
+    border-radius: 5px;
+  }
+  .lower-level {
+    background-color: #b22222;
+    color: white;
+    font-weight: bold;
+    padding: 8px 12px;
+    margin: 10px 5px;
+    width: 120px;
+    border-radius: 5px;
+    display: inline-block;
+  }
+  .support-level {
+    background-color: #6e6e6e;
+    color: white;
+    padding: 6px 10px;
+    margin: 5px 3px;
+    width: 100px;
+    border-radius: 15px;
+    display: inline-block;
+    font-weight: normal;
+  }
+  .organogram-line {
+    height: 20px;
+    border-left: 2px solid #b22222;
+    margin: 0 auto;
+  }
+  .organogram-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .organogram-subrow {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+  }
+  .organogram-subrow .support-level {
+    margin: 0 8px;
+  }
+</style>
+
+<div class="organogram-container">
+  <div class="top-level">CHANCELLOR</div>
+  <div class="organogram-line" style="height: 15px;"></div>
+  <div class="middle-level">PRO CHANCELLOR</div>
+  <div class="organogram-line" style="height: 15px;"></div>
+  <div class="middle-level">VICE CHANCELLOR</div>
+  <div class="organogram-row" style="margin-top: 10px;">
+    <div class="middle-level" style="width: 180px; margin-right: 40px;">
+      PRO VICE CHANCELLOR<br><small>Research & Collaboration</small>
+    </div>
+    <div class="middle-level" style="width: 180px; margin-left: 40px;">
+      PRO VICE CHANCELLOR<br><small>Academics</small>
+    </div>
+  </div>
+  <div class="organogram-row" style="margin-top: 20px;">
+    <div class="lower-level">DIRECTOR</div>
+    <div class="lower-level">DEAN ACADEMICS</div>
+    <div class="lower-level">DEAN DOSSS*</div>
+    <div class="lower-level">DEAN IQAC</div>
+    <div class="lower-level">DEAN RESEARCH</div>
+    <div class="lower-level">REGISTRAR</div>
+    <div class="lower-level">CONTROLLER OF EXAMINATIONS</div>
+    <div class="lower-level">DIRECTOR CAN*</div>
+    <div class="lower-level">FINANCE OFFICER</div>
+  </div>
+  <div class="organogram-subrow" style="margin-top: 10px;">
+    <div style="text-align: left; width: 140px; margin-right: 20px;">
+      <div style="color: #b22222; font-weight: bold;">Admissions</div>
+      <div style="color: #b22222; font-weight: bold;">Branding</div>
+      <div style="color: #b22222; font-weight: bold;">Communication</div>
+      <div style="color: #b22222; font-weight: bold;">Major Infrastructure</div>
+    </div>
+    <div style="width: 140px; margin-right: 20px;">
+      <div style="color: #b22222; font-weight: bold;">DEAN OF SCHOOLS</div>
+      <div style="color: white; font-weight: bold;">SOCI</div>
+      <div style="color: white; font-weight: bold;">SOAGS</div>
+      <div style="color: white; font-weight: bold;">SOL</div>
+      <div style="color: white; font-weight: bold;">SOD</div>
+      <div style="color: white; font-weight: bold;">SOLHS</div>
+      <div style="color: white; font-weight: bold;">SON</div>
+      <div style="color: white; font-weight: bold;">SOP</div>
+      <div style="color: white; font-weight: bold;">SOEM</div>
+      <div style="color: white; font-weight: bold;">SOANS</div>
+      <div style="color: #b22222; font-weight: bold;">Faculty Welfare</div>
+    </div>
+    <div style="width: 140px; margin-right: 20px;">
+      <div style="color: #b22222; font-weight: bold;">STUDENT SUPPORT SERVICES</div>
+      <div class="support-level">SAC*</div>
+      <div class="support-level">NSS</div>
+      <div class="support-level">NCC</div>
+      <div class="support-level">Clubs</div>
+    </div>
+    <div style="width: 140px;">
+      <div class="lower-level">LIBRARIAN</div>
+      <div class="lower-level">ESTATE OFFICER</div>
+      <div class="lower-level">PURCHASE OFFICER</div>
+      <div class="lower-level">HR MANAGER</div>
+      <div class="organogram-subrow" style="margin-top: 10px; justify-content: space-around;">
+        <div class="support-level">Chief Security Officer</div>
+        <div class="support-level">Facility Manager</div>
+        <div class="support-level">Landscape Manager</div>
+        <div class="support-level">Transport Manager</div>
+        <div class="support-level">Public Relations Officer</div>
+        <div class="support-level">Administrative Officer</div>
+        <div class="support-level">Hostels</div>
+      </div>
+      <div class="organogram-subrow" style="margin-top: 5px; justify-content: space-around;">
+        <div style="color: #b22222; font-weight: bold;">ITS</div>
+        <div style="color: #b22222; font-weight: bold;">Medical Care</div>
+        <div style="color: #b22222; font-weight: bold;">Canteen</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

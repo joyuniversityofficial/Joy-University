@@ -1,0 +1,547 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Nursing - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+            <img class="top-banner" src="{% static 'images/schoolofnursing.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+     
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Nursing</h1>
+            <h2>Overview</h2>
+            <p>The School of Nursing, an integral part of Joy University endeavors to employ core tenets of excellence, innovation, inclusion, and deference to edify future nurses, progress nursing science, and implement evidence-based clinical practice to improve health and wellness. It concocts nurses with global standards for local and global placements. The standardized curriculum bids a broad-based instruction within the speculative context envisioned for the enhancement of critical thinking skills, aptitudes, and standards vital for the practice of professional nursing and midwifery.</p>
+            <p>The students will be exposed to hands-on training during the course in all specialities including Medical Surgical, Child Health, Obstetrics and Gynaecology, Community health and Mental health nursing. The programme is further augmented with value-added courses to prepare our graduates to become archetypal citizens by adhering to the code of ethics and professional conduct at all times in gratifying personal, social and professional obligations so as to retort to national aspirations. It also warrants 100% succour for employment through career counselling, in-house interviews and campus interviews.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+
+            <h2>B.Sc.</h2>
+            <ul>
+                <li>Nursing</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nursing</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with English, Physics, Chemistry and Biology as mandatory subjects and minimum 50% in every subject.</li>
+                                <li>The minimum age for admission shall be 17 years on 31st December of the year in which admission is sought.</li>
+                                <li>Note: Score of Life Sciences/ Biotechnology/ Zoology/ Botany Can be considered in case a candidate does not have biology as the subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Analyze the concepts of health and wellness, and their application in nursing practice.</li>
+                <li>Explain the principles of patient-centered care, professionalism, and leadership in nursing.</li>
+                <li>Describe the role of nurses in providing promotive, preventive, and restorative health services.</li>
+                <li>Discuss the importance of evidence-based practice, quality improvement, and safety in nursing.</li>
+                <li>Identify the key concepts of health informatics and technology in nursing practice.</li>
+                <li>Provide holistic, compassionate, and coordinated care to patients.</li>
+                <li>Demonstrate critical thinking, problem-solving, and decision-making skills in nursing practice.</li>
+                <li>Communicate effectively with patients, families, and healthcare teams.</li>
+                <li>Collaborate with healthcare teams to provide quality patient care.</li>
+                <li>Utilize technology and information systems to support nursing practice.</li>
+                <li>Demonstrate respect for the dignity, worth, and uniqueness of patients and colleagues.</li>
+                <li>Show empathy and compassion towards patients and families.</li>
+                <li>Embrace cultural diversity and individual differences in nursing practice.</li>
+                <li>Commit to ongoing professional development and lifelong learning.</li>
+                <li>Uphold the code of ethics and professional conduct in nursing practice.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Health Promoter: Provides promotive, preventive, and restorative health services in line with national health policies and programs.</li>
+                <li>Caring Professional: Integrates professional caring into practice decisions, considering values, ethics, and moral principles.</li>
+                <li>Respectful Practitioner: Respects the dignity, worth, and uniqueness of self and others.</li>
+                <li>Effective Leader: Applies concepts of leadership, autonomy, and management to enhance quality and safety in healthcare.</li>
+                <li>Technologically Adept: Utilizes the latest knowledge and skills related to information and technology to enhance patient outcomes.</li>
+                <li>Effective Communicator: Communicates effectively with patients, peers, and all healthcare providers.</li>
+                <li>Collaborative Practitioner: Utilizes requisite knowledge, skills, and technologies to practice independently and collaboratively with all health professionals.</li>
+                <li>Evidence-Based Practitioner: Integrates research findings and nursing theory into decision-making in evidence-based practice.</li>
+                <li>Accountable Professional: Accepts responsibility and accountability for the effectiveness of one's own nursing and midwifery practice and professional growth.</li>
+                <li>Professional Advocate: Participates in the advancement of the profession to improve healthcare for the betterment of the global society.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Patient centred care: Provide holistic care recognizing individual patient‘s preferences, values and needs, that is compassionate, coordinated, age and culturally appropriate safe and effective care.</li>
+                <li>Professionalism: Demonstrate accountability for the delivery of standard-based nursing care as per the Council standards that is consistent with moral, altruistic, legal, ethical, regulatory and humanistic principles.</li>
+                <li>Teaching & Leadership: Influence the behaviour of individuals and groups within their environment and facilitate establishment of shared goals through teaching and leadership.</li>
+                <li>System-based practice: Demonstrate awareness and responsiveness to the context of healthcare system and ability to manage resources essential to provide optimal quality of care.</li>
+                <li>Health informatics and Technology: Use technology and synthesize information and collaborate to make critical decisions that optimize patient outcomes.</li>
+                <li>Communication: Interact effectively with patients, families and colleagues fostering mutual respect and shared decision making to enhance patient satisfaction and health outcomes.</li>
+                <li>Teamwork and Collaboration: Function effectively within nursing and interdisciplinary teams, fostering open communication, mutual respect, shared decision making, team learning and development.</li>
+                <li>Safety: Minimize risk of harm to patients and providers through both system effectiveness and individual performance.</li>
+                <li>Quality improvement: Use data to monitor the outcomes of care processes and utilize improvement methods to design and test changes to continuously improve the quality and safety of healthcare system.</li>
+                <li>Evidence based practice: Identify, evaluate and use the best current evidence coupled with clinical expertise and consideration of patient‘s preferences, experience and values to make practical decisions.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>The nursing program integrates health and wellness concepts, recognizing health as a multifaceted state of well-being encompassing physical, psychological, social, economic, and spiritual dimensions. Health is a human right, and individuals have the right to participate in achieving health as they perceive it.</p>
+            <p>Nurses and midwives recognize and respect human differences, providing ethical care with dignity. Nursing practice is guided by evidence-based knowledge, compassionate caring, and adaptability to emerging healthcare issues. Nurses develop critical thinking, communication, and clinical skills through education and practice.</p>
+            <p>Nursing practice requires a commitment to ongoing professional development and learning. The program prepares graduates to become exemplary citizens, adhering to code of ethics and professional conduct. It focuses on national health problems, programs, and policy directives.</p>
+            <p>Graduates will be prepared to take on roles as care providers, coordinators/managers, and professional members. The program incorporates a blended learning approach, including experiential, reflective, scenario-based, and simulated learning.</p>
+            <p>The program develops critical thinking skills, competencies, and professional values. Faculty members create a learning environment that fosters critical thinking, curiosity, and lifelong learning. Learners and educators interact in a process whereby students gain competencies required to function within their scope of practice.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>Utilize critical thinking to synthesize knowledge derived from physical, biological, behavioural sciences, and humanities, in the practice of professional nursing and midwifery.</li>
+                <li>Practice professional nursing and midwifery competently and safely in diverse settings, utilizing caring, critical thinking and therapeutic nursing interventions with individuals, families, populations and communities at any developmental stage and with varied lived health experiences.</li>
+                <li>Provide promotive, preventive and restorative health services in line with national health policies and programs.</li>
+                <li>Integrate professional caring into practice decisions that encompass values, ethical, and moral and legal aspects of nursing.</li>
+                <li>Respect the dignity, worth, and uniqueness of self and others.</li>
+                <li>Apply concepts of leadership, autonomy and management to the practice of nursing and midwifery to enhance quality and safety in health care.</li>
+                <li>Utilize the latest knowledge and skills related to information and technology to enhance patient outcomes.</li>
+                <li>Communicate effectively with patients, peers, and all health care providers.</li>
+                <li>Utilize the requisite knowledge, skills and technologies to practice independently and collaboratively with all health professionals applying the principles of safety and quality improvement.</li>
+                <li>Integrate research findings and nursing theory in decision making in evidence-based practice.</li>
+                <li>Accept responsibility and accountability for the effectiveness of one‘s own nursing and midwifery practice and professional growth as a learner, clinician and leader.</li>
+                <li>Participate in the advancement of the profession to improve health care for the betterment of the global society.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prof. Dr. Johnsy Rani.T, M.A, M.Sc, Ph.D</td>
+                        <td>Professor & Associate Dean</td>
+                        <td>johnsy@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Ms. Achsha Shiny, M.Sc, MBA</td>
+                        <td>Assistant Professor</td>
+                        <td>achsha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Anilet Anandhy M.Sc, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>aniletanandhy@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Sowdhanya.M.R  MBA M.Sc.(N)</td>
+                        <td>Assistant Professor</td>
+                        <td>sowdhanya.son@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. T. Vijitha M.Sc</td>
+                        <td>Assistant Professor</td>
+                        <td>vijithat.son@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Manoj C M.Sc (MSN)</td>
+                        <td>Teaching Assistant</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. K. Priyadharshini, MBA, D.MRT</td>
+                        <td>Lab Instructor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. T Thanga Sneha, M.Sc, B.Ed.,</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

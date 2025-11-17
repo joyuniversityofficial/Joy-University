@@ -1,0 +1,382 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+<div class="dashboard-container">
+  <!-- Hamburger Menu for Mobile -->
+  <button class="hamburger" onclick="toggleSidebar()">☰</button>
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">
+<img src="{% static 'images/joy_university.png' %}" alt="Joy University Logo">
+      <h4>JOY UNIVERSITY</h4>
+      <p>semper paratus</p>
+    </div>
+
+    <ul class="menu">
+      <li><a href="{% url 'dashboard' %}" {% if request.resolver_match.url_name == 'dashboard' %}class="active"{% endif %}>Dashboard</a></li>
+      <li><a href="{% url 'all_applications' %}" {% if request.resolver_match.url_name == 'all_applications' %}class="active"{% endif %}>All Application Form(s)</a></li>
+    </ul>
+
+    <div class="footer-logo">
+      <p>Powered by</p>
+      <img src="{% static 'images/meritto-logo.png' %}" alt="Meritto Logo">
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    {% block content %}{% endblock %}
+  </main>
+</div>
+
+<style>
+body {
+  background-color: #f7f7f7;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #1f2933;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 0px;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.logo {
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.logo img {
+  width: 80px;
+  margin-bottom: 5px;
+}
+
+.logo h4 {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.logo p {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.menu {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.menu li, a {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.menu li.active,
+.menu li:hover {
+  background-color: #ff7300;
+  color: #fff;
+}
+
+.footer-logo {
+  text-align: center;
+  font-size: 11px;
+  color: #ccc;
+}
+
+.footer-logo img {
+  width: 90px;
+  margin-top: 5px;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+}
+
+.topbar h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+.topbar p {
+  font-size: 13px;
+  color: #555;
+}
+
+.topbar a {
+  text-decoration: none;
+  color: #0056b3;
+  font-weight: 500;
+}
+
+.profile {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  background-color: #f58634;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+  min-width: 120px;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+/* Welcome Box */
+.welcome-box {
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.welcome-box h3 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.welcome-box p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.start-btn {
+  background-color: #f58634;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.start-btn:hover {
+  background-color: #e67620;
+}
+
+/* Applications */
+.applications {
+  padding: 20px;
+}
+
+.app-card {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.app-info {
+  flex: 3;
+}
+
+.app-info h3 {
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin-bottom: 10px;
+}
+
+.details p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.action {
+  margin-top: 10px;
+}
+
+.apply-btn {
+  background-color: #fff;
+  border: 1px solid #f58634;
+  color: #f58634;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.apply-btn:hover {
+  background-color: #f58634;
+  color: #fff;
+}
+
+.continue {
+  color: #0056b3;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.continue:hover {
+  text-decoration: underline;
+}
+
+/* Enrolment Journey */
+.journey {
+  flex: 1;
+  text-align: right;
+}
+
+.journey h4 {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.journey ul {
+  list-style: none;
+}
+
+.journey ul li {
+  font-size: 12px;
+  color: #666;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+
+.journey ul li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 5px;
+  background-color: #fff;
+}
+
+.journey ul li.active::before {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.topbar .highlight {
+  color: #ff6600;
+  font-weight: 500;
+}
+
+.top-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.help-btn {
+  border: 1px solid #ff6600;
+  background: transparent;
+  color: #ff6600;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none; /* Hidden by default, shown on mobile via responsive.css */
+}
+</style>
+
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.querySelector('.sidebar-overlay');
+  sidebar.classList.toggle('show');
+  overlay.classList.toggle('show');
+}
+
+function toggleDropdown() {
+  const dropdown = document.getElementById('logout-dropdown');
+  if (dropdown) {
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+}
+
+// Prevent browser back and forward navigation after login
+window.addEventListener('load', function() {
+  // Replace the current state to prevent back navigation
+  window.history.replaceState(null, null, window.location.href);
+  window.addEventListener('popstate', function(event) {
+    // On back/forward attempt, replace state again to stay on page
+    window.history.replaceState(null, null, window.location.href);
+  });
+});
+</script>

@@ -1,0 +1,637 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <title>School of Agricultural Sciences - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+          
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        
+.apply-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #0056b3;
+}
+    </style>
+        <img class="top-banner" src="{% static 'images/agriculture.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+           
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Agricultural Sciences</h1>
+            <h2>Overview</h2>
+            <p>The School of Agricultural Sciences (JU-SOAGS) at Joy University employs a multidisciplinary approach, aligned with the Indian Council of Agricultural Research guidelines, to deliver its curriculum. JU-SOAGS offers four-year programs in BSc. (Hons.) Agriculture, BSc. (Hons.) Horticulture, and B. Tech. (Agricultural Engineering). The academic programs feature a balanced, semester-based structure and curricula designed to foster innovation, research, and in-depth exploration, addressing the evolving demands of the agricultural sector in India. Students benefit from immersive learning experiences through the Rural Work Experience, the Experiential Learning Program, and the hands-on training components integrated into the program. This experiential learning model actively engages students in concrete and meaningful experiences, promoting enhanced reflection, conceptualization, and practical application of knowledge.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+            
+            <h2>B.Tech.</h2>
+            <ul>
+                <li>Agricultural Engineering</li>
+                <li>Dairy Technology</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>B.Sc. (Hons.)</h2>
+            <ul>
+                <li>Agriculture</li>
+                <li>Horticulture</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>M.Sc. (Agriculture)</h2>
+            <ul>
+                <li>Agronomy</li>
+                <li>Agricultural Entomology</li>
+                <li>Agricultural Extension Education</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>M.Sc. (Horticulture)</h2>
+            <ul>
+                <li>Floriculture and Landscaping</li>
+                <li>Vegetable Science</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Sc. (Hons.)</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agriculture</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject.</li>
+                                <li>Note: Score of Life Sciences/ Biotechnology/ Zoology/ Botany Can be considered in case a candidate does not have biology as the subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Horticulture</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>B. Tech</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agricultural Engineering</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 with Maths / Biology, Physics, Chemistry and English as mandatory subjects with minimum 60% in PCM aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dairy Technology</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>M.Sc. (Agriculture)</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agronomy</td>
+                        <td>2 Years</td>
+                        <td rowspan="3">
+                            <ul>
+                                <li>A Bachelor's Degree in Agriculture/ Horticulture/ Forestry from a recognized University with minimum 60% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid score of JOYAT + Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Agricultural Entomology</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>Agricultural Extension Education</td>
+                        <td>2 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>M.Sc. (Horticulture)</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Floriculture and Landscaping</td>
+                        <td>2 Years</td>
+                        <td rowspan="2">
+                            <ul>
+                                <li>A Bachelor's Degree in Agriculture/ Horticulture/ Forestry from a recognized University with minimum 60% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid score of JOYAT + Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Vegetable Science</td>
+                        <td>2 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Develop a systems-thinking approach to agricultural production and land management, understanding the structures of agriculture-related industries, key factors influencing their location, environmental impact, sustainability, profitability, and international trade competitiveness, as well as the biophysical, economic, and social factors affecting production systems.</li>
+                <li>Acquire the ability to critically evaluate knowledge from diverse scientific, economic, and social sources.</li>
+                <li>Join the skills to effectively disseminate scientific and industry-related information to various audiences.</li>
+                <li>Develop the ability to analyze agricultural problems and evaluate them scientifically to reach appropriate, evidence-based solutions.</li>
+                <li>Enhance communication skills across a range of media, ensuring effective exchange of information in different contexts.</li>
+                <li>Build the ability to collect, interpret, and analyze agricultural data for informed decision-making.</li>
+                <li>Understand and apply research methodologies necessary for designing and interpreting agricultural experiments.</li>
+                <li>Uphold the highest standards of academic and intellectual integrity, demonstrating professionalism and ethical conduct in all academic and industry-related activities.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Demonstrate a strong sense of intellectual integrity and adhere to the ethics of scholarship.</li>
+                <li>Acquire in-depth knowledge in their chosen field(s) of specialization.</li>
+                <li>Achieve a high level of proficiency in writing, research, problem-solving, and communication.</li>
+                <li>Cultivate critical and creative thinking skills, with a commitment to continuous self-directed learning.</li>
+                <li>Be adaptable to various learning methods, including the effective use of information and communication technologies.</li>
+                <li>Become well-informed citizens who can actively contribute to their communities, regardless of location.</li>
+                <li>Accept and embrace social and civic responsibilities.</li>
+                <li>Advocate for environmental sustainability and take proactive steps toward improving ecological well-being.</li>
+                <li>Develop a broad global perspective, with strong respect for human rights, equity, and ethical principles.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Demonstrate a profound respect for truth, intellectual and professional integrity, and the ethics of scholarship.</li>
+                <li>Exhibit the ability to engage in independent critical thinking, rational inquiry, and self-directed learning.</li>
+                <li>Develop the ability to derive, interpret, and analyze ecological, biological, social, technical, or economic information from primary sources.</li>
+                <li>Be aware of, and predict in utilizing, appropriate communication technologies and methods for this storage, management, and analysis.</li>
+                <li>Cultivate creativity and innovation through the application of acquired skills and knowledge in practical contexts.</li>
+                <li>Integrate knowledge across a wide range of disciplines to address and solve problems in applied situations.</li>
+                <li>Demonstrate highly developed written communication skills for informed dialogue with individuals and groups from industry, government, and the community.</li>
+                <li>Exhibit strong oral communication skills to facilitate informed dialogue and collaboration with individuals and groups from industry, government, and the community.</li>
+                <li>Appreciate and respect social and cultural diversity in both regional and global contexts.</li>
+                <li>Effectively participate in team settings, contributing to group efforts and achieving common goals.</li>
+                <li>Develop the ability to plan, manage time effectively, and oversee small projects to successful completion.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>School of Agricultural Sciences (JU- SOAGS) at Joy University has focused on the Rural Agricultural Work Experience (RAWE) which helps the students primarily to understand the rural situations, status of Agricultural technologies adopted by farmers, prioritize the farmers' problems, prepare farm and village development plans and to develop skills & attitude of working with farm families for the overall development in rural area. The timings for RAWE shall coincide with the main cropping season.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To provide an opportunity to the students to understand the rural setting in relation to agriculture and allied activities.</li>
+                <li>To make the students familiar with socio-economic conditions of the farmers and their problems.</li>
+                <li>To impart diagnostic and remedial knowledge to the students relevant to real field situations through practical training.</li>
+                <li>To develop communication skills in students using extension teaching methods in transfer of technology.</li>
+                <li>To develop confidence and competence to solve agricultural problems.</li>
+                <li>To acquaint students with on-going extension and rural development programmes.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dr. Pooja Krishna J, M.Sc, Ph.D</td>
+                        <td>Assistant Professor & Assistant Dean</td>
+                        <td>poojakrishna@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Pungavi R, M.Sc, Ph.D.,</td>
+                        <td>Assistant Professor</td>
+                        <td>pungavi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Feba Varghese, M.Sc.,</td>
+                        <td>Assistant Professor</td>
+                        <td>febavarghese@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Jerish J R Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>jerish@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Sreelakshmi P M.Sc.</td>
+                        <td>Assistant Professor</td>
+                        <td>sreelakshmi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. K. Priyadharshini, MBA, D.MRT</td>
+                        <td>Lab Instructor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sinha R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

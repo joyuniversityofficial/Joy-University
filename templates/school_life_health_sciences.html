@@ -1,0 +1,702 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Life & Health Sciences - Joy University</title>
+    <style>
+
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Styles */
+        header {
+
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+
+
+
+
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+            <img class="top-banner" src="{% static 'images/lhs.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+ 
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Life & Health Sciences</h1>
+            <h2>Overview</h2>
+            <p>School of Life and Health Sciences (SOLHS) Joy University School of Life and Health Sciences (JU-SOLHS) has fields of biotechnology, allied health sciences and nutrition that work towards improving the well-being of individuals and communities. Biotechnology helps us modify and improve the human body in a changing world while allied health sciences complements the fast-evolving field of medicine and improves the quality of patient care. The professionals and leaders who work in these fields channel their knowledge and efforts towards a better tomorrow for all we are proud to play a key role in their development. The comprehensive curriculum is grounded in the fundamentals of the discipline and designed to meet contemporary industry challenges with the advancements and updates in the respective fields. A strong focus on practical application ensures that learning is not restricted to the four walls of a classroom alone. Instead, immersive learning is promoted in the well-equipped labs and facilities. Students at JU-SOLHS are encouraged to explore research as a means of developing a deeper understanding of their disciplines.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+
+            <h2>B.Sc.</h2>
+            <ul>
+                <li>Operation Theatre & Anaesthesia Technology</li>
+                <li>Medical Radiology & Imaging Technology</li>
+                <li>Cardiac Perfusion Technology</li>
+                <li>Medical Laboratory Technology</li>
+                <li>Physician Assistant</li>
+                <li>Biotechnology</li>
+                <li>Psychology</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.Optom.</h2>
+            <ul>
+                <li>Optometry</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.P.T.</h2>
+            <ul>
+                <li>Bachelor of Physiotherapy</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>M.Sc.</h2>
+            <ul>
+                <li>Operation Theatre & Anaesthesia Technology</li>
+                <li>Cardiac Perfusion Technology</li>
+                <li>Biotechnology</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+
+            <h3>Department of Allied Health Sciences</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Operation Theatre & Anaesthesia Technology</td>
+                        <td>4 Years</td>
+                        <td>HSE / CBSE / ICSE / CIE +2 or equivalent with 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject<br>Note: Score of Life Sciences / Biotechnology / Zoology / Botany can be considered in case a candidate does not have biology as the subject.<br>Valid Score of JOYAT</td>
+                    </tr>
+                    <tr>
+                        <td>Cardiac Perfusion Technology</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Medical Radiology and Imaging Technology</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Medical Laboratory Technology</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Physician Assistant</td>
+                        <td>4 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Psychology</td>
+                        <td>3 Years</td>
+                        <td>HSE/CBSE/ICSE/CIE +2 or equivalent with minimum 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject.<br>Note: Score of Life Sciences/ Biotechnology/ Zoology/ Botany can be considered in case a candidate does not have biology as the subject.<br>Valid score of JOYAT.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Optom.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Optometry</td>
+                        <td>4 Years</td>
+                        <td>HSE / CBSE / ICSE / CIE +2 or equivalent with 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject<br>Note: Score of Life Sciences / Biotechnology / Zoology / Botany can be considered in case a candidate does not have biology as the subject.<br>Valid Score of JOYAT</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>M.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Operation Theatre & Anaesthesia Technology</td>
+                        <td>2 Years</td>
+                        <td>A Bachelor's Degree in operation theater & Anaesthesia Technology / Cardiac Perfusion Technology from a recognized University with minimum 60% aggregate marks and minimum 50% in every subject.<br>Valid score of JOYAT +Interaction</td>
+                    </tr>
+                    <tr>
+                        <td>Cardiac Perfusion Technology</td>
+                        <td>2 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Department of Physiotherapy</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.P.T</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bachelor of Physiotherapy</td>
+                        <td>4.5 Years</td>
+                        <td>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject.<br>Valid Score of JOYAT</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Department of Biotechnology</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Biotechnology</td>
+                        <td>3 Years</td>
+                        <td>HSE/CBSE/ICSE/CIE +2 or equivalent with minimum 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject.<br>Note: Score of Life Sciences/ Biotechnology/ Zoology/ Botany can be considered in case a candidate does not have biology as the subject.<br>Valid score of JOYAT.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>M.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Biotechnology</td>
+                        <td>2 Years</td>
+                        <td>A Bachelor's Degree in Biotechnology from a recognized University with minimum 60% aggregate marks and minimum 50% in every subject.<br>Valid score of JOYAT +Interaction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Developing expertise in human anatomy, physiology, and pathophysiology while acquiring skills in clinical diagnostics, therapeutic procedures, and patient care techniques relevant to their field.</li>
+                <li>Gaining teamwork skills to collaborate with healthcare professionals and understanding the roles of various disciplines in delivering holistic patient care.</li>
+                <li>Upholding ethics, confidentiality, and professionalism while ensuring culturally competent, inclusive patient care.</li>
+                <li>Utilizing critical thinking and evidence-based practices to assess, diagnose, and manage patient conditions accurately.</li>
+                <li>Enhancing communication skills to interact effectively while focusing on patient education, empathy, and advocacy for quality care and outcomes.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Graduates demonstrate proficiency in performing diagnostic, therapeutic, and technical procedures with accuracy and efficiency.</li>
+                <li>Graduates possess strong verbal and written communication skills to interact with patients, families, and healthcare teams empathetically and clearly.</li>
+                <li>Graduates analyze complex situations, make evidence-based decisions, and adapt to challenges in clinical and healthcare settings.</li>
+                <li>Graduates uphold ethical principles, maintain patient confidentiality, and adhere to professional standards in their practice.</li>
+                <li>Graduates engage in continuous learning, embrace new technologies, and adapt to advancements in healthcare for improved patient outcomes.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Gaining expertise in anatomy, physiology, and pathology; effectively using diagnostic and therapeutic tools; analyzing test results; and following established protocols and procedures.</li>
+                <li>Facilitating clear communication, demonstrating empathy, educating patients, and collaborating effectively in multidisciplinary healthcare teams.</li>
+                <li>Using patient data for informed decision-making, applying evidence-based practices, adapting to challenges, and adjusting approaches based on outcomes.</li>
+                <li>Maintaining patient confidentiality, demonstrating professionalism and ethical standards, and committing to ongoing education and development.</li>
+                <li>Ensuring accuracy in patient records and treatment plans, managing time and responsibilities, maintaining cleanliness and sterilization, and overseeing medical supplies and equipment inventory.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>At JU-SOLHS students are guided on their academic and professional journeys by experienced faculty members who leverage their knowledge to ensure the best path forward for students for effective delivery of healthcare services which depend largely on the nature of education, training and appropriate orientation towards the community health of all categories of health personnel, and their capacity to function as an integrated team. The Universal Health Coverage goals envisaged by Government of India may not be possible to achieve due to shortage of the skilled human resource. The documented benefits in the healthcare system range from improving access to healthcare services to significant reduction in the cost of care, when the healthcare system moves away from the doctor-centric approach to a multidisciplinary approach. Many examples emphasize the need for skilled allied and healthcare professionals in the system. JU-SOLHS also play a significant role to care for patients with chronic diseases and help to improve their quality of life. With a vision to provide adequate support to the physicians and surgeons and to fill in the gap of skilled technical personnel JU-SOLHS Department of Allied Health Sciences, offers the four year undergraduate B.Sc. degree programmes.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To equip students with clinical and technical skills for accurate diagnosis, treatment, and patient care.</li>
+                <li>To foster strong communication and interpersonal abilities for effective teamwork and patient interactions.</li>
+                <li>To develop critical thinking and problem-solving skills for evidence-based healthcare practices.</li>
+                <li>To instill ethical and professional values, ensuring high standards of patient care and confidentiality.</li>
+                <li>To prepare students for lifelong learning and adaptability in evolving healthcare environments.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prof. Dr. M.S.Sundaram, M.PT, Ph.D</td>
+                        <td>Associate Professor & Associate Dean</td>
+                        <td>sundaram@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Ramswaroop Saini, M.Sc, Ph.D</td>
+                        <td>Assistant Professor & Assistant Dean</td>
+                        <td>saini@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Ramya, MBBS, F.Diab</td>
+                        <td>Assistant Professor</td>
+                        <td>ramya@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. S R Pooja M.Sc, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>pooja.s.r@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Rajesh Kumar, MBBS (AMASOM, Philippines)</td>
+                        <td>Assistant Professor</td>
+                        <td>rajeshkumar.c@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Jenila Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>jenila.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. P. Sandhiya M.Optom</td>
+                        <td>Assistant Professor</td>
+                        <td>sandhiya.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Aswathy.C Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>Aswathy.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Gopinath M.Sc.</td>
+                        <td>Assistant Professor</td>
+                        <td>gopinathshankar.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Monisha MBBS</td>
+                        <td>Assistant Professor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Ilin Dona .D MPT</td>
+                        <td>Teaching Assistant</td>
+                        <td>ilindona.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Ahava Kezi. A MBA</td>
+                        <td>Teaching Assistant</td>
+                        <td>ahavakezi.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Nandhu Krishnan, MBBS, DNB</td>
+                        <td>Teaching Assistant</td>
+                        <td>nandhukrishnan@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. M.Naga Theja, M.Sc</td>
+                        <td>Teaching Assistant</td>
+                        <td>nagatheja@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. Hariharan, M.Sc</td>
+                        <td>Teaching Assistant</td>
+                        <td>hariharan.s@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Andreena Joseph</td>
+                        <td>Teaching Assistant</td>
+                        <td>andreenajoseph@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. Ramesh, B Sc MLT</td>
+                        <td>Lab Instructor</td>
+                        <td>ramesh@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. T Thanga Sneha, M.Sc., B.Ed.,</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

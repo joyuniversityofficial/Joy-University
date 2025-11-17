@@ -1,0 +1,20 @@
+{% extends "dashboard_base.html" %}
+
+{% block content %}
+<header class="topbar">
+  <h2>Dashboard</h2>
+  <p>Welcome <a href="#">{{ application.name }}</a></p>
+  <div class="profile" onclick="toggleDropdown()">
+    <span>{{ initials }}</span>
+    <div class="dropdown-menu" id="logout-dropdown">
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+</header>
+
+<section class="welcome-box">
+  <h3>Dashboard</h3>
+  <p>Welcome {{ application.name }}. Your journey to Joy University starts here.</p>
+  <a href="{{ apply_url }}" class="start-btn">Start Your Application →</a>
+</section>
+{% endblock %}

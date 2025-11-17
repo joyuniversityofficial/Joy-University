@@ -1,0 +1,271 @@
+{% extends "enrollment/base.html" %}
+{% load static %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+@page { size: A4; margin: 28.35mm 19.05mm; } /* 1.125in top/bottom, 0.75in sides — tune if needed */
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    background: #fff;
+    width: 820px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 4px 0 10px 0;
+    font-size: 20px;
+}
+
+/* Application number */
+.form-number {
+    text-align: right;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* Section header */
+.section-title {
+    background: skyblue;
+    border: 1px solid #000;
+    padding: 6px 8px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Table core rules */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    margin-top: 6px;
+    table-layout: fixed;       /* CRITICAL: fixes column widths in PDF */
+    word-wrap: break-word;     /* ensure long texts wrap inside cells */
+}
+
+/* Define column widths using colgroup (template uses these classes) */
+col.col-label { width: 22%; }
+col.col-value { width: 28%; }
+col.col-label-2 { width: 12%; }
+col.col-value-2 { width: 18%; }
+
+/* cell styling */
+td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    vertical-align: top;
+    line-height: 1.35;
+    font-size: 14px;
+}
+
+td.label {
+    font-weight: 700;
+    background: skyblue;
+}
+
+/* Ensure name rows spanning columns render same as preview */
+td.full { padding: 8px 10px; font-weight: 600; }
+
+/* footer button (hidden in PDF) */
+.print-btn { display: inline-block; background:#4B9F4A; color:#fff; padding:10px 24px; text-decoration:none; border-radius:4px; font-weight:600; }
+
+/* Print-specific overrides */
+@media print {
+    .print-btn { display:none !important; }
+    body { padding: 0.5in; width: auto; }
+    table { page-break-inside: avoid; }
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('{{ STATIC_URL }}fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('{{ STATIC_URL }}fonts/Inter-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: bold;
+}
+/* and so on for 500/600 weights if needed */
+
+</style>
+
+<h1>{% if application.school %}{{ application.school.title }}{% else %}School of Doctorate{% endif %} Application Form</h1>
+<div class="form-number">Application No: {{ enrollment.application_number }}</div>
+
+
+<!-- Course Details -->
+<div class="section">
+    <div class="section-title">Course Details</div>
+    <table>
+        <tr>
+            <td class="label">Level of Program</td><td class="value">{{ enrollment.program_level }}</td>
+            <td class="label">Course</td><td class="value">{{ enrollment.course }}</td>
+            <td class="label">Specialization</td><td class="value">{{ enrollment.specialization }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Personal Details -->
+<div class="section">
+    <div class="section-title">Personal Details</div>
+    <table>
+        <colgroup>
+            <col class="col-label">
+            <col class="col-value">
+            <col class="col-label">
+            <col class="col-value">
+        </colgroup>
+        <tr><td class="label">Name of the Student</td><td class="value" colspan="3">{{ enrollment.first_name }} {{ enrollment.last_name }}</td></tr>
+        <tr>
+            <td class="label">Nationality</td><td class="value">{{ enrollment.nationality }}</td>
+            <td class="label">Accommodation Status</td><td class="value">{{ enrollment.accommodation_status }}</td>
+        </tr>
+        <tr>
+            <td class="label">Mobile Number</td><td class="value">+91 {{ enrollment.mobile }}</td>
+            <td class="label">Email ID</td><td class="value">{{ enrollment.email }}</td>
+        </tr>
+        <tr>
+            <td class="label">Date Of Birth</td><td class="value">{{ enrollment.dob }}</td>
+            <td class="label">Aadhaar Number</td><td class="value">{{ enrollment.aadhaar }}</td>
+        </tr>
+        <tr>
+            <td class="label">Gender</td><td class="value">{{ enrollment.gender }}</td>
+            <td class="label">Category</td><td class="value">{{ enrollment.category }}</td>
+        </tr>
+        <tr>
+            <td class="label">Religion</td><td class="value">{{ enrollment.religion }}</td>
+            <td class="label">How did you hear about us?</td><td class="value">{{ enrollment.how_heard }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Guardian Details -->
+<div class="section">
+    <div class="section-title">Father’s / Guardian’s Details</div>
+    <table>
+        <tr>
+            <td class="label">Name</td><td class="value">{{ enrollment.parent_name }}</td>
+            <td class="label">Mobile Number</td><td class="value">+91 {{ enrollment.parent_mobile }}</td>
+            <td class="label">Email ID</td><td class="value">{{ enrollment.parent_email }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Passport Details -->
+<div class="section">
+    <div class="section-title">Passport Details</div>
+    <table>
+        <tr>
+            <td class="label">Passport Number</td><td class="value">{{ enrollment.passport_number }}</td>
+            <td class="label">Country Name</td><td class="value">{{ enrollment.passport_country }}</td>
+        </tr>
+        <tr>
+            <td class="label">Place Of Issue</td><td class="value">{{ enrollment.passport_place }}</td>
+            <td class="label">Date Of Issue</td><td class="value">{{ enrollment.passport_issue_date }}</td>
+            <td class="label">Date Of Expiry</td><td class="value">{{ enrollment.passport_expiry_date }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Address -->
+<div class="section">
+    <div class="section-title">Address For Correspondence</div>
+    <table>
+        <tr>
+            <td class="label">Country</td><td class="value">{{ enrollment.country }}</td>
+            <td class="label">State</td><td class="value">{{ enrollment.state }}</td>
+        </tr>
+        <tr>
+            <td class="label">District</td><td class="value">{{ enrollment.district }}</td>
+            <td class="label">City</td><td class="value">{{ enrollment.city }}</td>
+        </tr>
+        <tr>
+            <td class="label">Pincode</td><td class="value">{{ enrollment.pincode }}</td>
+            <td class="label">Address</td><td class="value">{{ enrollment.address_line1 }} {{ enrollment.address_line2 }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- X Standard -->
+<div class="section">
+    <div class="section-title">X Standard / Matric Details</div>
+    <table>
+        <tr>
+            <td class="label">School Name</td><td class="value">{{ enrollment.x_school }}</td>
+            <td class="label">State</td><td class="value">{{ enrollment.x_state }}</td>
+            <td class="label">City</td><td class="value">{{ enrollment.x_city }}</td>
+        </tr>
+        <tr>
+            <td class="label">Board</td><td class="value">{{ enrollment.x_board }}</td>
+            <td class="label">Percentage</td><td class="value">{{ enrollment.x_percentage }}</td>
+            <td class="label">After Xth Qualification</td><td class="value">{{ enrollment.x_after_qualification }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Higher Secondary -->
+<div class="section">
+    <div class="section-title">Higher Secondary / 10+2 Details</div>
+    <table>
+        <tr>
+            <td class="label">School Name</td><td class="value">{{ enrollment.hs_school }}</td>
+            <td class="label">State</td><td class="value">{{ enrollment.hs_state }}</td>
+            <td class="label">City</td><td class="value">{{ enrollment.hs_city }}</td>
+        </tr>
+        <tr>
+            <td class="label">Board</td><td class="value">{{ enrollment.hs_board }}</td>
+            <td class="label">Result Status</td><td class="value">{{ enrollment.hs_result_status }}</td>
+            <td class="label">Percentage</td><td class="value">{{ enrollment.hs_percentage }}</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Diploma -->
+<div class="section">
+    <div class="section-title">Diploma Details</div>
+    <table>
+        <tr>
+            <td class="label">Board / University Name</td><td class="value">{{ enrollment.diploma_university }}</td>
+            <td class="label">Diploma Result Status</td><td class="value">{{ enrollment.diploma_status }}</td>
+            <td class="label">Diploma Percentage</td><td class="value">{{ enrollment.diploma_percentage }}</td>
+        </tr>
+    </table>
+</div>
+
+
+
+<!-- Declaration -->
+<div class="section">
+    <div class="section-title">Declaration</div>
+    <p>
+        I certify that the information submitted by me in support of this application is true to the best of my knowledge and belief.
+        I undertake to abide by the disciplinary rules and regulations of the institute.
+    </p>
+    <table>
+        <tr>
+            <td class="label">Applicant Name</td><td class="value">{{ enrollment.first_name }} {{ enrollment.last_name }}</td>
+            <td class="label">Parent Name</td><td class="value">{{ enrollment.parent_name }}</td>
+            <td class="label">Date</td><td class="value">{{ display_date|date:"d/m/Y" }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="footer">
+    <a href="{% url 'preview_pdf' %}" class="print-btn">Download / Print PDF</a>
+</div>
+
+{% endblock %}

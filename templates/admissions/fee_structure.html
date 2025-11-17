@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Fee Structure - Joy University{% endblock %}
+
+{% block content %}
+<div class="fee-structure-page">
+    <!-- Hero Banner -->
+    <div class="hero-banner mb-5">
+        <img src="{% static 'images/feestructure.jpg' %}" alt="Fee Structure Banner" class="w-100">
+    </div>
+
+    <div class="container py-5">
+        <h1 class="text-center text-danger mb-5">Fee Structure</h1>
+
+        <!-- SOCI -->
+        <div class="school-section mb-5">
+            <h2 class="school-title">School of Computational Intelligence (SOCI) - Fee Structure</h2>
+            
+            <div class="department-block">
+                <h3 class="department-title">DEPARTMENT OF COMPUTING & INFORMATION SYSTEMS</h3>
+                
+                <div class="program-block">
+                    <h4 class="program-title">B.Tech</h4>
+                    <div class="fee-table-wrapper">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Fee per Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & Data Science)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & IoT)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & Machine Learning)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & Robotics)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE (Cyber Security)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Computer Science & Engineering</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>ECE (Artificial Intelligence & Machine Learning)</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Information & Communication Technology</td>
+                                    <td>₹1,40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Mathematics & Computing</td>
+                                    <td>₹1,00,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h4 class="program-title">B.Tech - Intel, NEC & Edulateral Foundation</h4>
+                    <div class="fee-table-wrapper">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Fee per Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & IoT)</td>
+                                    <td>₹2,20,000</td>
+                                </tr>
+                                <tr>
+                                    <td>CSE (Artificial Intelligence & Machine Learning)</td>
+                                    <td>₹2,20,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h4 class="program-title">BCA - FACE Prep</h4>
+                    <div class="fee-table-wrapper">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Fee per Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Artificial Intelligence</td>
+                                    <td>₹90,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Analytics</td>
+                                    <td>₹90,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="program-block">
+                    <h4 class="program-title">BCA</h4>
+                    <div class="fee-table-wrapper">
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Program</th>
+                                    <th>Fee per Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Artificial Intelligence</td>
+                                    <td>₹90,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Cyber Security</td>
+                                    <td>₹90,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<style>
+    .fee-structure-page {
+        background-color: #fff;
+    }
+
+    .hero-banner {
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .hero-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .school-title {
+        color: #b31b24;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #b31b24;
+        padding-bottom: 0.5rem;
+    }
+
+    .department-title {
+        background-color: #b31b24;
+        color: white;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    .program-title {
+        color: #333;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .fee-table-wrapper {
+        margin-bottom: 2rem;
+        overflow-x: auto;
+    }
+
+    .fee-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2rem;
+    }
+
+    .fee-table th,
+    .fee-table td {
+        padding: 1rem;
+        border: 1px solid #ddd;
+    }
+
+    .fee-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+
+    .fee-table tr:hover {
+        background-color: #f8f9fa;
+    }
+
+    .program-block {
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        .school-title {
+            font-size: 1.5rem;
+        }
+
+        .department-title {
+            font-size: 1.3rem;
+        }
+
+        .program-title {
+            font-size: 1.2rem;
+        }
+
+        .fee-table th,
+        .fee-table td {
+            padding: 0.75rem;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #faf9f7;
+            margin: 0;
+            padding: 0;
+        }
+        .top-banner {
+            width: 100vw;
+            height: 570px;
+            object-fit: cover;
+            display: block;
+        }
+        .main-section {
+            display: flex;
+            flex-direction: row;
+            margin: 0 0 0 60px;
+            margin-top: 40px;
+        }
+        .left-img {
+            position: relative;
+            width: 600px;
+            height: 450px;
+        }
+        .left-img img {
+            width: 600px;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 0 70px 0 0 ;
+        }
+        .exp-circle {
+            position: absolute;
+            left: 340px;
+            top: 270px;
+            background: #b22a2a;
+            color: #fff;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+            text-align: center;
+        }
+        .exp-circle span {
+            font-size: 0.5em;
+            font-weight: 400;
+            margin-top: 8px;
+        }
+        .right-content {
+            flex: 2;
+            margin-left: 40px;
+            margin-top: 10px;
+            max-width: 800px;
+        }
+        .right-content h3 {
+            color: #b22a2a;
+            font-size: 1.1em;
+            margin-bottom: 0;
+            font-weight: 400;
+        }
+        .right-content h2 {
+            color: #222;
+            font-size: 2.2em;
+            margin-bottom: 0;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .right-content h2 span {
+            color: #b22a2a;
+        }
+        .right-content p {
+            font-size: 1.1em;
+            color: #222;
+            line-height: 1.7;
+            margin-top: 18px;
+        }
+        .bottom-section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .vision, .mission {
+            border: 2px solid #b22a2a;
+            border-radius: 25px;
+            padding: 25px 30px 25px 30px;
+            width: 40%;
+            margin: 0 20px;
+            position: relative;
+            background: #fff;
+            font-size: 1.05em;
+            color: #222;
+        }
+        .vision-title, .mission-title {
+            position: absolute;
+            left: -57px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            color: #b22a2a;
+            font-size: 1.2em;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .mission-title {
+            left: auto;
+          left: -63px;
+        }
+        @media (max-width: 1200px) {
+            .main-section {
+                flex-direction: column;
+                margin-left: 0;
+            }
+            .left-img, .left-img img {
+                width: 100%;
+                height: auto;
+            }
+            .exp-circle {
+                left: 60%;
+                top: 65%;
+            }
+            .right-content {
+                margin-left: 0;
+            }
+            .bottom-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .vision, .mission {
+                width: 80%;
+                margin: 20px 0;
+            }
+            .vision-title, .mission-title {
+                left: 10px;
+                right: auto;
+                top: -30px;
+                transform: none;
+            }
+        }
+    </style>
+    <img class="top-banner" src="{% static 'images/about.jpg' %}" alt="University Banner">
+    <div class="main-section">
+        <div class="left-img">
+            <img src="{% static 'images/aboutimg.jpg' %}" alt="Joy University Entrance">
+            <div class="exp-circle">
+                42<br>
+                <span>Years of<br>Experience</span>
+            </div>
+        </div>
+        <div class="right-content">
+            <h3>About Us</h3>
+            <h2>WELCOME TO <span>JOY UNIVERSITY</span></h2>
+            <p>
+                Established in 1984 by the Selvam Educational and Charitable Trust under the visionary leadership of Dr. S.A. Raja, a distinguished philanthropist and educator from Vadakangulam, Joy University is dedicated to providing high-quality education, particularly to students from socially and economically disadvantaged backgrounds. Our core mission is to empower young men and women with the skills and knowledge necessary to excel in a globalized world, fostering innovation and the application of technology for the betterment of humanity. As part of the esteemed Selvam Educational and Charitable Trust, which oversees over 30 higher educational institutions spanning Engineering, Medicine, Dental Sciences, Pharmacy, Polytechnic studies, Nursing, and Arts & Science, we benefit from a rich legacy of educational excellence. Beyond academic pursuits, the Trust actively promotes Corporate Social Responsibility through initiatives such as support for the Deaf and Dumb Association, blood donation drives, eye camps, tree planting campaigns, and participation in the Swachh Bharat Abhiyan.
+            </p>
+        </div>
+    </div>
+    <div class="bottom-section">
+        <div class="vision">
+            <span class="vision-title">Our Vision</span>
+            To create and nurture a multidisciplinary global university with highest academics, research and ethical standards in a creative and innovative environment.
+        </div>
+        <div class="mission">
+            <span class="mission-title">Our Mission</span>
+            To be a premier University of choice for all stakeholders and contribute for academic demographic dividend. To inculcate quality, integrity, team work, compassion, ethics in new generation students for catering to various needs of society.
+        </div>
+    </div>
+
+{% endblock %}

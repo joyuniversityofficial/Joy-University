@@ -1,0 +1,692 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Entrepreneurship and Management - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+   
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+
+    </style>
+            <img class="top-banner" src="{% static 'images/entrepreneurship.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+            </div>
+            <ul class="nav-menu">
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">Target Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Entrepreneurship and Management</h1>
+            <h2>Overview</h2>
+            <p>School of Entrepreneurship & Management<br>Joy University School of Entrepreneurship & Management (JU-SOEM) believes in fostering the development of future-ready global leaders; adept at fuelling innovative, pertinent and implementable solutions for the challenges posed by the new digital economy of the future.<br>All programs taught at the school – undergraduate, graduate, doctoral and certificate are pinned by JU-SOEM’s strong entrepreneurial focus and critical thinking discipline, combined with real-world problem solving through regular industry-academia engagement. This ties in perfectly with the University’s academic structure of delivering quality education that is intrinsically multidisciplinary, research-driven and student-centric.<br>The distinct approach towards excellence in management education is apparent right from the internationally benchmarked program curriculum design, to the commitment of our distinguished full-time faculty members, through leaders in their respective fields, drawn from several top universities in India and across the world.<br>Another important purpose-driven aspect of the programs taught at JU-SOEM is to inspire the creation of decision-makers who understand the importance of creating value not just for the private sector business world but for society at large, in government, not-for-profit and other public sector enterprises.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+
+            <h2>B.B.A. - FACE Prep</h2>
+            <ul>
+                <li>E-Commerce & Digital Marketing</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.B.A. - LSC, Govt. of India</h2>
+            <ul>
+                <li>Logistics & Supply Chain Management</li>
+               <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.B.A.</h2>
+            <ul>
+                <li>Business Analytics</li>
+                <li>Digital Marketing</li>
+                <li>Financial Management</li>
+                <li>Entrepreneurial Management</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>M.B.A.</h2>
+            <ul>
+                <li>Digital Transformation</li>
+                <li>Hospital & Health Care System Management</li>
+                <li>Human Resource Management</li>
+                <li>Marketing Management</li>
+                <li>Business Analytics</li>
+                <li>Entrepreneurial Management</li>
+                <li>International Business</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.Com. - FACE Prep</h2>
+            <ul>
+                <li>Fintech with Block Chain</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.Com.</h2>
+            <ul>
+                <li>Accounting & Finance</li>
+                <li>Computer Application</li>
+                <li>General</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+
+            <h2>Department of Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programme</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.B.A. - FACE Prep<br>E-Commerce & Digital Marketing</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks and minimum 50% marks in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>B.B.A. - LSC, Govt. of India<br>Logistics & Supply Chain Management</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks and minimum 50% marks in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>B.B.A.<br>Business Analytics</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks and minimum 50% marks in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Digital Marketing</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Financial Management</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Entrepreneurial Management</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>M.B.A.<br>Digital Transformation</td>
+                        <td>2 Years</td>
+                        <td rowspan="7">
+                            <ul>
+                                <li>A Bachelor's Degree (minimum 3 - years duration), with minimum 60% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT + Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hospital & Health Care System Management</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>Human Resource Management</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing Management</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>Business Analytics</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>Entrepreneurial Management</td>
+                        <td>2 Years</td>
+                    </tr>
+                    <tr>
+                        <td>International Business</td>
+                        <td>2 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Department of Commerce</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Programme</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Com. - FACE Prep<br>Fintech with Block Chain</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 50% aggregate marks.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>B.Com.<br>Accounting & Finance</td>
+                        <td>3 Years</td>
+                        <td rowspan="3">
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 50% aggregate marks.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Computer Application</td>
+                        <td>3 Years</td>
+                    </tr>
+                    <tr>
+                        <td>General</td>
+                        <td>3 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Knowledge of Business Disciplines: Students will possess comprehensive knowledge of current theories and techniques across major business disciplines, enabling them to understand and navigate complex business environments.</li>
+                <li>Leadership and Teamwork: Students will exhibit strong leadership skills and the ability to collaborate effectively within teams, fostering a productive work environment.</li>
+                <li>Ethical Decision-Making: Students will understand the ethical implications of business decisions and recognize ethical dilemmas, preparing them to act responsibly in professional settings.</li>
+                <li>Communication Skills: Students will demonstrate professional written and verbal communication skills, essential for effective interaction in diverse business contexts.</li>
+                <li>Critical Thinking and Problem Solving: Students will develop critical thinking skills and the ability to engage in multi-disciplinary problem solving, equipping them to tackle real-world challenges.</li>
+                <li>Global Perspectives: Students will have an understanding of global business perspectives, allowing them to operate effectively in an interconnected world.</li>
+                <li>Data Analysis: Students will be able to analyze data using technology to solve business problems, enhancing their decision-making capabilities through informed insights</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Managerial Competence</li>
+                <li>Communication Skills</li>
+                <li>Critical Thinking</li>
+                <li>Problem Solving</li>
+                <li>Analytical Reasoning</li>
+                <li>Entrepreneurship & Intrapreneurship</li>
+                <li>Individual and Team work</li>
+                <li>Technology Competency</li>
+                <li>Morals and Ethics</li>
+                <li>Creativity & Innovation</li>
+                <li>Research Aptitude</li>
+                <li>Life Long Learn</li>
+            </ul>
+        </section>
+
+        <!-- Target Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>Target Skill Sets</h1>
+            <p>Program focuses on building foundational knowledge and skills in business, complemented by specialization opportunities and aims to develop advanced managerial and leadership capabilities.</p>
+            <p>Our target skill sets include:</p>
+            <ul>
+                <li>Digital Literacy: Basic understanding of digital marketing, e-commerce, and emerging technologies.</li>
+                <li>Teamwork and Leadership: Ability to collaborate in diverse teams and take on leadership roles.</li>
+                <li>Entrepreneurship: Developing an entrepreneurial mindset and the ability to create business opportunities.</li>
+                <li>Strategic Thinking: Crafting and implementing long-term business strategies for growth.</li>
+                <li>Leadership Excellence: Inspiring and leading teams with emotional intelligence and adaptability.</li>
+                <li>Advanced Analytical Skills: Using advanced data analytics and decision-making tools to solve complex business challenges.</li>
+                <li>Innovation and Design Thinking: Encouraging creative problem-solving and disruptive innovation.</li>
+                <li>Global Business Acumen: Understanding international markets, cross-cultural management, and global supply chains.</li>
+                <li>Ethical Decision-Making: Applying ethical frameworks in leadership and sustainable business practices.</li>
+                <li>Technological Proficiency: Mastery of digital transformation tools, AI-driven strategies, and industry 4.0 practices.</li>
+                <li>Networking and Collaboration: Building strong professional networks and fostering partnerships.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>We aim to nurture leaders who are not just well-versed in business fundamentals but also capable of thriving in a rapidly evolving global landscape. Our programs are designed to blend theoretical knowledge with practical insights, fostering critical thinking, creativity, and ethical decision-making.</p>
+            <p>The core philosophy of our BBA and MBA programs is anchored in:</p>
+            <ul>
+                <li>Holistic Development: Equipping students with a balance of hard and soft skills to address real-world challenges.</li>
+                <li>Innovative Thinking: Encouraging entrepreneurial mindsets and fostering an aptitude for innovation.</li>
+                <li>Global Perspective: Integrating cross-cultural and international business knowledge to prepare students for global markets.</li>
+                <li>Sustainability and Ethics: Instilling a commitment to sustainable business practices and ethical leadership.</li>
+            </ul>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To disseminate knowledge and skills in business and management through innovative teaching methods and industry-relevant curriculum.</li>
+                <li>To foster critical thinking, problem-solving, and decision-making abilities among students.</li>
+                <li>To promote entrepreneurship and innovation by providing a supportive environment for idea generation and business development.</li>
+                <li>To develop leadership qualities and interpersonal skills essential for effective management in diverse organizational settings.</li>
+                <li>To integrate technology and digital tools into the learning process to prepare students for the evolving business landscape.</li>
+                <li>To encourage ethical practices, social responsibility, and sustainable business approaches.</li>
+                <li>To facilitate industry-academia collaboration through internships, projects, and guest lectures.</li>
+                <li>To prepare students for global careers by emphasizing cross-cultural understanding and international business perspectives.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prof. Dr. Bini Marin V</td>
+                        <td>Associate Dean</td>
+                        <td>binimarin@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Sreya B MIB, MBA, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>sreya@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Mohamed Sadiq, MIB., MBA., M.Sc., Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>mohamedsadiq@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Salman Ismail Hassan, MIB, Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>salmanismailhassan@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. D. Vanitha Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>vanitha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Ms.Haneesha G</td>
+                        <td>Teaching Assistant</td>
+                        <td>haneeshag.soem@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. R. Sujithra B.E, MBA</td>
+                        <td>Teaching Assistant</td>
+                        <td>sujithra.r@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sutha R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

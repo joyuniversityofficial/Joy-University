@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Enrollment - Joy University{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'enrollment/css/joy-admissions.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <div class="enrollment-container">
+        <header class="enrollment-header">
+            <div class="logo">
+                <img src="{% static 'images/joy_university.png' %}" alt="Joy University Logo">
+                <h1>Joy University</h1>
+            </div>
+            <nav class="enrollment-nav">
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </nav>
+        </header>
+
+        <div class="enrollment-content">
+            <main class="enrollment-main">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Virtual Tours - Student Life{% endblock %}
+{% block content %}
+<h1>Virtual Tours</h1>
+<p>This is the Virtual Tours page under Student Life.</p>
+
+<style>
+.contact-section {
+  background-color: #ffffff;
+}
+.footer-hr {
+  border: none;
+  border-top: 1px solid #b22222;
+  margin: 20px 0;
+}
+.contact-wrapper {
+  padding: 20px 0;
+}
+.contact-item {
+  text-align: center;
+  padding: 20px;
+}
+.contact-header i {
+  font-size: 2rem;
+  color: #b22222;
+  margin-bottom: 10px;
+}
+.contact-header h3 {
+  color: #b22222;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.contact-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+</style>
+
+<!-- Contact Information Section -->
+<hr class="footer-hr" />
+<section class="contact-section">
+  <div class="container-fluid">
+    <div class="contact-wrapper">
+      <div class="row g-0">
+        <!-- Locate Us Column -->
+        <div class="col-md-4">
+          <div class="contact-item">
+            <div class="contact-header">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Locate Us</h3>
+            </div>
+            <div class="contact-content">
+              <p>Joy University, Raja Nagar, Vadakangulam,<br>
+                Near Kanyakumari, Tirunelveli Dist. –<br>
+                627116 Tamil Nadu</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call Column -->
+        <div class="col-md-4">
+          <div class="contact-item">
+            <div class="contact-header">
+              <i class="fas fa-phone-alt"></i>
+              <h3>Call</h3>
+            </div>
+            <div class="contact-content">
+              <p>+91 7997999202<br>
+                 +91 7997999203</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mail Column -->
+        <div class="col-md-4">
+          <div class="contact-item">
+            <div class="contact-header">
+              <i class="fas fa-envelope"></i>
+              <h3>Mail</h3>
+            </div>
+            <div class="contact-content">
+              <p>joyuniversityenquiry@gmail.com<br>
+                  </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

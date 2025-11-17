@@ -1,0 +1,980 @@
+{% extends "enrollment/base.html" %}
+{% load static %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'enrollment/css/joy-form.css' %}">
+<style>
+    .form-helper{font-size:12px;color:#666;margin-top:6px}
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1300px;
+    margin: 20px auto;
+}
+
+.title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Step progress header */
+.step-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.step i {
+    background: #4B9F4A;
+    color: white;
+    border-radius: 50%;
+    padding: 18px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.step.active i {
+    background: #4B9F4A;
+    color: white;
+}
+
+/* Progress bar */
+.progress-section {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    position: relative;
+    width: 80%;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 10px;
+    margin: 0 auto 8px;
+}
+
+.progress-fill {
+    position: absolute;
+    height: 8px;
+    background-color: #4B9F4A;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.progress-status {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.section-block {
+    margin: 30px 0;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field.wide {
+    grid-column: span 4;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+input, select, textarea {
+    padding: 9px 12px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #ffffff;
+}
+
+.phone {
+    display: flex;
+    gap: 5px;
+}
+
+.phone select {
+    width: 65px;
+}
+
+.radio-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 5px;
+}
+
+.dashed {
+    border: none;
+    border-top: 1px dashed #CCCCCC;
+    margin: 30px 0;
+}
+
+.actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-exit {
+    padding: 10px 25px;
+    background: #6E6E6E;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-next {
+    background: #608D3C;
+    padding: 10px 25px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+/* Step progress header */
+.step-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    margin-bottom: 25px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.step i {
+    background: #4B9F4A;
+    color: white;
+    border-radius: 50%;
+    padding: 18px;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        width: 95%;
+        max-width: 1000px;
+    }
+
+    .step-header {
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .step {
+        font-size: 13px;
+    }
+
+    .step i {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .radio-row {
+        gap: 15px;
+    }
+
+    .phone select {
+        width: 60px;
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn-next {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 98%;
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .step-header {
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .step {
+        font-size: 12px;
+        min-width: 80px;
+    }
+
+    .step i {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .progress-section {
+        margin: 15px 0;
+    }
+
+    .progress-bar {
+        width: 90%;
+    }
+
+    .section-block {
+        margin: 20px 0;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .field {
+        margin-bottom: 10px;
+    }
+
+    .radio-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .phone {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .phone select {
+        width: 100%;
+    }
+
+    .actions {
+        margin-top: 20px;
+    }
+
+    .btn-next {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .step-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .step {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        font-size: 11px;
+    }
+
+    .step i {
+        margin-bottom: 0;
+    }
+
+    .progress-status {
+        font-size: 12px;
+    }
+
+    input, select, textarea {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    label {
+        font-size: 13px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+}
+</style>
+    <!-- Step Header -->
+    <div class="step-header">
+        <div class="step active">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>Personal & Academic Details</span>
+        </div>
+        <div class="step">
+            <i class="fa-solid fa-pen"></i>
+            <span>Declaration</span>
+        </div>
+    </div>
+
+
+<!-- Progress Bar -->
+<div class="progress-section">
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+    <p class="progress-status"><b>40% Complete</b> (mandatory fields)</p>
+</div>
+
+<div class="container">
+<h1>{% if application.school %}{{ application.school.title }}{% else %}School of Doctorate{% endif %} Application Form</h1>
+  <div class="step-info"><span>Step 1 of 2</span></div>
+
+  <form method="POST">
+    {% csrf_token %}
+    {% if form.errors %}
+      <div class="error-messages" style="color: red; margin-bottom: 20px;">
+        <h4>Please correct the following errors:</h4>
+        <ul>
+          {% for field in form %}
+            {% for error in field.errors %}
+              <li>{{ field.label }}: {{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <!-- COURSE PREFERENCE -->
+    <div class="section-block">
+      <h3 class="section-title">Course Preference</h3>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>Nationality *</label>
+          {{ form.nationality }}
+        </div>
+
+        <div class="field">
+          <label>Level of Program *</label>
+          {{ form.program_level }}
+        </div>
+
+        <div class="field">
+          <label>Course *</label>
+          {{ form.course }}
+        </div>
+
+        <div class="field">
+          <label>Specialization Preference *</label>
+          {{ form.specialization }}
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Accommodation Status *</label>
+        <div class="radio-row">
+          <label><input type="radio" name="accommodation_status" value="Day Scholar" {% if form.accommodation_status.value == "Day Scholar" %}checked{% endif %}> Day Scholar</label>
+          <label><input type="radio" name="accommodation_status" value="Hosteller" {% if form.accommodation_status.value == "Hosteller" %}checked{% endif %}> Hosteller</label>
+        </div>
+      </div>
+    </div>
+
+    <hr class="dashed">
+
+    <!-- PERSONAL DETAILS -->
+    <div class="section-block">
+      <h3 class="section-title">Personal Details</h3>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>First Name *</label>
+          {{ form.first_name }}
+        </div>
+
+        <div class="field">
+          <label>Last Name *</label>
+          {{ form.last_name }}
+        </div>
+
+        <div class="field">
+          <label>Email Address *</label>
+          {{ form.email }}
+        </div>
+
+        <div class="field">
+          <label>Mobile Number *</label>
+          <div class="phone">
+            <select id="country_code" name="country_code">
+              <option value="+91" selected>+91</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+61">+61</option>
+              <option value="+86">+86</option>
+              <option value="+81">+81</option>
+              <option value="+49">+49</option>
+              <option value="+33">+33</option>
+              <option value="+39">+39</option>
+              <option value="+7">+7</option>
+              <option value="+55">+55</option>
+              <option value="+27">+27</option>
+              <option value="+971">+971</option>
+              <option value="+65">+65</option>
+              <option value="+60">+60</option>
+              <option value="+82">+82</option>
+              <option value="+66">+66</option>
+              <option value="+63">+63</option>
+              <option value="+62">+62</option>
+              <option value="+84">+84</option>
+              <option value="+20">+20</option>
+              <option value="+234">+234</option>
+              <option value="+254">+254</option>
+              <option value="+94">+94</option>
+              <option value="+977">+977</option>
+              <option value="+880">+880</option>
+              <option value="+92">+92</option>
+              <option value="+98">+98</option>
+              <option value="+964">+964</option>
+              <option value="+962">+962</option>
+              <option value="+966">+966</option>
+              <option value="+90">+90</option>
+              <option value="+30">+30</option>
+              <option value="+31">+31</option>
+              <option value="+32">+32</option>
+              <option value="+34">+34</option>
+              <option value="+35">+35</option>
+              <option value="+36">+36</option>
+              <option value="+40">+40</option>
+              <option value="+41">+41</option>
+              <option value="+43">+43</option>
+              <option value="+45">+45</option>
+              <option value="+46">+46</option>
+              <option value="+47">+47</option>
+              <option value="+48">+48</option>
+              <option value="+52">+52</option>
+              <option value="+53">+53</option>
+              <option value="+54">+54</option>
+              <option value="+56">+56</option>
+              <option value="+57">+57</option>
+              <option value="+58">+58</option>
+              <option value="+64">+64</option>
+              <option value="+975">+975</option>
+              <option value="+960">+960</option>
+            </select>
+            {{ form.mobile }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Date of Birth *</label>
+          {{ form.dob }}
+        </div>
+
+        <div class="field">
+          <label>Gender *</label>
+          {{ form.gender }}
+        </div>
+
+        <div class="field">
+          <label>Aadhaar Card Number *</label>
+          {{ form.aadhaar }}
+        </div>
+
+        <div class="field">
+          <label>Religion *</label>
+          {{ form.religion }}
+        </div>
+
+        <div class="field">
+          <label>Category *</label>
+          {{ form.category }}
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How did you hear about us? *</label>
+        <div class="radio-row">
+          <label><input type="radio" name="how_heard" value="Newspaper"  {% if form.how_heard.value == "Newspaper" %}checked{% endif %}> Newspaper</label>
+          <label><input type="radio" name="how_heard" value="Social media" {% if form.how_heard.value == "Social media" %}checked{% endif %}> Social media</label>
+          <label><input type="radio" name="how_heard" value="Consultants" {% if form.how_heard.value == "Consultants" %}checked{% endif %}> Consultants</label>
+          <label><input type="radio" name="how_heard" value="Online Campaigns" {% if form.how_heard.value == "Online Campaigns" %}checked{% endif %}> Online Campaigns</label>
+          <label><input type="radio" name="how_heard" value="Staff referral" {% if form.how_heard.value == "Staff referral" %}checked{% endif %}> Staff referral</label>
+          <label><input type="radio" name="how_heard" value="Student referral" {% if form.how_heard.value == "Student referral" %}checked{% endif %}> Student referral</label>
+          <label><input type="radio" name="how_heard" value="Stalls" {% if form.how_heard.value == "Stalls" %}checked{% endif %}> Stalls</label>
+          <label><input type="radio" name="how_heard" value="Other" {% if form.how_heard.value == "Other" %}checked{% endif %}> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- FATHER/GUARDIAN DETAILS -->
+    <div class="section-block">
+      <h3 class="section-title">Father's/Guardian's Details</h3>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>Father's/Guardian's Name *</label>
+          {{ form.parent_name }}
+        </div>
+
+        <div class="field">
+          <label>Father's/Guardian's mobile number *</label>
+          <div class="phone">
+                        <select id="country_code" name="country_code">
+              <option value="+91" selected>+91</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+61">+61</option>
+              <option value="+86">+86</option>
+              <option value="+81">+81</option>
+              <option value="+49">+49</option>
+              <option value="+33">+33</option>
+              <option value="+39">+39</option>
+              <option value="+7">+7</option>
+              <option value="+55">+55</option>
+              <option value="+27">+27</option>
+              <option value="+971">+971</option>
+              <option value="+65">+65</option>
+              <option value="+60">+60</option>
+              <option value="+82">+82</option>
+              <option value="+66">+66</option>
+              <option value="+63">+63</option>
+              <option value="+62">+62</option>
+              <option value="+84">+84</option>
+              <option value="+20">+20</option>
+              <option value="+234">+234</option>
+              <option value="+254">+254</option>
+              <option value="+94">+94</option>
+              <option value="+977">+977</option>
+              <option value="+880">+880</option>
+              <option value="+92">+92</option>
+              <option value="+98">+98</option>
+              <option value="+964">+964</option>
+              <option value="+962">+962</option>
+              <option value="+966">+966</option>
+              <option value="+90">+90</option>
+              <option value="+30">+30</option>
+              <option value="+31">+31</option>
+              <option value="+32">+32</option>
+              <option value="+34">+34</option>
+              <option value="+35">+35</option>
+              <option value="+36">+36</option>
+              <option value="+40">+40</option>
+              <option value="+41">+41</option>
+              <option value="+43">+43</option>
+              <option value="+45">+45</option>
+              <option value="+46">+46</option>
+              <option value="+47">+47</option>
+              <option value="+48">+48</option>
+              <option value="+52">+52</option>
+              <option value="+53">+53</option>
+              <option value="+54">+54</option>
+              <option value="+56">+56</option>
+              <option value="+57">+57</option>
+              <option value="+58">+58</option>
+              <option value="+64">+64</option>
+              <option value="+975">+975</option>
+              <option value="+960">+960</option>
+            </select>
+            {{ form.parent_mobile }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Father's/Guardian's Email Address </label>
+          {{ form.parent_email }}
+        </div>
+
+
+      </div>
+
+      <h3 class="section-title">Address for Correspondence</h3>
+
+      <div class="grid-4 address-grid">
+        <div class="field">
+          <label>Country *</label>
+          {{ form.country}}
+        </div>
+
+        <div class="field">
+          <label>State *</label>
+          {{ form.state }}
+        </div>
+
+        <div class="field">
+          <label>District *</label>
+          {{ form.district }}
+        </div>
+
+        <div class="field">
+          <label>City *</label>
+        {{ form.city }}
+        </div>
+
+        <div class="field wide">
+          <label>Address Line 1 *</label>
+          {{ form.address_line1 }}
+        </div>
+
+        <div class="field">
+          <label>Address Line 2</label>
+          {{ form.address_line2 }}
+        </div>
+
+        <div class="field">
+          <label>Pincode *</label>
+          {{ form.pincode }}
+          <div class="form-helper">In case your country doesn't have pincode/zipcode enter 0</div>
+        </div>
+      </div>
+
+      <style>
+      .address-grid {
+       
+          grid-template-columns: repeat(2, 1fr);
+          gap: 5px;
+      }
+      </style>
+    </div>
+
+    <!-- PASSPORT DETAILS -->
+    <div class="section-block">
+      <h3 class="section-title">Passport Details</h3>
+
+      <div class="grid-4">
+        <div class="field">
+          <label>Passport Number</label>
+          {{ form.passport_number }}
+        </div>
+
+        <div class="field">
+          <label>Country Name</label>
+          {{ form.passport_country }}
+        </div>
+
+        <div class="field">
+          <label>Place Of Issue</label>
+          {{ form.passport_place }}
+        </div>
+
+        <div class="field">
+          <label>Date Of Issue</label>
+          {{ form.passport_issue_date }}
+        </div>
+
+        <div class="field">
+          <label>Date Of Expiry</label>
+          {{ form.passport_expiry_date }}
+        </div>
+      </div>
+    </div>
+
+    <hr class="dashed">
+
+    <!-- EDUCATION DETAILS -->
+    <div class="section-block">
+      <h3 class="section-title">X standard / Matric Details</h3>
+
+      <div class="grid-4">
+        <div class="field wide">
+          <label>X standard / Matric School *</label>
+          {{ form.x_school }}
+        </div>
+
+        <div class="field">
+          <label>X standard / Matric State *</label>
+          {{ form.x_state }}
+        </div>
+
+        <div class="field">
+          <label>X standard / Matric City *</label>
+          {{ form.x_city }}
+        </div>
+      </div>
+
+      <!-- EXACT BOARD OPTIONS -->
+      <div class="radio-row">
+        <label><input type="radio" name="x_board" value="CBSE" {% if form.x_board.value == "CBSE" %}checked{% endif %}> CBSE</label>
+        <label><input type="radio" name="x_board" value="ICSE" {% if form.x_board.value == "ICSE" %}checked{% endif %}> ICSE</label>
+        <label><input type="radio" name="x_board" value="CIE" {% if form.x_board.value == "CIE" %}checked{% endif %}> CIE</label>
+        <label><input type="radio" name="x_board" value="State-board" {% if form.x_board.value == "State-board" %}checked{% endif %}> State-board</label>
+        <label><input type="radio" name="x_board" value="Other" {% if form.x_board.value == "Other" %}checked{% endif %}> Other</label>
+      </div>
+
+      <div class="field">
+        <label>X standard / Matric percentage *</label>
+        {{ form.x_percentage }}
+      </div>
+
+      <!-- EXACT AFTER-X QUALIFICATION -->
+      <div class="radio-row">
+        <label><input type="radio" name="x_after_qualification" value="HSC" {% if form.x_after_qualification.value == "HSC" %}checked{% endif %}> HSC</label>
+        <label><input type="radio" name="x_after_qualification" value="Diploma" {% if form.x_after_qualification.value == "Diploma" %}checked{% endif %}> Diploma</label>
+        <label><input type="radio" name="x_after_qualification" value="Both" {% if form.x_after_qualification.value == "Both" %}checked{% endif %}> Both</label>
+      </div>
+
+      <!-- HSC DETAILS -->
+      <div id="hsc-section" style="display: block;">
+        <h3 class="section-title">Higher Secondary / 10+2 Details</h3>
+
+        <div class="grid-4">
+          <div class="field wide">
+            <label>Higher Secondary / 10+2 School *</label>
+            {{ form.hs_school }}
+          </div>
+
+          <div class="field">
+            <label>Higher Secondary / 10+2 State *</label>
+            {{ form.hs_state }}
+          </div>
+
+          <div class="field">
+            <label>Higher Secondary / 10+2 City *</label>
+            {{ form.hs_city }}
+          </div>
+        </div>
+
+        <!-- EXACT HS BOARD OPTIONS -->
+        <div class="radio-row">
+          <label><input type="radio" name="hs_board" value="CBSE" {% if form.hs_board.value == "CBSE" %}checked{% endif %}> CBSE</label>
+          <label><input type="radio" name="hs_board" value="ICSE" {% if form.hs_board.value == "ICSE" %}checked{% endif %}> ICSE</label>
+          <label><input type="radio" name="hs_board" value="CIE" {% if form.hs_board.value == "CIE" %}checked{% endif %}> CIE</label>
+          <label><input type="radio" name="hs_board" value="State-Board" {% if form.hs_board.value == "State-Board" %}checked{% endif %}> State-Board</label>
+          <label><input type="radio" name="hs_board" value="Other" {% if form.hs_board.value == "Other" %}checked{% endif %}> Other</label>
+        </div>
+
+        <div class="field">
+          <label>Higher Secondary / 10+2 percentage *</label>
+          {{ form.hs_percentage }}
+        </div>
+
+        <!-- EXACT HS RESULT STATUS -->
+        <div class="radio-row">
+          <label>HSC Result Status *</label>
+          <label><input type="radio" name="hs_result_status" value="Awaited" {% if form.hs_result_status.value == "Awaited" %}checked{% endif %}> Awaited</label>
+          <label><input type="radio" name="hs_result_status" value="Declared" {% if form.hs_result_status.value == "Declared" %}checked{% endif %}> Declared</label>
+        </div>
+      </div>
+
+      <!-- DIPLOMA DETAILS -->
+      <div id="diploma-section" style="display: none;">
+        <h3 class="section-title">Diploma Details</h3>
+
+        <div class="grid-4">
+          <div class="field wide">
+            <label>Board / University Name *</label>
+            {{ form.diploma_university }}
+          </div>
+
+          <div class="field">
+            <label>Diploma Percentage *</label>
+            {{ form.diploma_percentage }}
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Diploma Result Status *</label>
+          <div class="radio-row">
+            <label><input type="radio" name="diploma_status" value="Awaited" {% if form.diploma_status.value == "Awaited" %}checked{% endif %}> Awaited</label>
+            <label><input type="radio" name="diploma_status" value="Declared" {% if form.diploma_status.value == "Declared" %}checked{% endif %}> Declared</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-next">NEXT</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".progress-fill").style.width = "40%";
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("progress-fill").style.width = "40%";
+
+  const countrySelect = document.getElementById("id_country");
+  const stateSelect = document.getElementById("id_state");
+  const districtSelect = document.getElementById("id_district");
+  const citySelect = document.getElementById("id_city");
+
+  // Function to populate select options
+  function populateSelect(selectElement, options) {
+    selectElement.innerHTML = '<option value="">Select ' + selectElement.id.split('_')[1].charAt(0).toUpperCase() + selectElement.id.split('_')[1].slice(1) + '</option>';
+    options.forEach(option => {
+      const opt = document.createElement("option");
+      opt.value = option;
+      opt.textContent = option;
+      selectElement.appendChild(opt);
+    });
+  }
+
+  // AJAX function to fetch data
+  function fetchData(url, callback) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => callback(data))
+      .catch(error => console.error('Error:', error));
+  }
+
+
+
+  // Event listeners
+  countrySelect.addEventListener("change", function() {
+    const country = this.value;
+    if (country) {
+      fetchData(`/get-states/?country=${country}`, function(states) {
+        populateSelect(stateSelect, states);
+        // Clear dependent selects
+        districtSelect.innerHTML = '<option value="">Select District</option>';
+        citySelect.innerHTML = '<option value="">Select City</option>';
+      });
+    } else {
+      stateSelect.innerHTML = '<option value="">Select State</option>';
+      districtSelect.innerHTML = '<option value="">Select District</option>';
+      citySelect.innerHTML = '<option value="">Select City</option>';
+    }
+  });
+
+  stateSelect.addEventListener("change", function() {
+    const state = this.value;
+    if (state) {
+      fetchData(`/get-districts/?state=${state}`, function(districts) {
+        populateSelect(districtSelect, districts);
+        // Clear city select
+        citySelect.innerHTML = '<option value="">Select City</option>';
+      });
+      fetchData(`/get-cities/?state=${state}`, function(cities) {
+        populateSelect(citySelect, cities);
+      });
+    } else {
+      districtSelect.innerHTML = '<option value="">Select District</option>';
+      citySelect.innerHTML = '<option value="">Select City</option>';
+    }
+  });
+
+  // Pre-select country, state, and city if available
+  const initialCountry = "{{ form.country.value|default:'India' }}";
+  const initialState = "{{ form.state.value|default:'' }}";
+  const initialCity = "{{ form.city.value|default:'' }}";
+  if (initialCountry) {
+    countrySelect.value = initialCountry;
+    fetchData(`/get-states/?country=${initialCountry}`, function(states) {
+      populateSelect(stateSelect, states);
+      if (initialState) {
+        stateSelect.value = initialState;
+        fetchData(`/get-districts/?state=${initialState}`, function(districts) {
+          populateSelect(districtSelect, districts);
+        });
+        fetchData(`/get-cities/?state=${initialState}`, function(cities) {
+          populateSelect(citySelect, cities);
+          if (initialCity) {
+            citySelect.value = initialCity;
+          }
+        });
+      }
+    });
+  }
+});
+
+// Function to toggle sections visibility
+function toggleSections() {
+  const qualificationRadios = document.querySelectorAll('input[name="x_after_qualification"]');
+  const hscSection = document.getElementById('hsc-section');
+  const diplomaSection = document.getElementById('diploma-section');
+
+  qualificationRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'Diploma') {
+        hscSection.style.display = 'none';
+        diplomaSection.style.display = 'block';
+      } else if (this.value === 'Both') {
+        hscSection.style.display = 'block';
+        diplomaSection.style.display = 'block';
+      } else {
+        hscSection.style.display = 'block';
+        diplomaSection.style.display = 'none';
+      }
+    });
+  });
+
+  // Initial check on page load
+  const checkedRadio = document.querySelector('input[name="x_after_qualification"]:checked');
+  if (checkedRadio) {
+    if (checkedRadio.value === 'Diploma') {
+      hscSection.style.display = 'none';
+      diplomaSection.style.display = 'block';
+    } else if (checkedRadio.value === 'Both') {
+      hscSection.style.display = 'block';
+      diplomaSection.style.display = 'block';
+    } else {
+      hscSection.style.display = 'block';
+      diplomaSection.style.display = 'none';
+    }
+  }
+}
+
+// Call the function when DOM is loaded
+document.addEventListener("DOMContentLoaded", function() {
+  toggleSections();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <title>Ph.D Admission - Joy University</title>
+  <style>
+    :root{
+      --maroon:#9e1f25;
+      --light:#fff;
+      --muted:#6b6b6b;
+      --border:rgba(158,31,37,0.15);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    body{margin:0;background:#faf7f6;color:#222;}
+    header{padding:26px 36px;text-align:center;}
+    .title{color:var(--maroon);font-weight:700;font-size:20px;letter-spacing:.5px}
+    nav{display:flex;gap:12px;justify-content:center;padding:18px 36px;align-items:center;}
+    .btn{
+      border:2px solid var(--maroon);
+      color:var(--maroon);
+      background:transparent;
+      padding:10px 18px;border-radius:8px;
+      text-decoration:none;font-size:15px;
+      display:inline-block;
+    }
+    .btn.active{background:var(--maroon);color:#fff;}
+    .arrow-btn{
+      border:2px solid var(--maroon);
+      color:var(--maroon);
+      background:transparent;
+      padding:10px 12px;border-radius:8px;
+      text-decoration:none;font-size:18px;
+      display:inline-block;
+      cursor:pointer;
+    }
+    .arrow-btn:hover{background:var(--maroon);color:#fff;}
+    main{max-width:1180px;margin:18px auto;padding:18px;}
+    .card{
+      background:#fff;border-radius:12px;padding:28px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      border:1px solid var(--border);
+    }
+    h1.section-title{color:var(--maroon);font-size:28px;margin:4px 0 18px 0}
+    /* Eligibility table */
+    table{width:100%;border-collapse:collapse;font-size:14px;}
+    th,td{border:1px solid var(--border);padding:12px;vertical-align:top}
+    th{background:var(--maroon);color:#fff;text-align:left;padding:14px}
+    .muted{color:var(--muted);font-size:13px}
+    /* Research areas box */
+    .accordion{border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:14px}
+    .accordion h3{margin:0 0 8px 0;color:#222;font-weight:600}
+    .accordion p{margin:0;color:#222;line-height:1.45}
+    /* Lists and numbering */
+    ol.numbered{padding-left:18px}
+    li{margin:10px 0}
+    footer{margin-top:28px;padding:28px;background:var(--maroon);color:#fff;border-radius:10px;display:flex;gap:20px;justify-content:space-between}
+    .contact{max-width:420px}
+    @media (max-width:900px){
+      footer{flex-direction:column;align-items:flex-start}
+      nav{flex-wrap:wrap}
+    }
+  </style>
+  <script>
+    let currentSection = 0;
+    const sections = ['#eligibility', '#research', '#selection', '#financial', '#fees'];
+    const navLinks = document.querySelectorAll('nav .btn');
+
+    function scrollToSection(index) {
+      if (index >= 0 && index < sections.length) {
+        currentSection = index;
+        document.querySelector(sections[index]).scrollIntoView({ behavior: 'smooth' });
+        updateActiveLink();
+      }
+    }
+
+    function scrollToPrev() {
+      scrollToSection(currentSection - 1);
+    }
+
+    function scrollToNext() {
+      scrollToSection(currentSection + 1);
+    }
+
+    function updateActiveLink() {
+      navLinks.forEach((link, index) => {
+        link.classList.toggle('active', index === currentSection);
+      });
+    }
+
+    // Add event listeners to nav links
+    navLinks.forEach((link, index) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        scrollToSection(index);
+      });
+    });
+
+    // Initialize
+    updateActiveLink();
+  </script>
+
+  <header>
+    <div class="title">Ph.D Admission</div>
+  </header>
+
+  <nav>
+    <button class="arrow-btn" onclick="scrollToPrev()">&#8592;</button>
+    <a class="btn active" href="#eligibility">Eligibility</a>
+    <a class="btn" href="#research">Research Areas</a>
+    <a class="btn" href="#selection">Selection Procedure</a>
+    <a class="btn" href="#financial">Financial Assistance For Ph.D. Scholars</a>
+    <a class="btn" href="#fees">Annual Fees</a>
+    <button class="arrow-btn" onclick="scrollToNext()">&#8594;</button>
+  </nav>
+
+  <main>
+    <!-- Eligibility -->
+    <section id="eligibility" class="card" aria-labelledby="eligibility-title" style="margin-bottom:28px">
+      <h1 id="eligibility-title" class="section-title">Eligibility</h1>
+
+      <table aria-describedby="eligibility-desc">
+        <thead>
+          <tr>
+            <th style="width:30%">School</th>
+            <th style="width:30%">Specialization</th>
+            <th>Eligibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="5">School of Computational Intelligence (SOCI)</td>
+            <td>Computer Science</td>
+            <td>M.Tech/ M.E/ M.Sc./ MCA/ MS or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Civil Engineering</td>
+            <td>M.Tech/ M.E in Civil Engineering/ MS or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Electronics and Communication Engineering</td>
+            <td>M.Tech/ M.E/ MS/ M.Sc. in Electronics/ Communication/ Physics or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Mechanical Engineering</td>
+            <td>M.Tech/ M.E/ MS in Mechanical Engineering or its equivalent with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Robotics & Automation</td>
+            <td>M.Tech/ M.E/ MS in Mechanical Engineering or its equivalent with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td rowspan="3">School of Agricultural Sciences (SOAGS)</td>
+            <td>Agricultural Engineering</td>
+            <td>M.Tech/ M.E or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Agriculture</td>
+            <td>M.Sc./ MS or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Horticulture</td>
+            <td>M.Sc./ MS or its equivalent recognized by UGC/ AICTE in relevant area with a minimum of 60% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td rowspan="12">School of Arts & Natural Sciences (SOANS)</td>
+            <td>English</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Tamil</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Sanskrit</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Physics</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Biology</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Mathematics</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Education</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>History</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Psychology</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Philosophy</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Library Science</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>Physical Education</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>School of Design (SOD)</td>
+            <td>Design</td>
+            <td>M.Des/ M.E/ M.Tech/ M. Sc./ MS or its equivalent in relevant area recognized by UGC/ AICTE with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td>School of Life & Health Sciences (SOLHS)</td>
+            <td>Life Sciences</td>
+            <td>Master's Degree in relevant area as recognized by UGC with a minimum of 55% aggregate marks.</td>
+          </tr>
+          <tr>
+            <td rowspan="3">School of Entrepreneurship & Management (SOEM)</td>
+            <td>Management</td>
+            <td>Master’s Degree in relevant area/ CA/ ICWA/ ACA/ AICWA/ ACS Level or its equivalent as recognized by UGC/ AICTE with a minimum of 55% aggregate marks</td>
+          </tr>
+          <tr>
+            <td>Economics</td>
+            <td>Master’s Degree in relevant area/ CA/ ICWA/ ACA/ AICWA/ ACS Level or its equivalent as recognized by UGC/ AICTE with a minimum of 55% aggregate marks</td>
+          </tr>
+          <tr>
+            <td>Commerce</td>
+            <td>Master’s Degree in relevant area/ CA/ ICWA/ ACA/ AICWA/ ACS Level or its equivalent as recognized by UGC/ AICTE with a minimum of 55% aggregate marks</td>
+          </tr>
+          <tr>
+            <td>School of Law (SOL)</td>
+            <td>Law</td>
+            <td>Master's Degree in Law from any University recognized by Bar Council of India(BCI) with a minimum of 55% aggregate marks</td>
+          </tr>
+          <tr>
+            <td>School of Nursing (SON)</td>
+            <td>Nursing</td>
+            <td>Master's Degree in Nursing from a University recognized by Indian Nursing Council with a minimum of 55% aggregate marks. Candidates must be medically fit.</td>
+          </tr>
+          <tr>
+            <td>School of Pharmacy (SOP)</td>
+            <td>Pharmacy</td>
+            <td>M.S (Pharm/ Pharmaceutics/ Biotechnology/ Pharmacology) or M.Pharm (Pharmaceutics/ Formulations) or M.Tech (Pharm/ Biotechnology/ Bio Medical Engineering/ Chemical Engineering) or its equivalent from a University recognized by Pharmacy Council of India with a minimum of 55% aggregate marks</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Research Areas -->
+    <section id="research" class="card" style="margin-bottom:28px">
+      <h1 class="section-title">Research Areas</h1>
+
+      <div class="accordion" role="region" aria-label="Computational Intelligence">
+        <h3>Computational Intelligence</h3>
+        <p><strong>Security</strong><br>
+        Block Chain Technology, Cyber Security, Information Security and Privacy, Internet Security, Cryptography, Authentication, Cyber Physical Systems.</p>
+        <p><strong>Parallel and Distributed Computing</strong><br>
+        Cloud Computing, High Performance Computing, Fog computing, Edge computing.</p>
+        <p><strong>Computer Vision & AI</strong><br>
+        Image Processing, Video surveillance, Pattern Recognition, Machine Learning, Deep Learning, Remote Sensing, Explainable AI, Industry 4.0.</p>
+        <p><strong>Networking & Data Science</strong><br>
+        Wired and Wireless Network, Wireless Sensor Networks and Internet of Things, Software Defined Network. Natural Language Processing, Big Data Analytics, Knowledge Databases, Data Structures and Algorithms.</p>
+      </div>
+
+      <div class="accordion" role="region" aria-label="Information & Communication Technology">
+        <h3>Information & Communication Technology</h3>
+        <p>Ambient Assisted Living, Intelligent Digital Speech Signal Processing, Intelligent Financial Signal Processing, Antenna Design, Microwave Imaging, Image Reconstruction, Machine Vision and Applications, Smart Biomedical Devices, Wireless Sensor Networks, VLSI Design, Machine Learning for Wireless Communications and Optical Networks, Artificial Intelligence in Optical Communications.</p>
+      </div>
+
+      <div class="accordion" role="region" aria-label="Other schools">
+        <h3>Other Schools & Areas</h3>
+        <p>Design, Life Sciences, Management, Economics, Commerce, Nursing, Pharmacy, Arts & Natural Sciences (English, Tamil, Sanskrit, Physics, Biology, Mathematics, Education, History, Psychology, Philosophy, Library Science, Physical Education) and more. Refer to the specific school for full list of specializations.</p>
+      </div>
+    </section>
+
+    <!-- Selection Procedure -->
+    <section id="selection" class="card" style="margin-bottom:28px">
+      <h1 class="section-title">Selection Procedure</h1>
+
+      <ul>
+        <li>The candidate should fulfill the eligibility requirements according to their specialization while applying for admission.</li>
+        <li>It will be a two stage process. Joy University Admission Test (JOYAT) has 50% weightage for Research Methodology and 50% weightage for Subject Specific Questions. Candidates who score greater than or equal to 50% in the test will be eligible to appear for interview in the second stage.</li>
+        <li>Candidates shortlisted on the basis of JOYAT score will be required to appear for an interview before a duly constituted Committee. The interview shall consider:
+          <ol class="numbered">
+            <li>Proposed research area.</li>
+            <li>Industry tie up if any.</li>
+            <li>Competence of the candidate for the proposed research.</li>
+            <li>Research facilities needed.</li>
+          </ol>
+        </li>
+        <li>30% of Interview score and 70% of JOYAT score will make the admission score.</li>
+        <li>Application Fee: Rs.1000/- (Non Refundable).</li>
+      </ul>
+    </section>
+
+    <!-- Financial Assistance -->
+    <section id="financial" class="card" style="margin-bottom:28px">
+      <h1 class="section-title">Financial Assistance for Ph.D. Scholars</h1>
+
+      <ol>
+        <li><strong>For Full Time Ph.D. Scholars</strong>
+          <p>Joy University offers financial assistance from its own resources as per selected and eligible PhD Research Scholars as per the Joy University PhD norms specified below.</p>
+          <ol type="a">
+            <li>Full time Ph.D. Scholars will be eligible for a monthly stipend of Rs. 15,000/- per month after registration of Ph.D. course work.</li>
+            <li>Continuance of the scholarship shall be subject to punctuality, discipline, good academic / research progress review.</li>
+            <li>It shall be mandatory to perform the duties as Teaching Assistant for all the full-time research scholars availing the stipend.</li>
+            <li>Full time research scholars have to assist the University / School / Department in its academic work, including tutorials, assignments, laboratory demonstration, supervision of fieldwork, library activities, group seminars, workshops, symposia, etc. from time to time. The total time to be spent on such activities will be around ten hours a week.</li>
+            <li>The financial assistance is liable to cancellation, in case of misconduct/indiscipline/unsatisfactory progress of research work/failure in any examination.</li>
+          </ol>
+        </li>
+
+        <li><strong>For Part Time Ph.D. Scholars</strong>
+          <p>No research stipend shall be provided to Part Time Ph.D. Scholars.</p>
+        </li>
+
+        <li><strong>Industry Sponsored Research Scholars</strong>
+          <p>No research stipend shall be provided to Industry Sponsored Ph.D. Scholars.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Annual Fees -->
+    <section id="fees" class="card" style="margin-bottom:28px">
+      <h1 class="section-title">Annual Fees</h1>
+
+      <p><strong>Annual Tuition fee for</strong></p>
+      <ul>
+        <li>Full Time Ph.D. : Rs. 1,00,000/-</li>
+        <li>Part Time Ph.D. : Rs. 1,50,000/-</li>
+      </ul>
+
+      <p>All the selected and eligible Full time Ph.D. scholars will be eligible for a monthly stipend of Rs. 15,000/- per month after successful completion of Ph.D. course work / after registration of Ph.D. course work as specified.</p>
+
+      <p>There is NO Financial Assistance given to Part - Time PhD Research Scholars.</p>
+    </section>
+
+  </main>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+<!-- ...existing code... -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+/* page base */
+body {
+  font-family: 'Playfair Display', Georgia, serif;
+  background: #fafafa;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* page container */
+.page-wrap {
+  max-width: 1600px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+/* title */
+.page-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #b22222;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 28px;
+}
+
+/* table header row that appears above cards */
+.header-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 1.2fr;
+  gap: 24px;
+  align-items: center;
+  color: #b22222;
+  font-weight: 600;
+  padding: 8px 24px;
+  margin-bottom: 18px;
+  letter-spacing: 0.6px;
+}
+.header-row .col { text-align: center; }
+
+/* cards list - each card occupies full row with large rounded corners and shadow as in screenshot */
+.clubs-list { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 28px; 
+  /* allow hover scale to overflow without cutting off */
+  overflow: visible;
+  position: relative;
+  z-index: 0;
+}
+
+/* single card */
+.club-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 18px 30px rgba(0,0,0,0.08);
+  padding: 30px;
+  border: 1px solid rgba(178,34,34,0.05);
+  display: grid;
+  grid-template-columns: 60px 1fr 1fr 1.2fr;
+  gap: 24px;
+  align-items: center;
+
+  /* transition & transform settings for smooth zooming + slight lift */
+  transition: transform 240ms cubic-bezier(.22,.9,.3,1), box-shadow 240ms ease, z-index 0ms;
+  transform-origin: center;
+  will-change: transform;
+  position: relative; /* ensure z-index works */
+}
+
+/* hover: zoom and extend width visually (scale) and lift above neighbours */
+.club-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 28px 48px rgba(0,0,0,0.14);
+  z-index: 5;
+}
+
+/* number column */
+.club-num {
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* name / title column - multi line centered */
+.club-info {
+  text-align: center;
+}
+.club-info .club-name {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+}
+.club-info .club-supported {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* faculty advisor column - center stacked */
+.club-advisor {
+  text-align: center;
+  color: #222;
+  font-weight: 600;
+}
+.club-advisor .advisor-sub {
+  color: #666;
+  font-weight: 400;
+  margin-top:6px;
+  font-size: 0.95rem;
+  line-height:1.3;
+}
+
+/* about column - right-aligned block like screenshot */
+.club-about {
+  text-align: right;
+  color: #333;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  max-width: 100%;
+}
+
+/* small-screen layout - stack card content vertically */
+@media (max-width: 900px) {
+  .header-row { display: none; }
+  .club-card { grid-template-columns: 1fr; text-align: left; padding: 20px; }
+  .club-num { text-align: left; }
+  .club-info, .club-advisor, .club-about { text-align: left; }
+  .club-about { margin-top: 8px; }
+  /* reduce hover scale on small screens for better fit */
+  .club-card:hover { transform: translateY(-6px) scale(1.01); }
+}
+
+/* very small */
+@media (max-width: 480px) {
+  .page-wrap { padding: 0 12px; margin: 24px auto; }
+  .club-card { padding: 16px; border-radius: 12px; }
+  .club-card:hover { transform: none; box-shadow: 0 12px 20px rgba(0,0,0,0.06); z-index:1; }
+}
+
+/* mobile labels (hidden on desktop, shown on small screens) */
+.mobile-label {
+  display: none;
+  color: #b22222;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+}
+
+/* small-screen layout - stack card content vertically but show two-column header then full-width about */
+@media (max-width: 900px) {
+  .header-row { display: none; }
+
+  /* change card to 2-column grid: name | advisor, about spans full width */
+  .club-card {
+    grid-template-columns: 1fr 1fr;
+    padding: 18px;
+    gap: 12px;
+    align-items: start;
+  }
+  .club-num { grid-column: 1 / 2; text-align: left; }
+
+  .club-info {
+    grid-column: 1 / 2;
+    text-align: left;
+  }
+  .club-advisor {
+    grid-column: 2 / 3;
+    text-align: left;
+  }
+
+  /* show labels above each mobile column */
+  .mobile-label { display: block; }
+
+  /* about becomes full width beneath the two columns */
+  .club-about {
+    grid-column: 1 / -1;
+    text-align: left;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0,0,0,0.04);
+  }
+
+  /* reduce hover transform on mobile */
+  .club-card:hover { transform: translateY(-4px) scale(1.005); box-shadow: 0 20px 36px rgba(0,0,0,0.08); }
+}
+
+/* even smaller screens: tighten spacing and font sizes */
+@media (max-width: 480px) {
+  .club-card {
+    padding: 14px;
+    border-radius: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .page-wrap { margin: 24px auto; padding: 0 12px; }
+  .mobile-label { font-size: 0.95rem; }
+  .club-name { font-size: 1rem; }
+  .club-advisor { font-size: 0.95rem; }
+  .club-about { font-size: 0.95rem; line-height: 1.45; }
+}
+
+/* ...existing styles... */
+</style>
+
+<div class="page-wrap">
+  <h1 class="page-title">Student Clubs</h1>
+  <div class="header-row" role="presentation" aria-hidden="true">
+    <div class="col">Sl.No.</div>
+    <div class="col">Name of Club</div>
+    <div class="col">Faculty Advisor</div>
+    <div class="col">About the Club</div>
+  </div>
+
+  <div class="clubs-list">
+    {% for club in clubs %}
+      <article class="club-card" role="article" aria-labelledby="club-{{ forloop.counter }}-title">
+        <div class="club-num">{{ forloop.counter }}</div>
+
+        <div class="club-info">
+          <div class="mobile-label">Name of Club</div>
+          <div id="club-{{ forloop.counter }}-title" class="club-name">{{ club.name }}</div>
+          {% if club.supported_by %}
+            <div class="club-supported">Supported by: {{ club.supported_by }}</div>
+          {% endif %}
+        </div>
+
+        <div class="club-advisor">
+          <div class="mobile-label">Faculty Advisor</div>
+          <div class="advisor-main">{{ club.faculty_advisor }}</div>
+          {% if club.faculty_designation %}
+            <div class="advisor-sub">{{ club.faculty_designation }}</div>
+          {% endif %}
+        </div>
+
+        <div class="club-about">
+          <div class="mobile-label">About the Club</div>
+          {{ club.about|linebreaks }}
+        </div>
+      </article>
+    {% empty %}
+      <div class="club-card no-clubs" style="grid-template-columns:1fr;">
+        <div class="club-num">—</div>
+        <div style="grid-column:2/-1;text-align:center;color:#666;">No clubs available.</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- ...existing code... -->
+{% endblock %}

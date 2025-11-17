@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <style>
+        body { font-family: Arial, sans-serif; }
+        .placement-header { text-align: center; color: #b30000; margin-top: 20px; font-weight: bold; }
+        .placement-desc { text-align: center; margin-bottom: 30px; margin-top: 10px; }
+        .company-grid {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 10vw 30px 10vw;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+        .footer-contact {
+            background: #b30000; color: #fff; padding: 30px; display: flex; justify-content: space-around;
+        }
+        .footer-contact div { margin: 0 15px; }
+
+        .approval-item{
+            display: flex; align-items: center; justify-content: center;
+            background: #fff;
+            border: 1px solid #b22222;
+            border-radius: 18px;
+            width: 250px; height: 150px;
+            margin: 7px;
+        }
+        .placement{
+            text-align: center; 
+            color: #b30000; 
+            margin-top: 20px; 
+            font-weight: bold; 
+            font-size: 1.2em;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="placement-header">Placements</div>
+    <p class="placement-desc">
+        Joy University under the flagship of Rajas Group has placed 1 Lakh+ Alumni for the past 40 years.<br>
+        Hence We ensure 100% Placement assistance is given to all our students.
+    </p>
+    <div class="company-grid">
+                    <div class="approval-item">
+                        <img src="{% static 'images/HCL.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/ORACLE.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/LARSEN.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/INFOSYS.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item ">
+                        <img src="{% static 'images/TCS.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/HAVELLS.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/MAHINDRA.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/CAPGEMINI.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/TVS.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/HYUNDAI.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/WIPRO.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/IBM.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+    <div  class="placement">Joy University Approved Statutory Bodies</div>
+    <div class="approval-item">
+        <img src="{% static 'images/barcouncil.jpg' %}" alt="Approval Badges">
+        </div>
+        <div class="approval-item">
+        <img src="{% static 'images/pharmacycouncil.jpg' %}" alt="Approval Badges 2">
+    </div>
+    </div>
+
+
+{% endblock %}

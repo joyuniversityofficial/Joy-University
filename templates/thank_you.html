@@ -1,0 +1,90 @@
+{% load static %}
+
+<!-- FontAwesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+
+  <!-- Header Section -->
+  <div class="header-section">
+
+    <div class="logo-section">
+<img src="{% static 'images/joy_university.png' %}" alt="College Logo" class="college-logo">
+    </div>
+
+  </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h1 class="card-title text-success mb-4">Thank you for registering with <span style="color: rgb(0, 116, 165)">Joy University</span></h1>
+                    <p class="card-text">
+                        We have sent a confirmation email with your login credentials to access your application dashboard.
+                    </p>
+                    <a href="{% url 'login' %}" class="btn btn-primary mt-3">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+body {
+  font-family: 'Arial, sans-serif';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.logo-section {
+  margin: 5px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.college-logo {
+  width: 150px;
+  height: 150px;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-bottom: 2px solid rgb(0, 116, 165);
+  margin-top: 0px;
+  width: 100%;
+}
+
+.content-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+    background-color:  rgb(0, 116, 165);
+    border-color: rgb(0, 93, 133);
+    color:#f9f9f9;
+    text-decoration: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+}
+
+.row{
+    margin-top: 50px;
+}
+</style>

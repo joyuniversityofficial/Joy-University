@@ -1,0 +1,11 @@
+/* Hide scrollbar for approval carousel track */
+.approval-track {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.approval-track::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Press & Media - Joy University{% endblock %}
+
+{% block content %}
+<div class="press-media-page">
+    <div class="container py-5">
+        <h2 class="main-title text-center mb-4">Press & Media</h2>
+        <div class="row g-4 justify-content-center">
+
+            {% for item in press_media %}
+            <div class="col-lg-4 col-md-6">
+                <div class="press-card {% if forloop.counter0|add:1|divisibleby:3 %}center-border{% endif %} rounded shadow-sm h-100">
+                    <div class="press-image-container">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="press-img img-fluid rounded">
+                    </div>
+                    <div class="press-card-caption py-3 px-2 text-center ">
+                        {{ item.title }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+<style>
+.press-media-page {
+    background: #fff;
+}
+.main-title {
+    color: #b31b24;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.press-card {
+    background: #fff;
+    border: 20px solid #b22222;
+    transition:
+        border-color 0.22s cubic-bezier(.25,.8,.25,1),
+        box-shadow 0.22s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 0 10px rgba(60,0,0,0.07);
+    overflow: hidden;
+}
+.press-card:hover {
+    border-color: #b31b24;
+    box-shadow: 0 0 25px rgba(179, 27, 36, 0.14);
+}
+.press-card .press-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.33s cubic-bezier(.25,.8,.25,1);
+}
+.press-card:hover .press-img {
+    transform: scale(1.065);
+}
+.press-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6f6f6;
+    padding: 24px 12px 0 12px;
+}
+.center-border {
+    border: 20px solid #b31b24 !important;
+    box-shadow: 0 0 35px rgba(179, 27, 36, 0.15);
+}
+.press-card-caption {
+    font-size: 1.08rem;
+    color: #333;
+}
+.press-card-caption:hover,
+.press-card-caption:active {
+    font-size: 1.08rem;
+    color: #ffffff;
+    background-color: #b22222;
+    border: 1px solid #b22222;
+}
+.contact-info-container {
+    border-radius: 8px;
+}
+.contact-block {
+    margin-bottom: 1rem;
+}
+.contact-block h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+@media (max-width:900px) {
+    .main-title {
+        font-size: 1.28rem;
+    }
+    .press-card .press-img {
+        height: 220px;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,616 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Law - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+            <img class="top-banner" src="{% static 'images/law.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+     
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Law</h1>
+            <h2>Overview</h2>
+            <p>School of Law Joy University – School of Law (JU-SOL) offers B.A. LL.B (Hons) / B.B.A. LL.B (Hons) / LL.B (Hons) Programmes that focus on credit-based elective system, which helps the students’ flexibility and choice in the selection of courses apart from following the Rules and course Regulations of the Bar Council of India.</p>
+            <p>All the courses listed as compulsory by the Bar Council of India, along with law and poverty and intellectual property law have been listed as mandatory courses. Training in the practice dimension of law is ensured through the clinic program. Students are required to earn credits from the clinic program. Students can earn the remaining credits for the degree from a wide range of elective courses, which are offered by the home and visiting faculty.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+            
+            <h2>B.A. LL.B. (Hons.)</h2>
+            <ul>
+                <li>Arts & Legislative Law</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>B.B.A. LL.B. (Hons.)</h2>
+            <ul>
+                <li>Business Administration & Legislative Law</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>LL.B. (Hons.)</h2>
+            <ul>
+                <li>Legislative Law</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+            
+            <h2>LL.M.</h2>
+            <ul>
+                <li>Taxation Law</li>
+                <li>Cyber Law</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Undergraduate Programmes</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.A. LL.B. (Hons.)</td>
+                        <td>5 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 50% aggregate marks.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>B.B.A. LL.B. (Hons.)</td>
+                        <td>5 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 50% aggregate marks.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>LL.B. (Hons.)</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>A Bachelor's Degree from a recognized University with minimum 50% aggregate marks.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Postgraduate Programmes</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>LL.M. (Taxation Law)</td>
+                        <td>2 Years</td>
+                        <td rowspan="2">
+                            <ul>
+                                <li>A Bachelor's Degree in Law (LL.B.) from a recognized University with minimum 50% aggregate marks.</li>
+                                <li>Valid score of JOYAT + Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>LL.M. (Cyber Law)</td>
+                        <td>2 Years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Exhibit a deep knowledge of legal principles and concepts across diverse areas of law and their interrelationships with other fields of study.</li>
+                <li>Ability to identify and apply relevant legal rules and precedents to various issues.</li>
+                <li>Ability to critically analyze legal resources and synthesize information from multiple sources.</li>
+                <li>Evaluating arguments, identifying flaws in reasoning, and providing well-supported conclusions.</li>
+                <li>Understanding and adherence to professional ethics and the rules of conduct governing legal practice.</li>
+                <li>Effective communication skills, both orally and in writing, for interacting with clients, colleagues, and the court.</li>
+                <li>Ability to engage in and manage dispute resolution processes.</li>
+                <li>Understanding the impact of law on different communities and social groups.</li>
+                <li>Ability to work effectively in teams, including multidisciplinary teams, in legal contexts.</li>
+                <li>Recognizing the implications of globalization on legal systems and understanding the relationship between National and International Law.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Ethical Awareness and Professional Responsibility</li>
+                <li>Life-Long Learning</li>
+                <li>Research Proficiency</li>
+                <li>Legal and Practical Problem-Solving</li>
+                <li>Cultural Competence and Social Responsibility</li>
+                <li>Client-Centered Focus</li>
+                <li>Leadership and Advocacy</li>
+                <li>Global and Comparative Legal Perspective</li>
+                <li>Collaboration and Teamwork</li>
+                <li>Technological Competence</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Research Skills: The ability to efficiently conduct legal research using primary sources, legal databases, and digital tools.</li>
+                <li>Analytical Thinking: Law students must develop the skill to analyze complex legal issues, interpret legal principles, and apply the law effectively to different scenarios.</li>
+                <li>Writing and Drafting Skills: Proficiency in drafting clear, concise, and persuasive legal documents and correspondence, including briefs, contracts, and memoranda, is crucial for success in legal practice.</li>
+                <li>Oral Communication Skills: Strong public speaking and presentation skills are necessary for arguing cases, negotiating settlements, and presenting legal arguments in a clear and persuasive manner.</li>
+                <li>Negotiation and Persuasion: Competence in negotiating settlements and agreements using persuasive techniques is vital in legal practice, helping to resolve disputes and facilitate agreements.</li>
+                <li>Attention to Detail: Precision in handling legal documents, analyzing case law, and interpreting statutes is critical to avoid errors and ensure accuracy in legal practice.</li>
+                <li>Time Management: Effective management of multiple tasks and deadlines in a demanding legal environment is necessary for balancing coursework, client work, and internships without burnout.</li>
+                <li>Problem-Solving: Law students need the ability to identify legal problems and devise practical, creative solutions that address both legal principles and practical realities.</li>
+                <li>Ethics and Professionalism: Understanding and adhering to legal ethics, confidentiality, and maintaining professional conduct is crucial in ensuring integrity and trust in the legal profession.</li>
+                <li>Client Management and Relationship Skills: The ability to manage client expectations, communicate legal concepts clearly, and maintain professional relationships is essential for building trust and ensuring client satisfaction.</li>
+                <li>Understanding of Legal Technology: Familiarity with legal technology tools such as case management software and legal research platforms is increasingly important for efficient legal practice in a tech-driven world.</li>
+                <li>Understanding of the Law’s Broader Impact: An awareness of how law impacts society socially, economically, and politically helps law students understand their role in shaping justice and addressing societal issues.</li>
+                <li>Networking and Building Relationships: The ability to build professional connections within the legal community, including professors, peers, and practitioners, is key for career advancement and professional growth.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>The JU- Law degree aims to equip students with research and writing skills through different kinds of projects and assignments such as : newspaper discovery, film reviews, conducting of live interviews, creating moot problems, drafting petitions, book reviews, case comments, literature surveys and research papers. Whilst students are required to undertake one assignment for each mandatory course, they can choose the kind of assignment, they wish to do in a course by bidding for the same in a class auction and thus create their own project portfolio. Since, the assignments have been calibrated for difficulty level and have to be handed at periodic intervals through the semester the projects portfolio supports an efficient use of time, along with training students in varied kinds of research and writing skills.</p>
+            <p>Even as the Joy University – Law School will organize the research and writing skills through projects, it allows students to explore other co-curricular routes such as moot courts and essay competitions. The co-curricular initiatives which is seen to fulfil the project requirement is then evaluated by the faculty. The large repository of elective courses, the varied project assignments and different learning techniques is an effort at recognizing multiple intelligences and providing space for the strengths of all kinds of students.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To emphasize the significance of ethics, integrity, and professionalism in legal practice.</li>
+                <li>To impart the rich history and evolution of legal thought while offering both broad and in-depth instruction.</li>
+                <li>To cultivate in students and research scholars a sense of duty to serve society by developing key skills in advocacy, judicial roles, and other legal services.</li>
+                <li>To prepare future lawyers for addressing legal challenges that extend beyond national borders, focusing on areas like Business Laws, Intellectual Property Rights, Cyber Laws, and Trade Laws, particularly in cross-border transactions.</li>
+                <li>To organize lectures, seminars, symposia, and conferences aimed at sharing legal knowledge and enhancing the role of law and legal processes in social development.</li>
+                <li>To provide practical experience through internships, moot courts, and clinical programs, allowing students to apply theoretical concepts in real-world legal settings.</li>
+                <li>To offer training and refresher courses for law faculty, judicial officers, advocates, and others involved in or interested in the legal profession.</li>
+                <li>To encourage interdisciplinary collaboration, fostering an environment where legal professionals can work alongside experts from diverse fields such as economics, business, management, medicine, and technology.</li>
+                <li>To motivate students to actively engage in social justice, human rights, and pro bono initiatives, addressing issues like poverty, inequality, and access to justice.</li>
+                <li>To raise legal awareness within the community and promote social justice by providing legal aid to marginalized and underprivileged groups.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prof. Bennet Paul Giftson.D MA, ML</td>
+                        <td>Associate Professor & Associate Dean</td>
+                        <td>bennetpaul.sol@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Dinusha Masil, LLM, M.A, MBA, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>dinusha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Surendar, B.E, LLB, LLM</td>
+                        <td>Assistant Professor</td>
+                        <td>surendar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. R.K. Varrsha, B.A, LLB, LLM</td>
+                        <td>Assistant Professor</td>
+                        <td>varrsha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Rajesh Bharadhi, M.A, LL.M</td>
+                        <td>Assistant Professor</td>
+                        <td>rajeshbharathi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Nikhil Harikumar P LL.M</td>
+                        <td>Assistant Professor</td>
+                        <td>nikhilharikmar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Sruthy Murugan Usha LL.M</td>
+                        <td>Assistant Professor</td>
+                        <td>sruthymuruganusha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Solomon Jasmine Rajakumar M.L.</td>
+                        <td>Assistant Professor</td>
+                        <td>solomonjasminerajakumar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. L. Narashimma Jainthan L.L.M (Taxation Law)</td>
+                        <td>Assistant Professor</td>
+                        <td>narashimmajainthan.sol@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Kirubin Sheeba G LL.M</td>
+                        <td>Teaching Assistant</td>
+                        <td>hirubunsheeba@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sutha R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

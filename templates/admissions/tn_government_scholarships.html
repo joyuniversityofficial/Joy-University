@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}TN Government Scholarships - Joy University{% endblock %}
+
+{% block content %}
+<div class="basic-details-page">
+    <!-- Random Image Banner -->
+    <div class="random-image-banner my-5 text-center">
+        {% comment %} 
+        Choose random image in your view and pass its filename as 'rand_image' context variable.
+        Example: rand_image = 'images/photo1.jpg'
+        {% endcomment %}
+                <img src="{% static 'images/tngov.jpeg' %}" alt="Joy Scholarships" class="w-100">
+    </div>
+
+
+
+<style>
+    .basic-details-page {
+        background-color: #fff;
+    }
+    .random-image-banner {
+        padding: 30px 0;
+        background: #f5f5f5;
+    }
+    .random-img {
+        max-width: 650px;
+        width: 100%;
+        box-shadow: 0 0 30px rgba(0,0,0,0.11);
+        border-radius: 12px;
+    }
+    .contact-info-container {
+        border-radius: 8px;
+    }
+    .contact-block {
+        margin-bottom: 1rem;
+    }
+    .contact-block h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+    @media (max-width: 768px) {
+        .random-img {
+            max-width: 90vw;
+        }
+    }
+</style>
+{% endblock %}

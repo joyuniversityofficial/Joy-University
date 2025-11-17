@@ -1,0 +1,944 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="admissions-page">
+  <div class="container">
+    <div class="section-box">
+      <div class="flex-row">
+        <div style="width:100%; height:300px; border-radius:25px;" class="image-box">
+          <img src="{% static 'images/about.jpg' %}" alt="Joy University Students" style="height:800px;">
+        </div>
+        <div class="content-box">
+          <div class="info-box section-content">
+            <h2>Schools and Programmes</h2>
+            <ul class="schools-list">
+              <li>Agricultural Sciences:- <a href="#">B.Sc</a> | <a href="#">B.Tech</a> | <a href="#">M.Sc</a></li>
+              <li>Arts &amp; Natural Sciences:- <a href="#">B.A.</a> | <a href="#">B.Lib.I.Sc.</a> | <a href="#">B.P.Ed.</a> | <a href="#">B.Sc.</a> | <a href="#">M.Sc.</a></li>
+              <li>Computational Intelligence:- <a href="#">B.C.A.</a> | <a href="#">B.Tech</a></li>
+              <li>School of Design:- <a href="#">B.Des.</a></li>
+              <li>Engineering and Technology:- <a href="#">B.Tech</a></li>
+              <li>Entrepreneurship and Management:- <a href="#">B.B.A.</a> | <a href="#">B.Com.</a> | <a href="#">M.B.A.</a></li>
+              <li>Law:- <a href="#">B.A. LL.B.</a> | <a href="#">B.B.A. LL.B.</a> | <a href="#">LL.B.</a> | <a href="#">LL.M.</a></li>
+              <li>Life &amp; Health Sciences:- <a href="#">B.Optom.</a> | <a href="#">B.P.T.</a> | <a href="#">B.Sc.</a> | <a href="#">M.Sc.</a></li>
+              <li>Nursing:- <a href="#">B.Sc.</a></li>
+              <li>Pharmacy:- <a href="#">B.Pharm.</a></li>
+            </ul>
+          </div>
+          <div class="info-box section-content">
+            <h3>Admission Eligibility &amp; Fee Structure</h3>
+            <ul class="admission-list">
+              <li>Eligibility</li>
+              <li>Fee Structure</li>
+              <li>International Admissions</li>
+              <li>Hostel &amp; Mess Fee Structure</li>
+              <li>Transportation Fee</li>
+            </ul>
+<button style="background-color: #b22222;color:white; border-radius:1px;">JU SES Scholarship</button>
+<button style="background-color: #b22222;color:white; border-radius:1px;">Joy Scholarship</button>
+<button style="background-color: #b22222;color:white; border-radius:1px;">TN Govt. Scholarship</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+.container {
+  padding: 40px 0;
+}
+.section-box {
+  background: #b71c1c;
+  border-radius: 30px;
+  max-width: 95%;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+}
+.flex-row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+.image-box {
+  flex: 1 1 350px;
+  min-width: 250px;
+  max-width: 500px;
+  background: #b71c1c;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.content-box {
+  flex: 2 1 400px;
+  min-width: 250px;
+}
+.info-box.section-content {
+  background: #fff;
+  border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+h2, h3 {
+  color: #b71c1c;
+  margin-top: 0;
+}
+.schools-list, .admission-list {
+  margin: 0 0 20px 0;
+  padding: 0;
+  list-style: none;
+}
+.schools-list li, .admission-list li {
+  margin-bottom: 6px;
+  font-size: 1.05em;
+}
+.schools-list a, .admission-list a {
+  color: #b71c1c;
+  text-decoration: underline;
+}
+.scholarship-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.scholarship-btn {
+  background: #b22222;
+  color: #fff;
+  border: none;
+  border-radius: 1px;
+  padding: 12px 0;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background 0.2s;
+}
+.scholarship-btn:hover {
+  background: #a31515;
+}
+@media (max-width: 900px) {
+  .flex-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .image-box, .content-box {
+    max-width: 100%;
+  }
+  .image-box {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 10px 0;
+  }
+  .section-box, .info-box.section-content {
+    padding: 10px;
+    border-radius: 15px;
+  }
+  h2, h3 {
+    font-size: 1.2em;
+  }
+  .scholarship-btn {
+    padding: 10px 0;
+    font-size: 0.95em;
+  }
+}
+</style>
+
+    <!-- School of Agricultural Sciences -->
+    <div class="admissions-section">
+        <div class="admissions-image-left">
+            <img src="{% static 'images/agricultural_sciences.jpg' %}" alt="Agricultural Sciences" style="width:100%; border-radius:25px;">
+        </div>
+        <div class="admissions-content-right">
+            <h2>School of Agricultural Sciences</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Tech.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Agricultural Engineering</li>
+                            <li>Dairy Technology</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Sc. (Hons.)</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Agriculture</li>
+                            <li>Horticulture</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">M.Sc. (Agriculture)</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Agronomy</li>
+                            <li>Agricultural Entomology</li>
+                            <li>Agricultural Extension Education</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">M.Sc. (Horticulture)</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Floriculture and Landscaping</li>
+                            <li>Vegetable Science</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- School of Arts & Natural Sciences -->
+    <div class="admissions-section">
+        <div class="admissions-content-left">
+            <h2>School of Arts & Natural Sciences</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.A.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>English</li>
+                            <li>Tamil</li>
+                            <li>History</li>
+                            <li>Economics</li>
+                            <li>Criminology & Police Administration</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Sc.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Forensic Science</li>
+                            <li>Media & Journalism</li>
+                            <li>Mathematics</li>
+                            <li>Applied Physics</li>
+                            <li>Electronics</li>
+                            <li>Psychology</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B. P. Ed.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Physical Education</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Lib.I.Sc.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Library Science</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span  style="color: #b22222;">M.Sc.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Psychology</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="admissions-image-right" >
+            <img src="{% static 'images/arts_natural_sciences.jpg' %}" alt="Arts & Natural Sciences" style="width:100%; border-radius:25px;">
+        </div>
+    </div>
+
+    <!-- School of Computational Intelligence -->
+    <div class="admissions-section">
+        <div class="admissions-image-left">
+            <img src="{% static 'images/computational_intelligence.jpg' %}" alt="Computational Intelligence" style="width:100%; border-radius:25px;">
+        </div>
+        <div class="admissions-content-right">
+            <h2>School of Computational Intelligence</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;" >B.Tech. - INTEL, NEC & Edulateral Foundation</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>CSE (Artificial Intelligence & IoT)</li>
+                            <li>CSE (Artificial Intelligence & Machine Learning)</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Tech.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div style="color: #b22222;" class="program-details">
+                        <ul>
+                            <li>CSE (Artificial Intelligence & Data Science)</li>
+                            <li>CSE (Artificial Intelligence & IoT)</li>
+                            <li>CSE (Artificial Intelligence & Machine Learning)</li>
+                            <li>CSE (Artificial Intelligence & Robotics)</li>
+                            <li>CSE (Cyber Security)</li>
+                            <li>Computer Science & Engineering</li>
+                            <li>Information & Communication Technology</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.C.A. - FACE Prep</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Artificial Intelligence</li>
+                            <li>Data Science</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.C.A.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Artificial Intelligence</li>
+                            <li>Cyber Security</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- School of Design -->
+    <div class="admissions-section">
+        <div class="admissions-image-left" >
+            <img src="{% static 'images/schoolofdesign.jpg' %}" alt="Design" style="width:100%; border-radius:25px;">
+        </div>
+        <div class="admissions-content-right">
+            <h2>School of Design</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Des.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Transportation & Automobile Design</li>
+                            <li>Fashion Design</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- School of Engineering and Technology -->
+    <div class="admissions-section">
+        <div class="admissions-content-left">
+            <h2>School of Engineering and Technology</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Tech.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Aeronautical Engineering</li>
+                            <li>Biomedical Engineering</li>
+                            <li>Biotechnology</li>
+                            <li>Civil Engineering</li>
+                            <li>Electronics & Communication Engineering</li>
+                            <li>Mechanical Engineering</li>
+                            <li>Mechanical Engineering (AI & Machine Learning)</li>
+                            <li>Mechanical Engineering (Robotics & Automation)</li>
+                            <li>Mechatronics</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="admissions-image-right">
+            <img src="{% static 'images/engineering_technology.jpg' %}" alt="Engineering & Technology" style="width:100%; border-radius:25px;">
+        </div>
+    </div>
+
+    <!-- School of Entrepreneurship and Management -->
+    <div class="admissions-section">
+        <div class="admissions-image-left">
+            <img src="{% static 'images/entrepreneurship_management.jpg' %}" alt="Entrepreneurship & Management" style="width:100%; border-radius:25px;">
+        </div>
+        <div class="admissions-content-right">
+            <h2>School of Entrepreneurship and Management</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.B.A.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>FACE Prep</li>
+                            <li>LSC, Govt. of India</li>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Com.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div> 
+                    <div class="program-details">
+                        <ul>
+                            <li>FACE Prep</li>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">M.B.A.</span>
+                        <span  style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- School of Law -->
+    <div class="admissions-section">
+        <div class="admissions-content-left">
+            <h2>School of Law</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.A. LL.B. (Hons.)</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.B.A. LL.B. (Hons.)</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">LL.B. (Hons.)</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span   style="color: #b22222;" >LL.M.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>General</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="admissions-image-right">
+            <img src="{% static 'images/schooloflaw.jpg' %}" alt="Law" style="width:100%; border-radius:25px;">
+        </div>
+    </div>
+
+    <!-- School of Life & Health Sciences -->
+    <div class="admissions-section">
+        <div class="admissions-content-left">
+            <h2>School of Life & Health Sciences</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Sc.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Biotechnology</li>
+                            <li>Medical Laboratory Technology</li>
+                            <li>Microbiology</li>
+                            <li>Nutrition & Dietetics</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Optom.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Optometry</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.P.T.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Physiotherapy</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">M.Sc.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Biotechnology</li>
+                            <li>Microbiology</li>
+                            <li>Nutrition & Dietetics</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="admissions-image-right">
+            <img src="{% static 'images/life_health.jpg' %}" alt="Life & Health Sciences" style="width:100%; border-radius:25px;">
+        </div>
+    </div>
+
+    <!-- School of Nursing -->
+    <div class="admissions-section">
+        <div class="admissions-content-left">
+            <h2>School of Nursing</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Sc.</span>
+                        <span style="color: #b22222;"class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Nursing</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="admissions-image-right" >
+            <img src="{% static 'images/schoolofnursings.jpg' %}" alt="Nursing" style="width:100%; border-radius:25px;">
+        </div>
+    </div>
+
+    <!-- School of Pharmacy -->
+    <div class="admissions-section">
+        <div class="admissions-image-left">
+            <img src="{% static 'images/schoolofpharmacy.jpg' %}" alt="Pharmacy" style="width:100%; border-radius:25px;">
+        </div>
+        <div class="admissions-content-right">
+            <h2>School of Pharmacy</h2>
+            <ul class="program-list">
+                <li class="program-item">
+                    <div class="program-header" onclick="toggleDetails(this)">
+                        <span style="color: #b22222;">B.Pharm.</span>
+                        <span style="color: #b22222;" class="arrow">▼</span>
+                    </div>
+                    <div class="program-details">
+                        <ul>
+                            <li>Pharmacy</li>
+                        </ul>
+                        <a href="{% url 'application_form' %}" class="apply-now">Apply Now</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+.admissions-page {
+    background: #fff;
+    padding: 40px 0;
+}
+.admissions-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    background: #fff;
+    border: 2px solid #a22537;
+    border-radius: 26px;
+    margin-bottom: 35px;
+    padding: 38px 40px;
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+.admissions-image {
+    width: 55%;
+    max-width: 900px;
+    min-width: 500px;
+    padding: 16px 8px 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admissions-image img {
+    width: 100%;
+    border-radius: 22px;
+    object-fit: cover;
+}
+.right-containers {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+.schools-programmes-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    border: 2px solid #a22537;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+.eligibility-fee-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    border: 2px solid #a22537;
+    border-radius: 10px;
+}
+.admissions-image-left, .admissions-image-right {
+    width: 40%;
+    max-width: 350px;
+    min-width: 210px;
+    padding: 16px 8px 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admissions-image-right {
+    order: 2;
+    padding: 16px 0 16px 8px;
+}
+.admissions-image-left img, .admissions-image-right img {
+    width: 100%;
+    border-radius: 22px;
+    object-fit: cover;
+}
+.admissions-content-left, .admissions-content-right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.admissions-content-left h2, .admissions-content-right h2 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #a22537;
+    font-size: 1.5em;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+.admissions-content-left p, .admissions-content-right p {
+    font-family: 'Georgia', serif;
+    font-size: 1.09em;
+    color: #262627;
+}
+.program-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.program-item {
+    margin-bottom: 10px;
+}
+.program-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+.program-header:hover {
+    background: #ffffff;
+}
+.program-details {
+    display: none;
+    padding: 10px;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    background: #fff;
+}
+.program-details ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.apply-now {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: #a22537;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.apply-now:hover {
+    background: #8a1e30;
+}
+.scholarship-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+@media (max-width: 1070px) {
+    .admissions-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 2vw;
+    }
+    .admissions-image,
+    .schools-programmes-container,
+    .eligibility-fee-container,
+    .admissions-image-left,
+    .admissions-image-right,
+    .admissions-content-left,
+    .admissions-content-right {
+        width: 98vw;
+        max-width: 100%;
+        min-width: unset;
+        padding: 0;
+    }
+    .admissions-content-left,
+    .admissions-content-right {
+        margin-top: 1em;
+    }
+}
+ 
+        body {
+            background: #fff;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 40px 0;
+        }
+        .section-box {
+            background: #b71c1c;
+            border-radius: 30px;
+            margin: 0 auto 30px auto;
+            max-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .section-content {
+            background: #fff;
+            border-radius: 30px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .image-box {
+            flex: 1 1 350px;
+            min-width: 250px;
+            max-width: 500px;
+            background: #b71c1c;
+            border-radius: 30px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .info-box {
+            flex: 2 1 400px;
+            min-width: 250px;
+        }
+        h2, h3 {
+            color: #b71c1c;
+            margin-top: 0;
+        }
+        .schools-list, .admission-list {
+            margin: 0 0 20px 0;
+            padding: 0;
+            list-style: none;
+        }
+        .schools-list li, .admission-list li {
+            margin-bottom: 6px;
+            font-size: 1.05em;
+        }
+        .schools-list a, .admission-list a {
+            color: #b71c1c;
+            text-decoration: underline;
+        }
+        .scholarship-btn {
+            display: block;
+            width: 100%;
+            background: #b71c1c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 0;
+            margin-bottom: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .scholarship-btn:hover {
+            background: #a31515;
+        }
+        @media (max-width: 900px) {
+            .flex-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .image-box, .info-box {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px 0;
+            }
+            .section-box, .section-content {
+                padding: 10px;
+                border-radius: 15px;
+            }
+            h2, h3 {
+                font-size: 1.2em;
+            }
+            .scholarship-btn {
+                padding: 10px 0;
+                font-size: 0.95em;
+            }
+        }
+</style>
+<script>
+function toggleDetails(header) {
+    const details = header.nextElementSibling;
+    const arrow = header.querySelector('.arrow');
+    if (details.style.display === 'block') {
+        details.style.display = 'none';
+        arrow.textContent = '▼';
+    } else {
+        details.style.display = 'block';
+        arrow.textContent = '▲';
+    }
+}
+</script>
+{% endblock %}

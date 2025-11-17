@@ -1,0 +1,528 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Pharmacy - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            color: #b22222;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+          background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            margin-right: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+    <img class="top-banner" src="{% static 'images/pharmacy.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+    
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Pharmacy</h1>
+            <h2>Overview</h2>
+            <p>School of Pharmacy
+Joy University, School of Pharmacy (JU-SOP) offers great opportunities in health care and pharmaceutical industries both in India and abroad. Joy University is one of the leading Universities in India with an exceptional curriculum designed to prepare quality pharmacists with professional capabilities to reach great heights in the healthcare system. The pharmacist of the 21st century possesses a significant role in managing drug therapy, counselling patients on the proper use of medications, and monitoring drug therapy outcomes for which the B.Pharm program prepares the students.</p>
+            <p>The Faculty at Joy University, School of Pharmacy (JU-SOP) have Ph.D. qualifications of their expertise to teach and promote the learning process and also to serve as an inspiration to the students in their research activities. They mould the student community into outstanding professionals through advanced teaching techniques and learning aids. Joy University, School of Pharmacy (JU-SOP) is vested with state-of-the-art infrastructure and provides top-notch facilities to the budding pharmacists.
+Joy University, School of Pharmacy (JU-SOP) is supplemented by a refreshing breath of co-curricular and extra-curricular activities to ensure that the students acquire personality excellence and leadership qualities in addition to the technical expertise, which is vital for excelling in a competitive world.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+
+            <h2>B.Pharm.</h2>
+            <ul>
+                <li>Pharmacy</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Pharm.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Pharmacy</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with Biology, Physics, Chemistry and English as mandatory subjects and minimum 50% in every subject.</li>
+                                <li>Note: Score of Life Sciences/ Biotechnology/ Zoology/ Botany Can be considered in case a candidate does not have biology as the subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Understand the principles of pharmaceutical sciences, including pharmacology, medicinal chemistry, and drug delivery systems.</li>
+                <li>Develop skills in drug discovery, development, and manufacturing processes.</li>
+                <li>Acquire knowledge of regulatory requirements and ethical practices in the pharmaceutical industry.</li>
+                <li>Gain proficiency in patient counseling, medication therapy management, and clinical pharmacy practices.</li>
+                <li>Enhance communication skills for effective interaction with healthcare professionals and patients.</li>
+                <li>Build the ability to conduct pharmaceutical research and interpret scientific data.</li>
+                <li>Understand and apply quality control and assurance in pharmaceutical production.</li>
+                <li>Uphold the highest standards of academic and intellectual integrity, demonstrating professionalism and ethical conduct in all pharmaceutical activities.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Demonstrate a strong sense of intellectual integrity and adhere to the ethics of scholarship.</li>
+                <li>Acquire in-depth knowledge in their chosen field(s) of specialization.</li>
+                <li>Achieve a high level of proficiency in writing, research, problem-solving, and communication.</li>
+                <li>Cultivate critical and creative thinking skills, with a commitment to continuous self-directed learning.</li>
+                <li>Be adaptable to various learning methods, including the effective use of information and communication technologies.</li>
+                <li>Become well-informed citizens who can actively contribute to their communities, regardless of location.</li>
+                <li>Accept and embrace social and civic responsibilities.</li>
+                <li>Advocate for environmental sustainability and take proactive steps toward improving ecological well-being.</li>
+                <li>Develop a broad global perspective, with strong respect for human rights, equity, and ethical principles.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Demonstrate a profound respect for truth, intellectual and professional integrity, and the ethics of scholarship.</li>
+                <li>Exhibit the ability to engage in independent critical thinking, rational inquiry, and self-directed learning.</li>
+                <li>Develop the ability to derive, interpret, and analyze pharmaceutical, biological, chemical, and clinical information from primary sources.</li>
+                <li>Be aware of, and proficient in utilizing, appropriate laboratory technologies and methods for drug analysis, formulation, and quality control.</li>
+                <li>Cultivate creativity and innovation in drug discovery, development, and therapeutic applications.</li>
+                <li>Integrate knowledge across pharmacy, medicine, and related disciplines to address and solve healthcare challenges.</li>
+                <li>Demonstrate highly developed written communication skills for informed dialogue with healthcare professionals, patients, and regulatory bodies.</li>
+                <li>Exhibit strong oral communication skills to facilitate patient counseling, team collaboration, and professional presentations.</li>
+                <li>Appreciate and respect cultural diversity in healthcare practices and patient care.</li>
+                <li>Effectively participate in multidisciplinary team settings, contributing to pharmaceutical care and research.</li>
+                <li>Develop the ability to plan, manage time effectively, and oversee pharmaceutical projects and clinical trials.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>School of Pharmacy (JU-SOP) at Joy University emphasizes the integration of pharmaceutical education with practical healthcare applications. Our philosophy is rooted in fostering a deep understanding of drug sciences, ethical practices, and patient-centered care. We believe in equipping students with the knowledge and skills to innovate in drug development, ensure medication safety, and contribute to public health advancements. Through experiential learning and research, we prepare pharmacists who are committed to improving healthcare outcomes and advancing the pharmaceutical profession.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To provide comprehensive education in pharmaceutical sciences, including drug discovery, development, and clinical applications.</li>
+                <li>To foster ethical practices and regulatory compliance in the pharmaceutical industry.</li>
+                <li>To develop skills in patient care, medication management, and therapeutic counseling.</li>
+                <li>To promote research and innovation in drug formulation, quality control, and pharmacotherapy.</li>
+                <li>To cultivate professional communication and collaboration skills for effective healthcare teamwork.</li>
+                <li>To prepare students for leadership roles in pharmacy practice, industry, and academia.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dr. Pooja Krishna J, M.Sc, Ph.D</td>
+                        <td>Assistant Professor & Assistant Dean</td>
+                        <td>poojakrishna@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Pungavi R, M.Sc, Ph.D.,</td>
+                        <td>Assistant Professor</td>
+                        <td>pungavi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Feba Varghese, M.Sc.,</td>
+                        <td>Assistant Professor</td>
+                        <td>febavarghese@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Jerish J R Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>jerish@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Sreelakshmi P M.Sc.</td>
+                        <td>Assistant Professor</td>
+                        <td>sreelakshmi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. K. Priyadharshini, MBA, D.MRT</td>
+                        <td>Lab Instructor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sinha R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

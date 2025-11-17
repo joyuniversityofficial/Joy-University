@@ -1,0 +1,545 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>School of Design - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 10px;
+    background-color: #bb2222;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #940000;
+}
+    </style>
+    
+            <img class="top-banner" src="{% static 'images/design.jpg' %}" alt="University Banner">
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Design</h1>
+            <h2>Overview</h2>
+            <p>Joy University School of Design (JU-SOD) aims for excellence in Industrial Design, Communication Design, Textile, Apparel & Lifestyle Design, IT Integrated (Experiential) Design, and Interdisciplinary Design Studies. JU-SOD offers a wide spectrum of design domains while encouraging transdisciplinary design projects in a unique institution with many problem-solving capabilities, depths of intellect, and a time-tested creative educational culture in promoting design competencies and setting standards of design education. The rigorous development of the designer's skills and knowledge through a process of 'hands on-minds on' is what makes the difference. The overall structure of any JU-SOD program is a combination of theory, skills, design projects, and field experiences supported by cutting-edge design studios, skill & innovation labs, and the Knowledge Management Centre. Sponsored design projects are brought into the classroom to provide a professional experience. Interdisciplinary design studies in Science and Liberal Arts widen the students' horizons and increase general awareness of contemporary issues.</p>
+        </section>
+
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+            
+            <h2>B.Des.</h2>
+            <ul>
+                <li>Fashion Design</li>
+                <li>Transportation & Automobile Design</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department of Industrial Design</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Des. Transportation & Automobile Design</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with Physics, Chemistry, Mathematics and English as mandatory subjects and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department of Fashion Design</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Des. Fashion Design</td>
+                        <td>4 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with minimum 60% aggregate marks with any three subjects from Physics, Chemistry, Mathematics, Biology, Home Science, Computer Science, Fine Arts, Psychology, Sociology, History, Economics, Political Science, Geography, Business Studies, Accountancy, Entrepreneurship, English, Hindi, Sanskrit, Tamil, Telugu, Malayalam, Kannada, Oriya, Assamese, Bengali, Gujarati, Marathi, Urdu, Arabic, Persian, French, German, Russian, Latin, and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Develop a comprehensive understanding of design principles, processes, and methodologies across various design domains.</li>
+                <li>Acquire proficiency in design software, tools, and technologies essential for modern design practice.</li>
+                <li>Cultivate creative thinking, innovation, and problem-solving skills to address complex design challenges.</li>
+                <li>Enhance communication skills through visual, verbal, and written mediums to effectively convey design concepts.</li>
+                <li>Understand user-centered design approaches and the importance of empathy in design processes.</li>
+                <li>Develop skills in research, prototyping, and iterative design to create functional and aesthetically pleasing products.</li>
+                <li>Gain knowledge of materials, manufacturing processes, and sustainability in design.</li>
+                <li>Uphold ethical standards in design practice, considering social, cultural, and environmental impacts.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Demonstrate a strong sense of intellectual integrity and adhere to the ethics of scholarship.</li>
+                <li>Acquire in-depth knowledge in their chosen field(s) of specialization.</li>
+                <li>Achieve a high level of proficiency in writing, research, problem-solving, and communication.</li>
+                <li>Cultivate critical and creative thinking skills, with a commitment to continuous self-directed learning.</li>
+                <li>Be adaptable to various learning methods, including the effective use of information and communication technologies.</li>
+                <li>Become well-informed citizens who can actively contribute to their communities, regardless of location.</li>
+                <li>Accept and embrace social and civic responsibilities.</li>
+                <li>Advocate for environmental sustainability and take proactive steps toward improving ecological well-being.</li>
+                <li>Develop a broad global perspective, with strong respect for human rights, equity, and ethical principles.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Master advanced design software and digital tools for 2D/3D modeling, rendering, and prototyping.</li>
+                <li>Develop expertise in user research, ethnography, and human-centered design methodologies.</li>
+                <li>Acquire skills in material science, manufacturing processes, and sustainable design practices.</li>
+                <li>Enhance visual communication skills through sketching, illustration, and presentation techniques.</li>
+                <li>Cultivate entrepreneurial thinking for product development and market innovation.</li>
+                <li>Integrate emerging technologies like AI, VR, and IoT into design solutions.</li>
+                <li>Build proficiency in project management, client relations, and design project execution.</li>
+                <li>Develop cultural sensitivity and global design perspectives for diverse markets.</li>
+                <li>Foster collaborative skills for interdisciplinary design teams and cross-functional projects.</li>
+                <li>Establish professional ethics and intellectual property knowledge in design practice.</li>
+                <li>Continuously adapt to evolving design trends, technologies, and industry standards.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>School of Design (JU-SOD) at Joy University embraces a holistic approach to design education that integrates creativity, technology, and human-centered thinking. We believe in fostering innovation through interdisciplinary collaboration, where design is seen as a catalyst for social change and sustainable development. Our philosophy emphasizes the development of empathetic designers who can address complex global challenges while maintaining cultural sensitivity and ethical responsibility.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To cultivate innovative and creative design thinkers who can address contemporary challenges through design solutions.</li>
+                <li>To provide comprehensive education in various design disciplines, fostering technical proficiency and artistic expression.</li>
+                <li>To encourage interdisciplinary collaboration and transdisciplinary design projects that integrate diverse fields of knowledge.</li>
+                <li>To develop professional skills in design research, prototyping, and project management for real-world applications.</li>
+                <li>To instill ethical design practices that consider social, cultural, and environmental impacts on global communities.</li>
+                <li>To prepare students for leadership roles in the design industry, entrepreneurship, and academic research.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dr. Pooja Krishna J, M.Sc, Ph.D</td>
+                        <td>Assistant Professor & Assistant Dean</td>
+                        <td>poojakrishna@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Pungavi R, M.Sc, Ph.D.,</td>
+                        <td>Assistant Professor</td>
+                        <td>pungavi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Feba Varghese, M.Sc.,</td>
+                        <td>Assistant Professor</td>
+                        <td>febavarghese@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. Jerish J R Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>jerish@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Sreelakshmi P M.Sc.</td>
+                        <td>Assistant Professor</td>
+                        <td>sreelakshmi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. K. Priyadharshini, MBA, D.MRT</td>
+                        <td>Lab Instructor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sinha R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}

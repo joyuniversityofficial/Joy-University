@@ -1,0 +1,573 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Visiting Joy University - Student Life{% endblock %}
+{% block content %}
+<style>
+    body {
+        background: #faf9f7;
+    }
+    .contact-header {
+        text-align: center;
+        margin: 40px 0 20px 0;
+        font-size: 1.4em;
+        color: #b22a2a;
+        font-weight: 500;
+    }
+    .contact-info-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .contact-info-card {
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        flex: 1 1 320px;
+        min-width: 320px;
+        max-width: 420px;
+        margin: 0;
+        padding: 25px 30px 20px 30px;
+        display: flex;
+        align-items: flex-start;
+        border: none;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+    .contact-info-card:last-child {
+        border-right: none;
+    }
+    .contact-info-icon {
+        font-size: 1.7em;
+        color: #b22a2a;
+        margin-right: 18px;
+        margin-top: 2px;
+    }
+    .contact-info-content {
+        flex: 1;
+    }
+    .contact-info-title {
+        font-size: 1.15em;
+        font-weight: 500;
+        color: #b22a2a;
+        margin-bottom: 7px;
+    }
+    .contact-info-content a, .contact-info-content span, .contact-info-content p {
+        color: #222;
+        font-size: 1em;
+        margin-bottom: 2px;
+        display: block;
+        text-decoration: none;
+    }
+    .contact-info-content .highlight {
+        color: #b22a2a;
+        font-weight: 500;
+    }
+    .contact-info-content .small {
+        font-size: 0.95em;
+        color: #555;
+    }
+    .contact-info-content .email {
+        color: #222;
+        font-size: 0.98em;
+        word-break: break-all;
+    }
+    .contact-info-content .phone {
+        color: #222;
+        font-size: 1em;
+        word-break: break-all;
+    }
+    .contact-info-content .phone a {
+        color: #222;
+        text-decoration: none;
+    }
+    .contact-info-content .phone a:hover {
+        text-decoration: underline;
+    }
+    .contact-main {
+        background: #b22a2a;
+        border-radius: 15px;
+        margin: 40px 40px 0 40px;
+        padding: 40px 40px 0 40px;
+    }
+    .contact-row {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        justify-content: space-between;
+    }
+    .contact-map {
+        flex: 2;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+    .contact-form {
+        flex: 1;
+        background: #b22a2a;
+        border-radius: 15px;
+        padding: 10px 10px 10px 10px;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 250px;
+        margin-bottom: 30px;
+    }
+    .contact-form h2 {
+        color: #fff;
+        font-size: 1.3em;
+        font-weight: 500;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .contact-form label {
+        display: block;
+        margin-bottom: 7px;
+        margin-top: 18px;
+        font-size: 1em;
+        color: #fff;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        font-size: 1em;
+        margin-bottom: 3px;
+        padding: 7px 0;
+        outline: none;
+        resize: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: #fff;
+        opacity: 0.7;
+    }
+    .contact-form button {
+        margin-top: 20px;
+        width: 100%;
+        background: #fff;
+        color: #b22a2a;
+        border: none;
+        border-radius: 7px;
+        padding: 10px 0;
+        font-size: 1.1em;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .contact-form button:hover {
+        background: #e2e2e2;
+    }
+    .distance-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 40px 0 30px 0;
+    }
+    .distance-card {
+        flex: 1;
+        background: #b22a2a;
+        border: 2px solid #fff;
+        border-radius: 15px;
+        color: #fff;
+        text-align: center;
+        padding: 1px 0 1px 0;
+        font-size: 1em;
+        margin: 0 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+    .distance-card span {
+        font-size: 2em;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+    }
+    .contact-info-icon {
+        color: #fff !important;
+        opacity: 1 !important;
+    }
+    .contact-info-card:hover {
+        background: #b22222 !important;
+        color: #fff !important;
+    }
+    .contact-info-card:hover .contact-info-title,
+    .contact-info-card:hover .contact-info-content,
+    .contact-info-card:hover .contact-info-icon,
+    .contact-info-card:hover a,
+    .contact-info-card:hover span,
+    .contact-info-card:hover .phone,
+    .contact-info-card:hover .email,
+    .contact-info-card:hover .small {
+        color: #fff !important;
+    }
+    @media (max-width: 1100px) {
+        .contact-info-grid {
+            flex-direction: column;
+        }
+        .contact-row {
+            flex-direction: column;
+        }
+        .distance-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .distance-card {
+            margin: 10px 0;
+        }
+        .contact-main {
+            margin: 10px;
+            padding: 10px;
+        }
+    }
+</style>
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">Visiting Joy University</h1>
+  <p class="text-center mb-5">Explore Joy University: A Campus Like No Other</p>
+
+  <div class="row">
+    <div class="col-12">
+      <p>Welcome to Joy University, where academic excellence meets a vibrant and inspiring environment. Nestled amidst lush greenery and state-of-the-art facilities, our campus is designed to ignite curiosity, foster creativity, and nurture future leaders.</p>
+
+      <h3>Academic Excellence Hubs</h3>
+      <p>Our campus features cutting-edge academic blocks equipped with modern classrooms, smart boards, and collaborative learning spaces. With dedicated departments for various disciplines, we ensure every student receives the best resources and guidance to excel.</p>
+
+      <h3>World-Class Laboratories</h3>
+      <p>Step into our advanced laboratories, where innovation and hands-on learning come to life. From technology and science labs to creative arts studios, we provide the tools to turn ideas into reality.</p>
+
+      <h3>Inspiring Libraries</h3>
+      <p>Our centrally located library is a treasure trove of knowledge, offering an extensive collection of books, journals, and digital resources. With cozy reading corners and tech-enabled study zones, it's a haven for learners.</p>
+
+      <h3>Comfortable Hostel with attached toilet facility</h3>
+      <p>Home away from home! Our residential facilities are designed for comfort and community. Fully furnished hostels, 24/7 security, and recreational areas ensure you feel at home, even when you're away from home.</p>
+
+      <h3>Recreational & Sports Facilities</h3>
+      <p>Joy University believes in holistic development. Our campus boasts top-notch sports facilities, including a cricket ground, basketball courts, Turf Court, Swimming Pool and a fully-equipped gymnasium. Students can unwind, stay fit, and engage in friendly competitions.</p>
+
+      <h3>Green Innovation Zones</h3>
+      <p>With an eco-friendly approach, our campus features lush gardens, solar-powered facilities, and sustainable practices. These green zones not only add to the beauty but also reflect our commitment to the environment.</p>
+
+      <h3>Fully Furnished Housing for Staff & Faculty</h3>
+      <p>We value the contributions of our staff and faculty and provide them with comfortable, fully furnished housing options on campus.</p>
+
+      <h3>Dining for All Tastes</h3>
+      <p>We offer both North and South Indian cuisines. The menu is thoughtfully curated by the Student Council, ensuring a variety of delicious and nutritious meals.</p>
+
+      <h3>Student Activity Center</h3>
+      <p>The Student Activity Center at Joy University is a vibrant hub that caters to the diverse needs of our students, making it the perfect place to unwind, connect, and grow. Designed to provide a well-rounded campus experience, the center offers:</p>
+      <ul>
+        <li>Mini Theatre</li>
+        <li>Tuck Shop</li>
+        <li>Salon</li>
+        <li>Photostat Services</li>
+        <li>Food Court</li>
+        <li>Ladies' & Gents' Gym</li>
+        <li>Amphitheater</li>
+        <li>Departmental Store</li>
+        <li>Pharmacy Store</li>
+        <li>Meeting Hall</li>
+        <li>Indoor Games Zone</li>
+        <li>Play Station</li>
+      </ul>
+
+      <h3>Campus Tour Registration</h3>
+      <p>Ready to experience Joy University firsthand? Register for a campus tour below!</p>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="post" class="mt-4">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="mobile" class="form-label">Mobile</label>
+            <input type="tel" class="form-control" id="mobile" name="mobile" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="date_of_visit" class="form-label">Date of Visit (dd-mm-yyyy)</label>
+            <input type="date" class="form-control" id="date_of_visit" name="date_of_visit" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="time_of_visit" class="form-label">Time of Visit</label>
+            <input type="time" class="form-control" id="time_of_visit" name="time_of_visit" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="no_of_people" class="form-label">No of People to Visit</label>
+            <input type="number" class="form-control" id="no_of_people" name="no_of_people" min="1" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="purpose_of_visit" class="form-label">Purpose of Visit</label>
+            <textarea class="form-control" id="purpose_of_visit" name="purpose_of_visit" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="degree_interested" class="form-label">Degree Interested</label>
+          <input type="text" class="form-control" id="degree_interested" name="degree_interested">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Registration</button>
+      </form>
+    </div>
+  </div>
+</div>
+<style>
+    body {
+        background: #faf9f7;
+    }
+    .contact-header {
+        text-align: center;
+        margin: 40px 0 20px 0;
+        font-size: 1.4em;
+        color: #b22a2a;
+        font-weight: 500;
+    }
+    .contact-info-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+    .contact-info-card {
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        flex: 1 1 320px;
+        min-width: 320px;
+        max-width: 420px;
+        margin: 0;
+        padding: 25px 30px 20px 30px;
+        display: flex;
+        align-items: flex-start;
+        border: none;
+        border-right: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+
+
+
+    .contact-info-card:last-child {
+        border-right: none;
+    }
+    .contact-info-icon {
+        font-size: 1.7em;
+        color: #b22a2a;
+        margin-right: 18px;
+        margin-top: 2px;
+    }
+    .contact-info-content {
+        flex: 1;
+    }
+    .contact-info-title {
+        font-size: 1.15em;
+        font-weight: 500;
+        color: #b22a2a;
+        margin-bottom: 7px;
+    }
+    .contact-info-content a, .contact-info-content span, .contact-info-content p {
+        color: #222;
+        font-size: 1em;
+        margin-bottom: 2px;
+        display: block;
+        text-decoration: none;
+    }
+    .contact-info-content .highlight {
+        color: #b22a2a;
+        font-weight: 500;
+    }
+    .contact-info-content .small {
+        font-size: 0.95em;
+        color: #555;
+    }
+    .contact-info-content .email {
+        color: #222;
+        font-size: 0.98em;
+        word-break: break-all;
+    }
+    .contact-info-content .phone {
+        color: #222;
+        font-size: 1em;
+        word-break: break-all;
+    }
+    .contact-info-content .phone a {
+        color: #222;
+        text-decoration: none;
+    }
+    .contact-info-content .phone a:hover {
+        text-decoration: underline;
+    }
+    .contact-main {
+        background: #b22a2a;
+        border-radius: 15px;
+        margin: 40px 40px 0 40px;
+        padding: 40px 40px 0 40px;
+    }
+    .contact-row {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+        justify-content: space-between;
+    }
+    .contact-map {
+        flex: 2;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 30px;
+    }
+    .contact-form {
+        flex: 1;
+        background: #b22a2a;
+        border-radius: 15px;
+        padding: 10px 10px 10px 10px;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 250px;
+        margin-bottom: 30px;
+    }
+    .contact-form h2 {
+        color: #fff;
+        font-size: 1.3em;
+        font-weight: 500;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .contact-form label {
+        display: block;
+        margin-bottom: 7px;
+        margin-top: 18px;
+        font-size: 1em;
+        color: #fff;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        font-size: 1em;
+        margin-bottom: 3px;
+        padding: 7px 0;
+        outline: none;
+        resize: none;
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: #fff;
+        opacity: 0.7;
+    }
+    .contact-form button {
+        margin-top: 20px;
+        width: 100%;
+        background: #fff;
+        color: #b22a2a;
+        border: none;
+        border-radius: 7px;
+        padding: 10px 0;
+        font-size: 1.1em;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .contact-form button:hover {
+        background: #e2e2e2;
+    }
+    .distance-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 40px 0 30px 0;
+    }
+    .distance-card {
+        flex: 1;
+        background: #b22a2a;
+        border: 2px solid #fff;
+        border-radius: 15px;
+        color: #fff;
+        text-align: center;
+        padding: 1px 0 1px 0;
+        font-size: 1em;
+        margin: 0 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+    }
+    .distance-card span {
+        font-size: 2em;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+.contact-info-icon {
+    color: #fff !important;
+    opacity: 1 !important;
+}
+/* Add this to your <style> section */
+.contact-info-card:hover {
+    background: #b22222 !important;
+    color: #fff !important;
+}
+.contact-info-card:hover .contact-info-title,
+.contact-info-card:hover .contact-info-content,
+.contact-info-card:hover .contact-info-icon,
+.contact-info-card:hover a,
+.contact-info-card:hover span,
+.contact-info-card:hover .phone,
+.contact-info-card:hover .email,
+.contact-info-card:hover .small {
+    color: #fff !important;
+}
+
+    @media (max-width: 1100px) {
+        .contact-info-grid {
+            flex-direction: column;
+        }
+        .contact-row {
+            flex-direction: column;
+        }
+        .distance-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+        .distance-card {
+            margin: 10px 0;
+        }
+        .contact-main {
+            margin: 10px;
+            padding: 10px;
+        }
+    }
+</style>
+
+
+{% endblock %}

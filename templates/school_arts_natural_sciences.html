@@ -1,0 +1,788 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <title>School of Arts & Natural Sciences - Joy University</title>
+    <style>
+
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header Styles */
+        header {
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        
+        .nav-menu li {
+            margin-left: 5px;
+        }
+
+        .nav-menu button {
+            color: #b22222;
+            background-color: white;
+            padding: 10px 15px;
+            border: 2px solid #b22222;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: color 0.3s, background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-menu button:hover {
+            color: #ffffff;
+            background-color: #b22222;
+        }
+
+
+        .arrows {
+            display: flex;
+            align-items: center;
+        }
+
+        .arrows button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #a02020;
+        }
+
+        .arrows button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* Section Styles */
+        section {
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+        
+        h1 {
+            color: #b22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #b22222;
+            margin: 25px 0 15px;
+            font-size: 22px;
+        }
+        
+        h3 {
+            color: #b22222;
+            margin: 20px 0 10px;
+            font-size: 18px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        button{
+            background-color: white;
+            color: #b22222;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-color: #b22222;
+            border:2px solid #b22222;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #b22222;
+            color: white;
+        }
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #b22222;
+            color: white;
+            font-weight: 600;
+        }
+        
+  
+        
+       
+        img.top-banner {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-menu li {
+                margin: 5px 10px;
+            }
+
+            .container {
+                padding: 10px 0;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .nav-menu button {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .arrows button {
+                padding: 8px 12px;
+                font-size: 16px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px 0;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            .nav-menu button {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            .arrows button {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
+            table th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+        }
+
+        /* Hide all sections initially except overview */
+        section {
+            display: none;
+        }
+
+        #overview {
+            display: block;
+        }
+        .apply-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: #0056b3;
+}
+    </style>
+           <img class="top-banner" src="{% static 'images/arts.jpg' %}" alt="University Banner"> 
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            
+            <ul class="nav-menu">
+                <div class="arrows">
+                <button id="prev-arrow">&larr;</button>
+                </div>
+                <li><button data-section="overview">Overview</button></li>
+                <li><button data-section="programmes-offered">Programmes Offered</button></li>
+                <li><button data-section="programmes-structure">Programmes Structure & Eligibility</button></li>
+                <li><button data-section="learning-outcomes">Learning Outcomes</button></li>
+                <li><button data-section="graduate-attributes">Expected Graduate Attributes</button></li>
+                <li><button data-section="skill-sets">New Targeted Skill Sets</button></li>
+                <li><button data-section="philosophy">Philosophy</button></li>
+                <li><button data-section="objectives">Objectives</button></li>
+                <li><button data-section="faculty-staff">Faculty & Staff</button></li>
+            </ul>
+            <div class="arrows">
+                <button id="next-arrow">&rarr;</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Overview Section -->
+        <section id="overview">
+            <h1>School of Arts & Natural Sciences</h1>
+            <h2>Overview</h2>
+            <p>The Joy University School of Arts & Natural Sciences (JU-SOANS) aims to provide an international ambience in a local setting with innovative and engaging teaching methods, globally benchmarked curricula, world-class faculty, and key partnerships in research.</p>
+            <p>The JU-SOANS encourages group learning and provides value-added hard and soft skills workshops along with key internships each summer. Undergraduate and Postgraduate programs have been designed based on Joy University’s underlying philosophy of interdisciplinary and research-led learning.</p>
+            <p>We believe that in an integrated, self-sustaining, green campus, the JU-SOANS combines research and education at the undergraduate level itself. Joy University will provide meritorious applicants with scholarships, internships and other opportunities to enable them to get the finest education.</p>         
+          </section>
+       
+        <!-- Programmes Offered Section -->
+        <section id="programmes-offered">
+            <h1>Programmes Offered</h1>
+
+            <h2>B.A.</h2>
+            <ul>
+                <li>English</li>
+                <li>Tamil</li>
+                <li>History</li>
+                <li>Economics</li>
+                <li>Criminology & Police Administration</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.Sc.</h2>
+            <ul>
+                <li>Forensic Science</li>
+                <li>Media & Journalism</li>
+                <li>Mathematics</li>
+                <li>Applied Physics</li>
+                <li>Electronics</li>
+                <li>Psychology</li>
+               <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B. P. Ed.</h2>
+            <ul>
+                <li>Physical Education</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>B.Lib.I.Sc.</h2>
+            <ul>
+                <li>Library Science</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+
+            <h2>M.Sc.</h2>
+            <ul>
+                <li>Psychology</li>
+                <a href="{% url 'application_form' %}" class="apply-btn">Apply Now</a>
+            </ul>
+        </section>
+
+        <!-- Programmes Structure & Eligibility Section -->
+        <section id="programmes-structure">
+            <h1>Programmes Structure & Eligibility</h1>
+
+            <h2>DEPARTMENT OF HUMANITIES & SOCIAL SCIENCES</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.A.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>English</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with 60% aggregate marks with English as mandatory subject and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tamil</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>History</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Economics</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Criminology & Police Administration</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>DEPARTMENT OF SCIENCES</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Forensic Science</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent qualification from a recognized educational board with Physics, Chemistry, and Biology or Maths as main subject and minimum aggregate score of 60 %.</li>
+                                <li>Valid Score of JOYAT.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Media & Journalism</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>3 Years</td>
+                        <td>
+                            <ul>
+                                <li>HSE / CBSE / ICSE / CIE +2 or equivalent with English, Maths and Physics as mandatory subjects with minimum 60% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid Score of JOYAT.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Applied Physics</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Electronics</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Psychology</td>
+                        <td>3 Years</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>M.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Psychology</td>
+                        <td>2 Years</td>
+                        <td>
+                            <ul>
+                                <li>Any Bachelor's Degree from a recognized University with minimum 50% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid score of JOYAT +Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>DEPARTMENT OF PHYSICAL EDUCATION</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.P.Ed.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Physical Education</td>
+                        <td>2 Years</td>
+                        <td>
+                            <ul>
+                                <li>Any Bachelor's Degree with sports achievements from a recognized University with minimum 50% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid score of JOYAT +Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>DEPARTMENT OF LIBRARY & INFORMATION SCIENCE</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>B.Lib.I.Sc.</th>
+                        <th>Duration</th>
+                        <th>Eligibility</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Library Science</td>
+                        <td>1 Year</td>
+                        <td>
+                            <ul>
+                                <li>Any Bachelor's Degree from a recognized University with minimum 50% aggregate marks and minimum 50% in every subject.</li>
+                                <li>Valid score of JOYAT +Interaction</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Learning Outcomes Section -->
+        <section id="learning-outcomes">
+            <h1>Learning Outcomes</h1>
+            <ul>
+                <li>Develop a comprehensive understanding of human cultures, societies, and historical developments through the study of arts and humanities.</li>
+                <li>Acquire analytical and critical thinking skills to evaluate scientific phenomena, theories, and methodologies in natural sciences.</li>
+                <li>Enhance communication skills in written and oral forms, enabling effective expression of ideas in academic and professional contexts.</li>
+                <li>Cultivate creativity and innovation through artistic expression, scientific inquiry, and interdisciplinary problem-solving.</li>
+                <li>Understand ethical principles and social responsibilities in the application of knowledge in arts, sciences, and society.</li>
+                <li>Develop research skills to design, conduct, and interpret studies in humanities and natural sciences.</li>
+                <li>Foster interdisciplinary thinking by integrating knowledge across arts, humanities, and natural sciences.</li>
+                <li>Promote lifelong learning and adaptability in a rapidly changing global environment.</li>
+            </ul>
+        </section>
+
+        <!-- Expected Graduate Attributes Section -->
+        <section id="graduate-attributes">
+            <h1>Expected Graduate Attributes</h1>
+            <ul>
+                <li>Demonstrate a strong sense of intellectual integrity and adhere to the ethics of scholarship.</li>
+                <li>Acquire in-depth knowledge in their chosen field(s) of specialization.</li>
+                <li>Achieve a high level of proficiency in writing, research, problem-solving, and communication.</li>
+                <li>Cultivate critical and creative thinking skills, with a commitment to continuous self-directed learning.</li>
+                <li>Be adaptable to various learning methods, including the effective use of information and communication technologies.</li>
+                <li>Become well-informed citizens who can actively contribute to their communities, regardless of location.</li>
+                <li>Accept and embrace social and civic responsibilities.</li>
+                <li>Advocate for environmental sustainability and take proactive steps toward improving ecological well-being.</li>
+                <li>Develop a broad global perspective, with strong respect for human rights, equity, and ethical principles.</li>
+            </ul>
+        </section>
+
+        <!-- New Targeted Skill Sets Section -->
+        <section id="skill-sets">
+            <h1>New Targeted Skill Sets</h1>
+            <ul>
+                <li>Demonstrate a profound respect for truth, intellectual and professional integrity, and the ethics of scholarship.</li>
+                <li>Exhibit the ability to engage in independent critical thinking, rational inquiry, and self-directed learning.</li>
+                <li>Develop the ability to derive, interpret, and analyze ecological, biological, social, technical, or economic information from primary sources.</li>
+                <li>Be aware of, and predict in utilizing, appropriate communication technologies and methods for this storage, management, and analysis.</li>
+                <li>Cultivate creativity and innovation through the application of acquired skills and knowledge in practical contexts.</li>
+                <li>Integrate knowledge across a wide range of disciplines to address and solve problems in applied situations.</li>
+                <li>Demonstrate highly developed written communication skills for informed dialogue with individuals and groups from industry, government, and the community.</li>
+                <li>Exhibit strong oral communication skills to facilitate informed dialogue and collaboration with individuals and groups from industry, government, and the community.</li>
+                <li>Appreciate and respect social and cultural diversity in both regional and global contexts.</li>
+                <li>Effectively participate in team settings, contributing to group efforts and achieving common goals.</li>
+                <li>Develop the ability to plan, manage time effectively, and oversee small projects to successful completion.</li>
+            </ul>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <h1>Philosophy</h1>
+            <p>The School of Arts & Natural Sciences (JU-SOANS) at Joy University is committed to fostering a holistic understanding of human culture, creativity, and the natural world. We emphasize interdisciplinary learning that integrates arts, humanities, and sciences to develop well-rounded individuals capable of addressing complex societal challenges. Our approach combines theoretical knowledge with practical applications, encouraging students to explore the intersections between artistic expression, scientific inquiry, and social sciences. Through innovative teaching methods and research-led education, we prepare students to become ethical leaders and contributors to a sustainable and culturally rich global society.</p>
+        </section>
+
+        <!-- Objectives Section -->
+        <section id="objectives">
+            <h1>Objectives</h1>
+            <ul>
+                <li>To foster interdisciplinary learning that integrates arts, humanities, and natural sciences.</li>
+                <li>To develop critical thinking, creativity, and analytical skills through diverse academic disciplines.</li>
+                <li>To promote ethical reasoning and social responsibility in addressing global challenges.</li>
+                <li>To encourage research and innovation in arts and sciences for societal benefit.</li>
+                <li>To cultivate cultural awareness and appreciation for diverse perspectives.</li>
+                <li>To prepare students for lifelong learning and adaptability in a dynamic world.</li>
+            </ul>
+        </section>
+
+        <!-- Faculty & Staff Section -->
+        <section id="faculty-staff">
+            <h1>Faculty & Staff</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dr. M. Senthilkumar M.Sc, PhD</td>
+                        <td>Associate Professor & Associate Dean</td>
+                        <td>senthilkumar@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Haris, M.Sc, M .Phil, Ph.D.,</td>
+                        <td>Associate Professor</td>
+                        <td>haris@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Mohamed Shafeer, MA, M.Phil., Ph.D.,</td>
+                        <td>Assistant Professor</td>
+                        <td>mohammedshafeer@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Pallab Maiti, M.Sc, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>pallab@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Kavitha Williams, M.Sc, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>kavitha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Mohamed Shuaib M.Phil, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>mohammedshuaib@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. N. Jayanthi, MA, B.Ed, M.Phil, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>jayanthi@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. R. Mary Christobel, M.A, B.Ed, MPhil, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>marychristobel@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Prabha .S, M.Sc, Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>prabha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. A. Jagajeeth Paul, M.A, M.Ed, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>jegajeethpaul@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. V. Adlin Asha, M.Sc, B.Ed, M.Phil, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>adlinasha@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Ms. R.S. Haritha Shree, M.A, NET</td>
+                        <td>Assistant Professor</td>
+                        <td>harithashree@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Stem Edilber, M.Sc, B.Ed, M.Phil, PhD</td>
+                        <td>Assistant Professor</td>
+                        <td>stemedilber@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Micheal Mathavavisakan .N M.Sc., M.Phil., Ph.D</td>
+                        <td>Assistant Professor</td>
+                        <td>michealmathavavisakan@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. R. L. Babisha Julit Ph. D.</td>
+                        <td>Assistant Professor</td>
+                        <td>babishajulit.soans@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. J.N.Cheerlin Mishma Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Dr. E. Janani Ph.D.</td>
+                        <td>Assistant Professor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Prof. Haripriya M M.Sc.</td>
+                        <td>Assistant Professor</td>
+                        <td>haripriya.solhs@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Francis Xavier, M.A. MPhil. PhD</td>
+                        <td>Visiting Faculty</td>
+                        <td>francisxavier@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Dr. Anjala Suganya, M.Sc, PhD</td>
+                        <td>Visiting Faculty</td>
+                        <td>anjalasuganya@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Miss. D. Padmashree, M.Sc</td>
+                        <td>Teaching Assistant</td>
+                        <td>padmashree@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mr. K. Santhiyagu Wilson</td>
+                        <td>Teaching Assistant</td>
+                        <td>santhiyagu@joyuniversity.co.in</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. K. Priyadharshini, MBA, D.MRT</td>
+                        <td>Lab Instructor</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Mrs. Sutha, R, MCA</td>
+                        <td>Office Executive</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        const sections = [
+            'overview',
+            'programmes-offered',
+            'programmes-structure',
+            'learning-outcomes',
+            'graduate-attributes',
+            'skill-sets',
+            'philosophy',
+            'objectives',
+            'faculty-staff'
+        ];
+
+        let currentIndex = 0;
+
+        function showSection(index) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sections[index]).style.display = 'block';
+            currentIndex = index;
+        }
+
+        // Event listeners for nav menu buttons
+        document.querySelectorAll('.nav-menu button').forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.getAttribute('data-section');
+                const index = sections.indexOf(sectionId);
+                if (index !== -1) {
+                    showSection(index);
+                }
+            });
+        });
+
+        document.getElementById('prev-arrow').addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSection(currentIndex);
+            }
+        });
+
+        document.getElementById('next-arrow').addEventListener('click', () => {
+            if (currentIndex < sections.length - 1) {
+                currentIndex++;
+                showSection(currentIndex);
+            }
+        });
+
+        // Initially show the first section
+        showSection(currentIndex);
+    </script>
+
+{% endblock %}
