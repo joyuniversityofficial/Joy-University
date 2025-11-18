@@ -1,0 +1,10 @@
+Django>=4.2,<5.0
+gunicorn
+pillow
+requests
+pdfkit
+PyPDF2
+reportlab
+django-crispy-forms
+django-widget-tweaks
+django-jazzmin
