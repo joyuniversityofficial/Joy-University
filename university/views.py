@@ -868,17 +868,39 @@ def all_applications(request):
         del request.session['application_id']
         return redirect('login')
     user_applications = Application.objects.filter(email=application.email)
+    schools = School.objects.all()
     school_applications = []
+    enrolled_school_name = None
 
-    for app in user_applications:
+    for school in schools:
+        app = user_applications.filter(school=school).first()
         enrollment = None
-        if app.status == 'enrolled':
+        if app and app.status == 'enrolled':
             enrollment = Enrollment.objects.filter(application=app).first()
+            if not enrolled_school_name:
+                enrolled_school_name = school.title
         school_applications.append({
             'application': app,
             'enrollment': enrollment,
-            'title': app.school.title if app.school else 'School of Doctorate'
+            'school': school,
+            'school_id': school.id,
+            'title': school.title
         })
+
+    # Handle School of Doctorate separately
+    doctorate_app = user_applications.filter(school__isnull=True).first()
+    doctorate_enrollment = None
+    if doctorate_app and doctorate_app.status == 'enrolled':
+        doctorate_enrollment = Enrollment.objects.filter(application=doctorate_app).first()
+        if not enrolled_school_name:
+            enrolled_school_name = 'School of Doctorate'
+    school_applications.append({
+        'application': doctorate_app,
+        'enrollment': doctorate_enrollment,
+        'school': None,
+        'school_id': 'doctorate',
+        'title': 'School of Doctorate'
+    })
 
     initials = ''.join([word[0].upper() for word in application.name.split()])
 

@@ -104,10 +104,10 @@
           {% if enrolled_school_name %}
             <span class="apply-btn" style="background-color: #ccc; cursor: not-allowed;">You have already enrolled with {{ enrolled_school_name }}</span>
           {% else %}
-            {% if school_app.school %}
-              <a href="{% url 'details' %}?school={{ school_app.school.id }}" class="apply-btn">Apply Now</a>
+            {% if school_app.school_id == 'doctorate' %}
+              <a href="{% url 'application_form' %}?school=School of Doctorate" class="apply-btn">Apply Now</a>
             {% else %}
-              <a href="{% url 'application_form' %}?edit=1&app_id={{ school_app.application.id }}" class="apply-btn">Apply Now</a>
+              <a href="{% url 'details' %}?school={{ school_app.school.id }}" class="apply-btn">Apply Now</a>
             {% endif %}
           {% endif %}
         {% endif %}
@@ -131,3 +131,4 @@
   {% endfor %}
 </section>
 {% endblock %}
+
