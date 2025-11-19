@@ -112,8 +112,9 @@ body {
 
     .hero-section video,
     .hero-section img {
-        height: auto !important;
+        height: 70vh !important;
         width: 100% !important;
+        object-fit: cover !important;
     }
 }
 
