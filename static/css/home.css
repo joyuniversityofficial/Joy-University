@@ -71,7 +71,7 @@ body {
     }
 
     .hero-overlay {
-        left: 0 !important;
+        left: 5% !important; /* Keep left alignment like desktop */
         right: auto !important;
         transform: none !important;
         text-align: left !important;
@@ -81,7 +81,7 @@ body {
         justify-content: flex-start !important;
 
         padding-left: 20px !important;
-        width: 100% !important;
+        width: 90% !important; /* Adjust width to fill more space */
     }
 
     .hero-text {
@@ -111,7 +111,7 @@ body {
 /* Mobile Spacer */
 @media (max-width: 768px) {
   .hero-spacer {
-    height: 5vh !important;
+    height: 0vh !important;
   }
 }
 
@@ -180,11 +180,11 @@ body {
   .marquee-track {
     animation: none;
     overflow-x: auto;
-    gap: 12px;
+    gap: 0px;
   }
 
   .marquee-card {
-    flex: 0 0 70%;
+    flex: 0 0 100%;
   }
 }
 
