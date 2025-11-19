@@ -403,10 +403,6 @@ input[type="text"], input[type="email"], input[type="tel"], select {
 }
 
 @media (max-width: 600px) {
-  .form-overlay {
-    width: 80%;
-    right: 5%;
-  }
   .header-section {
     padding: 10px;
   }
@@ -475,7 +471,12 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     font-size: 16px;
   }
 
+  .mobile-container {
+    width: 100%;
+  }
+
   .country-code-select {
+    width: 100px;
     min-height: 44px;
     font-size: 16px;
   }
