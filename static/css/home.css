@@ -65,7 +65,7 @@ body {
 }
 
 /* Mobile Hero */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero-overlay {
         left: 0 !important;
         right: auto !important;
@@ -987,6 +987,11 @@ body {
   .vision-right video {
     width: 100%;
     height: auto;
+    margin-top: 0;
+  }
+
+  .vision-box, .mission-box {
+    padding: 15px;
   }
 }
 
