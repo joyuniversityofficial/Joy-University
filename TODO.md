@@ -1,5 +1,0 @@
-- [ ] Modify all_applications view to show multiple applications per school per user, allowing multiple applications with different course/specialization combinations.
-- [ ] Remove the enrolled_school_name logic that prevents applying to other schools if enrolled in one.
-- [ ] Add validation in application_form view to prevent duplicate applications for the same school, course, and specialization per email.
-- [ ] Update the all_applications template to handle multiple applications per school and add PDF download link for enrolled applications.
-- [ ] Test the changes to ensure enrollment works per application and PDF download is available.

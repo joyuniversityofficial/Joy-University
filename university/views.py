@@ -1313,8 +1313,7 @@ def declaration(request):
     if request.method == 'POST':
         enrollment.declaration_agreed = True
         enrollment.submitted_at = timezone.now()
-        enrollment.save()  # Save to get pk for generating application number
-        enrollment.application_number = enrollment.generate_application_number()
+        enrollment.application_number = application.application_number  # Use the same number as Application
         enrollment.save()
         # Update application status to enrolled
         application.status = 'enrolled'
@@ -1361,6 +1360,10 @@ def application_submitted(request):
         if not enrollment:
             messages.error(request, 'Enrollment details not found.')
             return redirect('details')
+        # Ensure application_number is set
+        if not enrollment.application_number:
+            enrollment.application_number = application.application_number
+            enrollment.save()
     except Application.DoesNotExist:
         del request.session['application_id']
         return redirect('login')

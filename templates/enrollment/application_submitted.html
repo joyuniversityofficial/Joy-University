@@ -48,7 +48,7 @@
     <p>You will receive a call from our team shortly.</p>
     <a href="{% url 'dashboard' %}" class="btn">Back to Dashboard</a>
     <div class="footer">
-    <button><a href="{% url 'preview_pdf' %}" class="print-btn">Download / Print PDF</a></button>
+    <button><a href="{% url 'preview_pdf' %}?app_id={{ application.id }}" class="print-btn">Download / Print PDF</a></button>
 </div>
 </div>
 {% endblock %}
