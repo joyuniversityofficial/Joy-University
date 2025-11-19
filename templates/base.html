@@ -760,28 +760,34 @@
 
     @media (max-width: 767px) {
       .sub-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 10px;
+        flex-direction: row;
+        text-align: left;
+        padding: 20px 15px;
         gap: 10px;
+        justify-content: space-between;
+        align-items: center;
       }
       .sub-header-logo {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
       }
       .sub-header-estd {
-        font-size: 11px;
-        white-space: normal;
-        margin-bottom: 10px;
+        font-size: 12px;
+        white-space: nowrap;
+        margin-bottom: 0;
+        flex: 1;
+        text-align: left;
       }
       .sub-header-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-shrink: 0;
       }
       .sub-header-menu a {
-        font-size: 11px;
-        padding: 3px 6px;
+        font-size: 12px;
+        padding: 4px 8px;
       }
     }
     
