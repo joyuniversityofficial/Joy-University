@@ -72,10 +72,7 @@ body {
   }
 
   .hero-overlay {
-    text-align: left !important;
-    max-width: 80% !important;
-    padding: 10px 12px !important;
-    background-color: rgba(0, 0, 0, 0.55) !important;
+    display: none;
   }
 
   .hero-text .hero-subtitle,
