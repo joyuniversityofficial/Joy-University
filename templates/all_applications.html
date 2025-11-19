@@ -81,53 +81,66 @@
 
 <section class="applications">
   {% for school_app in school_applications %}
-  <div class="app-card">
-    <div class="app-info">
-      <h3>{{ school_app.title }} Application Form</h3>
-      <div class="details">
-        <p><strong>Application No.</strong><br>{% if school_app.application %}{{ school_app.application.application_number }}{% else %}-{% endif %}</p>
-        <p><strong>Application Submitted On</strong><br>{% if school_app.application %}{{ school_app.application.created_at|date:"d M Y" }}{% else %}-{% endif %}</p>
-        <p><strong>Course</strong><br>{% if school_app.enrollment %}{{ school_app.enrollment.course }}{% elif school_app.application %}{{ school_app.application.course }}{% else %}-{% endif %}</p>
-        <p><strong>Specialization</strong><br>{% if school_app.enrollment %}{{ school_app.enrollment.specialization }}{% elif school_app.application %}{{ school_app.application.specialization }}{% else %}-{% endif %}</p>
-        <p><strong>Application Fees</strong><br>₹1023.60</p>
+    {% for app in school_app.applications %}
+    <div class="app-card">
+      <div class="app-info">
+        <h3>{{ school_app.title }} Application Form</h3>
+        <div class="details">
+          <p><strong>Application No.</strong><br>{{ app.application_number }}</p>
+          <p><strong>Application Submitted On</strong><br>{{ app.created_at|date:"d M Y" }}</p>
+          <p><strong>Course</strong><br>{{ app.course }}</p>
+          <p><strong>Specialization</strong><br>{{ app.specialization }}</p>
+          <p><strong>Application Fees</strong><br>₹1023.60</p>
+        </div>
+        <div class="action">
+          {% if app.status == 'completed' %}
+            <a href="{% url 'details' %}?app_id={{ app.id }}" class="apply-btn">Proceed to Enrollment</a>
+          {% elif app.status == 'enrolled' %}
+            <a href="{% url 'application_submitted' %}?app_id={{ app.id }}" class="apply-btn">View Enrollment</a>
+            <a href="{% url 'preview_pdf' %}?app_id={{ app.id }}" class="apply-btn" style="background-color: #28a745;">Download PDF</a>
+          {% else %}
+            <a href="{% url 'details' %}?app_id={{ app.id }}" class="continue">Continue Application →</a>
+          {% endif %}
+        </div>
       </div>
-      <div class="action">
-        {% if school_app.application %}
-          {% if school_app.application.status == 'completed' %}
-            <a href="{% url 'details' %}?app_id={{ school_app.application.id }}" class="apply-btn">Proceed to Enrollment</a>
-          {% elif school_app.application.status == 'enrolled' %}
-            <a href="{% url 'application_submitted' %}" class="apply-btn">View Enrollment</a>
-          {% else %}
-            <a href="{% url 'details' %}?app_id={{ school_app.application.id }}" class="continue">Continue Application →</a>
-          {% endif %}
-        {% else %}
-          {% if enrolled_school_name %}
-            <span class="apply-btn" style="background-color: #ccc; cursor: not-allowed;">You have already enrolled with {{ enrolled_school_name }}</span>
-          {% else %}
-            {% if school_app.school_id == 'doctorate' %}
-              <a href="{% url 'application_form' %}?school=School of Doctorate" class="apply-btn">Apply Now</a>
-            {% else %}
-              <a href="{% url 'details' %}?school={{ school_app.school.id }}" class="apply-btn">Apply Now</a>
-            {% endif %}
-          {% endif %}
-        {% endif %}
+      <div class="journey">
+        <h4>Enrolment Journey</h4>
+        <ul>
+          <li class="{% if app.status == 'initiated' or app.status == 'completed' or app.status == 'enrolled' %}active{% endif %}">Application Initiated</li>
+          <li class="{% if app.status == 'completed' or app.status == 'enrolled' %}active{% endif %}">Application Completed</li>
+          <li class="{% if app.status == 'enrolled' %}active{% endif %}">Enrolled</li>
+        </ul>
       </div>
     </div>
-    <div class="journey">
-      <h4>Enrolment Journey</h4>
-      <ul>
-        {% if school_app.application %}
-          <li class="{% if school_app.application.status == 'initiated' or school_app.application.status == 'completed' or school_app.application.status == 'enrolled' %}active{% endif %}">Application Initiated</li>
-          <li class="{% if school_app.application.status == 'completed' or school_app.application.status == 'enrolled' %}active{% endif %}">Application Completed</li>
-          <li class="{% if school_app.application.status == 'enrolled' %}active{% endif %}">Enrolled</li>
-        {% else %}
+    {% empty %}
+    <div class="app-card">
+      <div class="app-info">
+        <h3>{{ school_app.title }} Application Form</h3>
+        <div class="details">
+          <p><strong>Application No.</strong><br>-</p>
+          <p><strong>Application Submitted On</strong><br>-</p>
+          <p><strong>Course</strong><br>-</p>
+          <p><strong>Specialization</strong><br>-</p>
+          <p><strong>Application Fees</strong><br>₹1023.60</p>
+        </div>
+        <div class="action">
+          {% if school_app.school_id == 'doctorate' %}
+            <a href="{% url 'application_form' %}?school=School of Doctorate" class="apply-btn">Apply Now</a>
+          {% else %}
+            <a href="{% url 'application_form' %}?school={{ school_app.school.title }}" class="apply-btn">Apply Now</a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="journey">
+        <h4>Enrolment Journey</h4>
+        <ul>
           <li>Application Initiated</li>
           <li>Application Completed</li>
           <li>Enrolled</li>
-        {% endif %}
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
+    {% endfor %}
   {% endfor %}
 </section>
 {% endblock %}

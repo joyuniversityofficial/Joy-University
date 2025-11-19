@@ -536,6 +536,28 @@ def application_form(request):
         if form.is_valid():
             # Get school title and remove from cleaned_data to prevent save error
             school_title = form.cleaned_data.pop('school')
+            course = form.cleaned_data.get('course')
+            specialization = form.cleaned_data.get('specialization')
+
+            # Check for duplicate application for same school, course, specialization per email
+            if not edit:
+                existing_app = Application.objects.filter(
+                    email=form.cleaned_data['email'],
+                    school__title=school_title if school_title != 'School of Doctorate' else None,
+                    course=course,
+                    specialization=specialization
+                ).exists()
+                if existing_app:
+                    messages.error(request, 'You have already applied for this school with the same course and specialization.')
+                    context = {
+                        'form': form,
+                        'states': states,
+                        'schools': schools,
+                        'courses_json': json.dumps(courses),
+                        'specializations_json': json.dumps(specializations),
+                        'captcha_text': captcha_text,
+                    }
+                    return render(request, 'application_form.html', context)
 
             # Save application
             application = form.save(commit=False)
@@ -870,45 +892,27 @@ def all_applications(request):
     user_applications = Application.objects.filter(email=application.email)
     schools = School.objects.all()
     school_applications = []
-    enrolled_school_name = None
-
     for school in schools:
-        app = user_applications.filter(school=school).first()
-        enrollment = None
-        if app and app.status == 'enrolled':
-            enrollment = Enrollment.objects.filter(application=app).first()
-            if not enrolled_school_name:
-                enrolled_school_name = school.title
+        apps = user_applications.filter(school=school)
         school_applications.append({
-            'application': app,
-            'enrollment': enrollment,
             'school': school,
+            'title': school.title,
             'school_id': school.id,
-            'title': school.title
+            'applications': apps,
         })
-
     # Handle School of Doctorate separately
-    doctorate_app = user_applications.filter(school__isnull=True).first()
-    doctorate_enrollment = None
-    if doctorate_app and doctorate_app.status == 'enrolled':
-        doctorate_enrollment = Enrollment.objects.filter(application=doctorate_app).first()
-        if not enrolled_school_name:
-            enrolled_school_name = 'School of Doctorate'
+    doctorate_apps = user_applications.filter(school__isnull=True)
     school_applications.append({
-        'application': doctorate_app,
-        'enrollment': doctorate_enrollment,
         'school': None,
+        'title': 'School of Doctorate',
         'school_id': 'doctorate',
-        'title': 'School of Doctorate'
+        'applications': doctorate_apps,
     })
-
     initials = ''.join([word[0].upper() for word in application.name.split()])
-
     context = {
         'application': application,
         'school_applications': school_applications,
         'initials': initials,
-        'enrolled_school_name': enrolled_school_name
     }
     return render(request, 'all_applications.html', context)
 
@@ -1344,7 +1348,11 @@ def declaration(request):
 
 
 def application_submitted(request):
-    application_id = request.session.get('application_id')
+    app_id = request.GET.get('app_id')
+    if app_id:
+        application_id = app_id
+    else:
+        application_id = request.session.get('application_id')
     if not application_id:
         return redirect('login')
     try:
