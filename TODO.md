@@ -1,3 +1,0 @@
-- [ ] Edit static/css/home.css to make hero overlay text left-aligned in mobile screens
-- [ ] Edit static/css/application_form.css to fix state input overflowing in small screens
-- [ ] Verify the changes work as expected
