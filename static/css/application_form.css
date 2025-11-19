@@ -1,23 +1,26 @@
+
 .application-form-page {
   background: #fff;
-  padding: 0;
+  padding: 0px 0;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
-/* HEADER */
 .header-section {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
   padding: 20px;
   background: #a8a8a8;
   border-top: 2px solid #b71c1c;
+  margin-top: 0px;
 }
 
 .contact-info {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .contact-item {
@@ -30,8 +33,7 @@
 }
 
 .logo-section {
-  text-align: center;
-  margin: 0 20px;
+  margin: 20px 0;
 }
 
 .college-logo {
@@ -47,183 +49,233 @@
 }
 
 .admissions-banner {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #ffffff;
+  margin-top: 15px;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 20px;
 }
 
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 5px;
 }
 
-/* FORM SECTION */
 .form-section {
   background: #818181;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .form-row {
+  margin-bottom: 2px;
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
+  gap: 3px;
 }
 
 .form-group {
   flex: 1;
-  min-width: 200px;
 }
 
-/* Inputs */
-.name-input, 
-.email-input, 
-.mobile-input {
-  width: 100%;
+.form-row .form-group:first-child {
+  flex: 0.6;
+}
+
+.form-row .form-group:nth-child(2) {
+  flex: 1.4;
+}
+
+.name-input, .email-input, .mobile-input {
   border: 2px solid #ddd;
   border-radius: 6px;
-  padding: 10px 10px 10px 30px;
-  font-size: 14px;
+  padding: 6px 6px 6px 6px;
+  font-size: 12px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.name-input:focus, 
-.email-input:focus, 
-.mobile-input:focus {
+.email-input {
+  padding-left: 30px;
+}
+
+.name-input:focus, .email-input:focus, .mobile-input:focus {
   border-color: #b71c1c;
   box-shadow: 0 0 5px rgba(183, 28, 28, 0.3);
   outline: none;
 }
 
-.name-input::placeholder, 
-.email-input::placeholder, 
-.mobile-input::placeholder {
-  color: #666;
+.name-input::placeholder, .email-input::placeholder, .mobile-input::placeholder {
+  color: black;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   font-weight: bold;
   color: #333;
 }
 
+input[type="text"], input[type="email"], input[type="tel"], select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 .input-icon {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .input-icon i {
   position: absolute;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
   color: #b71c1c;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .input-icon input,
 .input-icon select {
-  padding-left: 30px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  font-size: 14px;
 }
 
-/* MOBILE NUMBER BLOCK */
 .mobile-container {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  width: 70%;
 }
 
 .country-code-select {
-  width: 120px;
-  padding: 10px;
+  width: 150px;
+  padding: 10px 10px;
   border: 1px solid #ccc;
   border-radius: 5px 0 0 5px;
   border-right: none;
-  font-size: 14px;
+  font-size: 16px;
   background: #fff;
   color: #000;
 }
 
 .mobile-input {
   flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+  font-size: 14px;
   border-left: none;
 }
 
-/* CHECKBOX */
 .checkbox-group {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 15px;
+  width: 100%;
 }
 
 .checkbox-group input[type="checkbox"] {
   margin-right: 10px;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .checkbox-group label {
   font-weight: normal;
   line-height: 1.4;
-  color: #fff;
-}
-
-/* CAPTCHA */
-.captcha-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-#captchaCanvas {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 120px;
-  height: 40px;
 }
 
 .captcha-input-wrapper {
   position: relative;
-  flex: 1;
 }
 
-.captcha-input-wrapper input {
-  width: 100%;
-  padding-right: 30px;
+.captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.captcha-input-wrapper i {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+.refresh-btn {
+  background: #b71c1c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
   cursor: pointer;
-  color: #b71c1c;
-  font-size: 16px;
+  font-size: 14px;
 }
 
-/* SUBMIT BUTTON */
+.refresh-btn:hover {
+  background: #a01515;
+}
+
+.login-link {
+  text-align: center;
+  justify-content: center;
+}
+
+.login-link a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
 .submit-btn {
   background: #1671bc;
   color: #fff;
   border: none;
-  padding: 12px 20px;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0;
+  margin-bottom: 10px;
 }
 
 .submit-btn:hover {
-  border: 2px solid #ffffff;
+ border: 2px solid #ffffff;
 }
 
-/* Overlay */
+.error {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.instructions-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.instructions-section h3 {
+  color: #b71c1c;
+  margin-bottom: 15px;
+}
+
+.instructions-section p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.meritto-branding {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Overlay Container */
 .overlay-container {
   position: relative;
   width: 100%;
@@ -234,31 +286,48 @@ label {
 
 .form-overlay {
   position: absolute;
-  top: 50%;
-  right: 5%;
-  transform: translateY(-50%);
-  width: 50%;
+  top: 15%;
+  right: 8%;
+  width: 55%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #818181;
   border-radius: 10px;
   z-index: 10;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  padding: 20px;
 }
 
-/* SWIPER */
+.banner-overlay {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  z-index: 10;
+  border-radius: 10px;
+  
+}
+
+/* Swiper Styles */
 .swiper-container {
   width: 100%;
-  height: 100%;
+  height: 600px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+  touch-action: pan-x;
 }
 
 .swiper-slide {
   background-size: cover;
   background-position: center;
-  height: 100%;
+  height: 600px;
+}
+
+.swiper-pagination {
+  bottom: 10px;
 }
 
 .swiper-button-next,
@@ -266,32 +335,106 @@ label {
   color: #b71c1c;
 }
 
-/* TABLET */
+@media (max-width: 1200px) {
+  .form-overlay {
+    width: 35%;
+    right: 8%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .form-overlay {
+    width: 40%;
+    right: 5%;
+  }
+
+  .overlay-container {
+    height: 550px;
+  }
+
+  .swiper-container {
+    height: 550px;
+  }
+
+  .swiper-slide {
+    height: 550px;
+  }
+}
+
 @media (max-width: 768px) {
+    .form-overlay {
+    width: 50%;
+    right: 5%;
+  }
   .header-section {
     flex-direction: column;
     text-align: center;
-    padding: 15px;
+  }
+
+  .contact-info {
+    margin-bottom: 10px;
+  }
+
+  .logo-section {
+    margin: 10px 0;
+  }
+
+  .overlay-container {
+    height: 500px;
+  }
+
+  .swiper-container {
+    height: 500px;
+  }
+
+  .swiper-slide {
+    height: 500px;
+  }
+
+  .form-overlay {
+    width: 50%;
+    top: 10%;
+    right: 5%;
   }
 
   .form-row {
-    flex-direction: column !important;
-    gap: 10px !important;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+    .form-overlay {
+    width: 40%;
+    right: 5%;
+  }
+  .header-section {
+    padding: 10px;
   }
 
-  .mobile-container {
-    flex-direction: column !important;
-    gap: 8px;
+  .contact-item {
+    font-size: 12px;
   }
 
-  .country-code-select,
-  .mobile-input {
-    width: 100% !important;
+  .admissions-banner {
+    font-size: 20px;
   }
 
-  #captchaCanvas {
-    width: 100% !important;
-    height: 45px !important;
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .captcha-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .refresh-btn {
+    align-self: flex-start;
   }
 
   .overlay-container {
@@ -299,101 +442,177 @@ label {
   }
 
   .swiper-container {
-    height: 300px;
     position: relative;
+    height: 300px;
+  }
+
+  .swiper-slide {
+    height: 300px;
   }
 
   .form-overlay {
-    position: relative;
+    position: static;
     width: 100%;
-    right: 0;
-    transform: none;
+    height: auto;
     margin-top: 20px;
-  }
-}
-
-/* MOBILE */
-@media (max-width: 480px) {
-  .contact-item {
-    font-size: 12px;
+    right: auto;
+    top: auto;
+    transform: none;
   }
 
-  .college-logo {
-    width: 80px;
-  }
-
-  .name-input, .email-input, .mobile-input {
-    padding: 8px 8px 8px 28px;
-  }
-
-  .input-icon i {
-    font-size: 12px;
-    left: 8px;
-  }
-
-  .submit-btn {
-    padding: 10px;
+  .checkbox-group label {
     font-size: 14px;
   }
 }
 
-/* LARGE SCREENS */
-@media (min-width: 1440px) {
-  .form-overlay {
-    width: 40%;
-    right: 10%;
+@media (max-width: 480px) {
+  .header-section {
+    padding: 0px;
   }
 
-  .overlay-container,
-  .swiper-container,
-  .swiper-slide {
-    height: 700px;
+  .contact-item {
+    font-size: 5px;
+  }
+
+  .college-logo {
+    width: 30px;
+  }
+
+  .form-section {
+    padding: 0px;
+  }
+
+  .admissions-banner {
+    font-size: 6px;
+  }
+
+  .form-row {
+    margin-bottom: 0px;
+    gap: 0px;
+    flex-direction: column;
+  }
+
+  .form-row .form-group:first-child {
+    flex: 1;
+  }
+
+  .form-row .form-group:nth-child(2) {
+    flex: 1.4;
+  }
+
+  .name-input, .email-input, .mobile-input {
+    padding: 0px 0px 0px 0px;
+    font-size: 5px;
+  }
+
+  .country-code-select {
+    padding: 5px 5px;
+    font-size: 12px;
+    color: black;
+  }
+
+  .email-input {
+    padding-left: 30px;
+  }
+
+  .input-icon i {
+    font-size: 6px;
+    left: 5px;
+  }
+
+  .input-icon input,
+  .input-icon select {
+    padding-left: 12px;
+    font-size: 6px;
+  }
+
+  .submit-btn {
+    padding: 0px 2px;
+    font-size: 5px;
+  }
+
+  .checkbox-group label {
+    font-size: 6px;
+  }
+
+  .form-overlay {
+    height: 45%;
+    width: 25%;
+    right: 1%;
   }
 }
 
-/* EXTRA MOBILE FIXES */
-@media (max-width: 768px) {
+@media (max-width: 360px) {
+  .header-section {
+    padding: 5px;
+  }
 
-    /* 2-column inputs become 1-column */
-    .form-row {
-        display: flex;
-        flex-direction: column !important;
-        width: 100% !important;
-        gap: 12px !important;
-    }
+  .contact-item {
+    font-size: 10px;
+  }
 
-    .form-group {
-        width: 100% !important;
-    }
+  .college-logo {
+    width: 70px;
+  }
 
-    input,
-    select {
-        width: 100% !important;
-        height: 45px !important;
-        font-size: 15px !important;
-    }
+  .admissions-banner {
+    font-size: 18px;
+  }
 
-    /* Captcha responsiveness */
-    .captcha-row {
-        display: flex;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
+  .form-section {
+    padding: 10px;
+  }
 
-    .captcha-image {
-        width: 100% !important;
-        margin-bottom: 10px !important;
-    }
+  .form-row {
+    margin-bottom: 10px;
+  }
 
-    /* Reduce large white space below the form */
-    .application-section {
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-    }
+  .name-input, .email-input, .mobile-input {
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+  }
 
-    /* Image auto size */
-    .bg-campus-image {
-        width: 100% !important;
-        height: auto !important;
-    }
+  .input-icon i {
+    font-size: 14px;
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  .checkbox-group label {
+    font-size: 12px;
+  }
+
+  .overlay-container {
+    height: auto;
+  }
+
+  .swiper-container {
+    height: 250px;
+  }
+
+  .swiper-slide {
+    height: 250px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .form-overlay {
+    width: 35%;
+    right: 12%;
+  }
+
+  .overlay-container {
+    height: 700px;
+  }
+
+  .swiper-container {
+    height: 700px;
+  }
+
+  .swiper-slide {
+    height: 700px;
+  }
 }

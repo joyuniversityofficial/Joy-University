@@ -3,9 +3,6 @@
 {% block nav_style %}color: white; background-color: transparent;{% endblock %}
 {% block sub_header_style %}background-color: rgba(0,0,0,0.4);{% endblock %}
 {% block title %}Home - Joy University{% endblock %}
-{% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
-{% endblock %}
 {% block content %}
 <div  class="hero-wrapper">
   <section class="hero-section">
@@ -15,29 +12,29 @@
     </video>
     <div class="hero-overlay">
       <div class="hero-text">
-        <p class="hero-subtitle">GET STARTED WITH JOY</p>
-        <h2>Your Pathway to <br>Professional Excellence</h2>
-        <p class="hero-description">For a dream career</p>
-        <a href="#" class="btn-programmes">Programmes</a>
+        <p class="hero-subtitle" style="color:#b22222;">GET STARTED WITH JOY</p>
+        <h2 style="font-size: 12px;">Your Pathway to <br>Professional Excellence</h2>
+        <p style="font-size: 11px;" class="hero-description">For a dream career</p>
+        <a href="#" class="btn-programmes" style="background-color:#b22222; border-radius: 20px 0 20px 0; padding:5px;">Programmes</a>
       </div>
     </div>
   </section>
 </div>
 
 <!-- Spacer to push content below hero -->
-<div class="hero-spacer"></div>
+<div style="height: 55vh;"></div>
 
 <!-- Marquee Cards Section -->
-<section class="marquee-cards-section">
+<section class="marquee-cards-section my-4" style="margin-bottom: 5rem;">
   <div class="marquee-wrapper container">
-    <div class="marquee-track">
+    <div class="marquee-track" >
       {% for school in schools %}
-      <div class="marquee-card">
+      <div class="marquee-card" style=" border-radius: 50px 0 50px 0;background-color: #b22222;color:white; ">
         <div class="icon-circle">
-          <i class="{{ school.icon }}" style="font-size: 24px; color: white;"></i>
+          <i class="{{ school.icon }}" style="font-size: 24px; color: #b22222;"></i>
         </div>
-        <h5>{{ school.title }}</h5>
-        <p>{{ school.description }}</p>
+        <h5 style="background-color: #b22222;color:white; ">{{ school.title }}</h5>
+        <p style="background-color: #b22222;color:white; ">{{ school.description }}</p>
       </div>
       {% endfor %}
     </div>
@@ -58,72 +55,72 @@
   </div>
 </section>
 
-<!-- Approval and Collaboration Section -->
-<section class="approval-section">
-  <div class="container d-flex align-items-center">
-    <h2 class="approval-header">
-      Approval<br>and<br>Collaboration
-    </h2>
-    <div class="approval-carousel d-flex align-items-center">
-      <div class="approval-track flex-grow-1 d-flex align-items-center">
-        <div class="approval-item">
-          <img src="{% static 'images/TANSAM.png' %}" class="approval-logo" alt="AICTE">
+    <!-- Approval and Collaboration Section -->
+    <section class="approval-section my-5">
+        <div class="container d-flex align-items-center">
+            <h2 class="approval-header">
+                Approval<br>and<br>Collaboration
+            </h2>
+            <div class="approval-carousel d-flex align-items-center" style="overflow: hidden;">
+                <div class="approval-track flex-grow-1 d-flex align-items-center">
+                    <div class="approval-item">
+                        <img src="{% static 'images/TANSAM.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/AXL.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/AWS.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/ACCA.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item ">
+                        <img src="{% static 'images/AGARWALS.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/UGC.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/BCI.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/PCI.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/AISHE.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/LSC.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/DIGITAL.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/INTEL.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/IBM.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/NEC.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/ICT.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/EDULATERAL.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/CSRBOX.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/ISDC.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="approval-item">
-          <img src="{% static 'images/AXL.png' %}" class="approval-logo" alt="Adrone">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/AWS.png' %}" class="approval-logo" alt="AWS Academy">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/ACCA.png' %}" class="approval-logo" alt="ACCA">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/AGARWALS.png' %}" class="approval-logo" alt="AICTE">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/UGC.png' %}" class="approval-logo" alt="Adrone">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/BCI.png' %}" class="approval-logo" alt="AWS Academy">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/PCI.png' %}" class="approval-logo" alt="ACCA">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/AISHE.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/LSC.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/DIGITAL.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/INTEL.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/IBM.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/NEC.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/ICT.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/EDULATERAL.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/CSRBOX.png' %}" class="approval-logo" alt="CSR">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/ISDC.png' %}" class="approval-logo" alt="CSR">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
 <!-- Happening Section -->
 <section class="happening-section">
@@ -154,9 +151,266 @@
   </div>
 </section>
 
+<script>
+(function(){
+  // slides: update images / text / link as needed
+  const slides = [
+    {
+      img: "{% static 'images/empowerment.jpg' %}",
+      title: "Students Empowerment Workshop on Breaking Bad Habits & Forming Good Habits",
+      text: "On August 7, 2025, Joy University conducted an inspiring Students Empowerment Workshop titled “Breaking Bad Habits & Forming Good Habits.” Esteemed speaker Fr. Kumar Raja guided students through practical strategies to overcome negative patterns and cultivate positive, goal-oriented behaviors.",
+      truncatedText: "On August 7, 2025, Joy University conducted an inspiring Students Empowerment Workshop titled “Breaking Bad Habits & Forming Good Habits.” Esteemed speaker Fr. Kumar Raja guided students through practical strategies...",
+      expanded: false
+    },
+    {
+      img: "{% static 'images/libraryday.jpg' %}",
+      title: "Readathon Contest – National Librarians’ Day Celebration",
+      text: "On August 11, 2025, Joy University hosted an exciting Readathon Contest as part of the National Librarians’ Day celebrations. The event brought together avid readers to showcase their passion for books, reading endurance, and comprehension skills.",
+      truncatedText: "On August 11, 2025, Joy University hosted an exciting Readathon Contest as part of the National Librarians’ Day celebrations. The event brought together avid readers to showcase their passion...",
+      expanded: false
+    },
+    {
+      img: "{% static 'images/training.jpg' %}",
+      title: "Placement Training Program",
+      text: "The Career Advancements, Placements & Networking (CAN) cell organized a Placement Training Program on 23rd October 2025 at the S. A. Raja Convention Hall in collaboration with CHG IT Consultancy Pvt. Ltd. The program focused on skill development and interview readiness.",
+      truncatedText: "The Career Advancements, Placements & Networking (CAN) cell organized a Placement Training Program on 23rd October 2025 at the S. A. Raja Convention Hall in collaboration with CHG IT Consultancy Pvt. Ltd...",
+      expanded: false
+    },
+    {
+      img: "{% static 'images/nursing.jpg' %}",
+      title: "Government of Tamil NAdu - GO Inspection for B.Sc. Nursing",
+      text: "Joy University students showcased exemplary performance in recent campus events. Congratulations to winners and participants who made these events successful and memorable.",
+      truncatedText: "Joy University students showcased exemplary performance in recent campus events. Congratulations to winners and participants who made these events successful and memorable.",
+      expanded: false
+    }
+  ];
+
+  let index = 0;
+  const imgEl = document.getElementById('happen-image');
+  const titleEl = document.getElementById('happen-title');
+  const textEl = document.getElementById('happen-text');
+  const linkEl = document.getElementById('happen-link');
+  const pagerEl = document.getElementById('happen-pager');
+  const nextBtn = document.getElementById('happen-next');
+  const prevBtn = document.getElementById('happen-prev');
+
+  function render(i, direction){
+    const s = slides[i];
+    // add simple transition
+    const right = document.querySelector('.happen-right');
+    const left = document.querySelector('.happen-left .happen-card');
+
+    // fade out
+    right.classList.add('fade-out');
+    left.classList.add('fade-out');
+    setTimeout(()=> {
+      imgEl.src = s.img;
+      imgEl.alt = s.title;
+      titleEl.textContent = s.title;
+      textEl.textContent = s.expanded ? s.text : s.truncatedText;
+      linkEl.textContent = s.expanded ? 'Read Less' : 'Read More';
+      linkEl.href = '#';
+      linkEl.onclick = function(e) {
+        e.preventDefault();
+        slides[index].expanded = !slides[index].expanded;
+        render(index);
+      };
+      pagerEl.textContent = (index+1) + ' / ' + slides.length;
+      // fade in
+      right.classList.remove('fade-out');
+      left.classList.remove('fade-out');
+    }, 220);
+  }
+
+  function next(){
+    index = (index + 1) % slides.length;
+    render(index, 'next');
+  }
+  function prev(){
+    index = (index - 1 + slides.length) % slides.length;
+    render(index, 'prev');
+  }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // keyboard and swipe support
+  document.addEventListener('keydown', (e)=> {
+    if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'ArrowRight') next();
+  });
+
+  // basic touch swipe
+  let startX = null;
+  const container = document.querySelector('.happening-carousel');
+  container.addEventListener('touchstart', (e)=> { startX = e.touches[0].clientX; });
+  container.addEventListener('touchend', (e)=> {
+    if(startX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+    if(diff > 30) next();
+    if(diff < -30) prev();
+    startX = null;
+  });
+
+  // initial render (ensure pager correct)
+  pagerEl.textContent = '1 / ' + slides.length;
+})();
+</script>
+
+<style>
+/* --- HAPPENING SECTION --- */
+.happening-section{background:#fff;position:relative;overflow:visible;padding:70px 0 110px}
+.happening-carousel{max-width:1200px;margin:0 auto;position:relative;padding:10px 20px}
+.happen-single{display:grid;grid-template-columns:52% 48%;gap:40px;align-items:center;min-height:50vh}
+.happen-left h2{
+  font-family:"Playfair Display", "Times New Roman", serif;
+  font-size:40px;
+  line-height:0.95;
+  color:#b31b24;
+  margin:0 0 10px;
+  letter-spacing:1px;
+  font-weight:700;
+  text-transform:uppercase;
+}
+.happen-card{
+  position:relative;
+  margin-top:28px;
+  background:#fff;
+  border-radius:36px;
+  padding:56px 48px;
+  max-width:640px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.06);
+  box-sizing:border-box;
+  overflow:visible;
+}
+/* decorative dotted semicircle on left of the card */
+.happen-card::before{
+  content:"";
+  position:absolute;
+  left:-78px;
+  top:-24px;
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:
+    radial-gradient(#000 2px, transparent 1px) 0 0/12px 12px;
+  opacity:0.18;
+  transform:translateY(6px);
+  pointer-events:none;
+}
+
+/* card text */
+.happen-card h3{
+  font-family:"Playfair Display","Times New Roman",serif;
+  font-size:36px;
+  line-height:1.04;
+  color:#111;
+  margin:0 0 16px;
+  font-weight:600;
+}
+.happen-card p{
+  font-size:14px;
+  line-height:1.68;
+  color:#333;
+  margin:0 0 18px;
+  max-width:48ch;
+}
+
+/* read more button */
+.happen-card .read-more{
+  display:inline-block;
+  background:#b22222;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:4px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 6px 14px rgba(178,34,34,0.12);
+}
+
+/* right image area */
+.happen-right{position:relative}
+.happen-right img{
+  width:100%;
+  height:50vh;
+  object-fit:cover;
+  border-radius:0 72px 72px 0;
+  box-shadow:0 18px 40px rgba(0,0,0,0.06);
+  display:block;
+  transition:transform .36s ease,opacity .28s ease;
+}
+
+/* red circular accent overlapping image (top-right) */
+.happen-left::after{
+          content:"";
+          position:absolute;
+          width:160px;
+          height:160px;
+          border-radius:50%;
+          background:#b31b24;
+          box-shadow:0 6px 18px rgba(0,0,0,0.1);
+          right:-28px;
+          top:-38px;
+          z-index:10;
+}
 
 
+/* controls centered at bottom */
+.happen-controls-centered{
+  position:absolute;
+  left:50%;
+  transform:trgb(74, 16, 16)eX(-50%);
+  bottom:18px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  z-index:30;
+}
+.happen-nav-btn{
+  width:40px;height:40px;border-radius:6px;border:1px solid #b31b24;background:#fff;color:#b31b24;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.06)
+}
+.happen-pager{background:#fff;border:1px solid rgba(0,0,0,0.04);padding:6px 12px;border-radius:6px;font-weight:600;color:#b31b24}
 
+/* subtle transition helpers */
+.fade-out{opacity:0;transform:translateY(8px)}
+.happen-right, .happen-left .happen-card{transition:opacity .28s ease, transform .28s ease}
+
+/* responsive adjustments */
+@media (max-width:1100px){
+  .happen-single{grid-template-columns:1fr;gap:28px;padding:18px}
+  .happen-right img{height:380px;border-radius:20px}
+  .happen-card{padding:34px;border-radius:28px}
+  .happen-left h2{font-size:44px}
+  .happening-carousel{padding:0 10px}
+  .happen-right::after{width:110px;height:110px;right:-18px;top:-18px}
+}
+
+@media (max-width:600px){
+  .happen-right img{height:240px}
+  .happen-card h3{font-size:22px}
+  .happen-card p{font-size:14px}
+  .happen-controls-centered{bottom:8px}
+  .happen-pager{display:none}
+}
+
+/* Large screen enhancements */
+@media (min-width:1200px){
+  .happening-section{padding:100px 0 130px}
+  .happening-carousel{max-width:1400px;margin:0 auto;padding:20px 30px}
+  .happen-single{min-height:600px}
+  .happen-left h2{font-size:50px}
+  .happen-card{max-width:700px;padding:70px 60px}
+  .happen-card h3{font-size:42px}
+  .happen-card p{font-size:16px;max-width:50ch}
+  .happen-right img{height:650px;border-radius:0 80px 80px 0}
+  .happen-right::after{width:180px;height:180px;left:-40px;top:-40px}
+  .happen-controls-centered{gap:15px}
+  .happen-nav-btn{width:45px;height:45px}
+  .happen-pager{font-size:16px;padding:8px 14px}
+}
+
+</style>
 
 
 
@@ -635,9 +889,9 @@
     </style>
   <section class="admission-section position-relative">
         <div class="admission-banner">
-            <h2>Admission Open 2026</h2>
+            <h2>ADMISSION OPEN 2025-26</h2>
             <p>Begin your journey to excellence</p>
-            <a href="#" class="btn">Admission Open 2026</a>
+            <a href="#" class="btn">Admission Open 2025</a>
         </div>
   </section>
     <!-- Career Management Centre Section -->
@@ -683,88 +937,533 @@
     </section>
 
 <!-- Top Recruiters Section -->
-<section class="recruiters-section">
-  <div class="container d-flex align-items-center">
-    <h2 class="recruiters-header">
-      Top<br>Recruiters
-    </h2>
-    <div class="recruiters-carousel d-flex align-items-center">
-      <div class="recruiters-track flex-grow-1 d-flex align-items-center">
-        <div class="approval-item">
-          <img src="{% static 'images/HCL.png' %}" class="approval-logo" alt="HCL">
+    <section class="recruiters-section my-5">
+      <div class="container d-flex align-items-center">
+        <h2 class="recruiters-header">
+          Top<br>Recruiters
+        </h2>
+        <div class="recruiters-carousel d-flex align-items-center" style="overflow: hidden;">
+        <div class="recruiters-track flex-grow-1 d-flex align-items-center">
+                    <div class="approval-item">
+                        <img src="{% static 'images/HCL.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/ORACLE.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/LARSEN.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/INFOSYS.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item ">
+                        <img src="{% static 'images/TCS.png' %}" class="approval-logo" alt="AICTE">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/HAVELLS.png' %}" class="approval-logo" alt="Adrone">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/MAHINDRA.png' %}" class="approval-logo" alt="AWS Academy">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/CAPGEMINI.png' %}" class="approval-logo" alt="ACCA">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/TVS.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/HYUNDAI.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/WIPRO.png' %}" class="approval-logo" alt="CSR">
+                    </div>
+                    <div class="approval-item">
+                        <img src="{% static 'images/IBM.png' %}" class="approval-logo" alt="CSR">
+                    </div>
         </div>
-        <div class="approval-item">
-          <img src="{% static 'images/ORACLE.png' %}" class="approval-logo" alt="Oracle">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/LARSEN.png' %}" class="approval-logo" alt="Larsen & Toubro">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/INFOSYS.png' %}" class="approval-logo" alt="Infosys">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/TCS.png' %}" class="approval-logo" alt="TCS">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/HAVELLS.png' %}" class="approval-logo" alt="Havells">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/MAHINDRA.png' %}" class="approval-logo" alt="Mahindra">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/CAPGEMINI.png' %}" class="approval-logo" alt="Capgemini">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/TVS.png' %}" class="approval-logo" alt="TVS">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/HYUNDAI.png' %}" class="approval-logo" alt="Hyundai">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/WIPRO.png' %}" class="approval-logo" alt="Wipro">
-        </div>
-        <div class="approval-item">
-          <img src="{% static 'images/IBM.png' %}" class="approval-logo" alt="IBM">
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Vision & Mission Section -->
-<section class="vision-mission-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="vision-mission-content">
-          <div class="vision-box mb-4">
-            <h2 class="section-title">Our Vision</h2>
-            <p class="section-text">
-              To create and nurture a multidisciplinary global university with highest academics, research and ethical standards in a creative and innovative environment.
-            </p>
+
+    <!-- Vision & Mission Section -->
+    <section class="vision-mission-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="vision-mission-content">
+              <div class="vision-box mb-4">
+                <h2 class="section-title">Our Vision</h2>
+                <p class="section-text">
+                  To create and nurture a multidisciplinary global university with highest academics, research and ethical standards in a creative and innovative environment.
+                </p>
+              </div>
+              <div class="mission-box">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="section-text">
+                  To be a premier University of choice for all stakeholders and contribute for academic demographic dividend. To inculcate quality, integrity, team work, compassion, ethics in new generation students for catering to various needs of society.
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="mission-box">
-            <h2 class="section-title">Our Mission</h2>
-            <p class="section-text">
-              To be a premier University of choice for all stakeholders and contribute for academic demographic dividend. To inculcate quality, integrity, team work, compassion, ethics in new generation students for catering to various needs of society.
-            </p>
-          </div>
+         <div class="col-xl-7">
+              <div class="vision-right">
+                <video autoplay muted loop playsinline class="vision-video">
+                  <source src="{% static 'videos/vision.mp4' %}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
         </div>
       </div>
-      <div class="col-xl-7">
-        <div class="vision-right">
-          <video autoplay muted loop playsinline class="vision-video">
-            <source src="{% static 'videos/vision.mp4' %}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Bootstrap JS -->
 
+<style>
+.hero-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
 
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 13px;
+  max-width: 200px;
+  border-radius: 8px;
+
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.hero-text .hero-subtitle {
+  color: #b22222;
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.hero-text h2 {
+  font-size: 8px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+}
+
+.hero-text .hero-description {
+  font-weight: 600;
+  font-size: 8px;
+  margin-bottom: 10px;
+}
+
+.btn-programmes {
+  background-color: #b22222;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Marquee Cards Section */
+.marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  gap: 20px;
+}
+
+.marquee-card {
+  flex-shrink: 0;
+  width: 600px;
+  height: 270px;
+  padding: 40px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 50px 0 50px 0;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.marquee-card h5 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #ffffff;
+
+}
+
+.marquee-card p {
+  font-size: 14px;
+  color: #ffffff;
+  margin: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Large screen (laptop) styles */
+@media (min-width: 1024px) {
+  .hero-section {
+    height: 100vh; /* keep full screen height */
+    padding-left: 60px; /* more left padding */
+    justify-content: flex-start;
+  }
+
+  .hero-overlay {
+    max-width: 250px; /* reduced max width for smaller size */
+    padding: 15px 20px; /* adjusted padding */
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* slightly more opaque */
+  }
+
+  .hero-text .hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 0px;
+  }
+
+  .hero-text h2 {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 0px;
+  }
+
+  .hero-text .hero-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .btn-programmes {
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 8px;
+  }
+}
+
+/* Medium screen styles */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .hero-section {
+    height: 80vh; /* slightly less than full screen for medium screens */
+    padding-left: 40px;
+  }
+
+  .hero-overlay {
+    max-width: 200px;
+    padding: 12px 20px;
+  }
+
+  .hero-text .hero-subtitle {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .hero-text h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .hero-text .hero-description {
+    font-size: 12px;
+    margin-bottom: 22px;
+  }
+
+  .btn-programmes {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* Small screen styles */
+@media (max-width: 767px) {
+  .hero-section {
+    height: 70vh; /* reduce height for small screens */
+    padding-left: 15px;
+    justify-content: center; /* center on small screens */
+  }
+
+  .hero-overlay {
+    max-width: 80%; /* reduced to 80% for smaller width */
+    padding: 10px 15px;
+    text-align: center; /* center text */
+  }
+
+  .hero-text .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .hero-text h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .hero-text .hero-description {
+    font-size: 11px;
+    margin-bottom: 20px;
+  }
+
+  .btn-programmes {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  /* Marquee Cards Section Responsiveness */
+  .marquee-cards-section {
+    margin-top: 2rem;
+  }
+  .marquee-card {
+    flex-basis: calc((100% - 20px) / 2);
+    padding: 15px;
+  }
+  .marquee-card h5 {
+    font-size: 16px;
+  }
+  .marquee-card p {
+    font-size: 14px;
+  }
+
+  /* Very small screens */
+  @media (max-width: 480px) {
+    .marquee-card {
+      flex-basis: 100%;
+    }
+  }
+}
+
+/* Additional responsive styles for marquee cards */
+@media (min-width: 768px) and (max-width: 991px) {
+  .marquee-card {
+    flex-basis: calc((100% - 30px) / 3);
+    padding: 20px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .marquee-card {
+    flex-basis: calc((100% - 40px) / 3);
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .marquee-card {
+    flex-basis: calc((100% - 40px) / 3);
+    padding: 40px;
+  }
+}
+
+/* Updates Ticker Section Responsiveness */
+@media (max-width: 767px) {
+  .updates-ticker {
+    margin-top: 2rem;
+  }
+  .updates-label {
+    min-width: 80px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+  .updates-scroll {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* Approval and Collaboration Section Responsiveness */
+@media (max-width: 767px) {
+  .approval-section {
+    margin-top: 2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .approval-header {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  .approval-carousel {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .approval-track {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  .approval-item {
+    flex-shrink: 0;
+    margin: 0 10px;
+  }
+}
+
+/* Happening Section Responsiveness */
+@media (max-width: 767px) {
+  .happening-section {
+    margin-top: 2rem;
+    padding: 20px 0;
+  }
+  .happening-section h2 {
+    font-size: 2rem;
+    margin-left: 20px;
+  }
+  .happening-section .col-lg-6:first-child div {
+    margin-left: 20px;
+  }
+  .happening-section .col-lg-6:last-child div {
+    margin-left: 20px;
+    max-width: 100%;
+  }
+  .happening-section img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* About Us Section Responsiveness */
+@media (max-width: 767px) {
+  .about-us-section {
+    margin-top: 2rem;
+    padding: 20px 0;
+  }
+  .about-image {
+    margin-bottom: 20px;
+  }
+  .image-navigation {
+    display: none; /* hide navigation on small screens */
+  }
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+  .about-description {
+    font-size: 1rem;
+  }
+  .experience-badge {
+    position: static;
+    margin-top: 20px;
+  }
+}
+
+/* Career Management Centre Section Responsiveness */
+@media (max-width: 767px) {
+  .career-section {
+    margin-top: 2rem;
+  }
+  .career-content {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .career-title {
+    font-size: 1.8rem;
+  }
+  .career-description {
+    font-size: 1rem;
+  }
+  .placement-stats {
+    margin-bottom: 20px;
+  }
+  .placement-image {
+    width: 100%;
+    height: auto;
+  }
+  .recruiters-section {
+    text-align: center;
+  }
+  .recruiters-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .recruiter-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+  }
+}
+
+/* Vision & Mission Section Responsiveness */
+@media (max-width: 767px) {
+  .vision-mission-section {
+    padding: 20px 0;
+  }
+  .vision-mission-content {
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .section-text {
+    font-size: 1rem;
+  }
+  .vision-right iframe {
+    width: 100%;
+    height: 250px;
+  }
+}
+</style>
+
+<style>
+.approval-section,
+.happening-section,
+.main-section,
+.admission-section,
+.career-section,
+.recruiters-section,
+.vision-mission-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+</style>
 
 {% endblock %}
