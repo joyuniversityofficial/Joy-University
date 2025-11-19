@@ -79,6 +79,10 @@ body {
     padding: 10px 12px !important;
   }
 
+  .hero-text {
+    text-align: left !important;
+  }
+
   .hero-text h2,
   .hero-text .hero-subtitle,
   .hero-text .hero-description {
