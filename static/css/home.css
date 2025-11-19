@@ -71,22 +71,36 @@ body {
     }
 
     .hero-overlay {
-        left: 5% !important; /* Keep left alignment like desktop */
+        position: absolute !important;
+        top: 20px !important;
+        left: 10px !important;
         right: auto !important;
+        bottom: auto !important;
+
+        width: 90% !important;
+        padding: 12px 18px !important;
+        margin: 0 !important;
+
         transform: none !important;
-        text-align: left !important;
 
         display: flex !important;
+        flex-direction: column !important;
         align-items: flex-start !important;
         justify-content: flex-start !important;
 
-        padding-left: 20px !important;
-        width: 90% !important; /* Adjust width to fill more space */
+        text-align: left !important;
     }
 
     .hero-text {
+        width: 100% !important;
         text-align: left !important;
         align-items: flex-start !important;
+    }
+
+    .hero-subtitle,
+    .hero-text h2,
+    .hero-description {
+        text-align: left !important;
     }
 
     .hero-section {
@@ -1011,62 +1025,7 @@ body {
   margin-bottom: 0 !important;
 }
 
-/* -----------------------------------------
-   HERO OVERLAY LEFT ALIGN (Mobile Only)
-------------------------------------------*/
-@media (max-width: 768px) {
-
-    .hero-overlay {
-        position: absolute !important;
-        top: 20px !important;
-        left: 10px !important;
-        right: auto !important;
-
-        width: 90% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-
-        transform: none !important;
-
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-
-        text-align: left !important;
-    }
-
-    .hero-text {
-        width: 100% !important;
-        text-align: left !important;
-        align-items: flex-start !important;
-    }
-
-    .hero-subtitle,
-    .hero-text h2,
-    .hero-description {
-        text-align: left !important;
-    }
-}
-
-/* REMOVE HUGE WHITE SPACE AFTER HERO */
-@media (max-width: 768px) {
-  .hero-section {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    height: auto !important;
-    min-height: auto !important;
-  }
-  .hero-spacer {
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
-/* ------------------------------
-   MOBILE MARQUEE CARDS
-------------------------------*/
+/* MOBILE MARQUEE CARDS */
 @media (max-width: 768px) {
   .top-marquee-desktop {
     display: none !important;
