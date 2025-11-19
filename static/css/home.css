@@ -976,3 +976,13 @@ body {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
+
+@media (max-width: 768px) {
+    .hero-overlay {
+        display: none !important;
+    }
+    .hero-text {
+        display: none !important;
+    }
+}
+
