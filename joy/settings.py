@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     "www.joyuniversity.co.in",
     "127.0.0.1",
     "localhost",
+    "72.61.224.116"
 ]
 
 
