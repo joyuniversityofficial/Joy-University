@@ -104,7 +104,7 @@ body {
     }
 
     .hero-section {
-        height: 70vh !important;
+        height: 100vh !important;
         min-height: auto !important;
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
@@ -112,7 +112,7 @@ body {
 
     .hero-section video,
     .hero-section img {
-        height: 70vh !important;
+        height: 100vh !important;
         width: 100% !important;
         object-fit: cover !important;
     }
@@ -120,7 +120,7 @@ body {
 
 /* Spacer */
 .hero-spacer {
-  height: 55vh;
+  height: 45vh;
 }
 
 /* Mobile Spacer */
