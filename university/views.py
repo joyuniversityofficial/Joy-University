@@ -865,23 +865,21 @@ def all_applications(request):
     try:
         application = Application.objects.get(id=application_id)
     except Application.DoesNotExist:
-
         del request.session['application_id']
         return redirect('login')
-    schools = School.objects.all()
+
+    # Get all applications for the user by email
     user_applications = Application.objects.filter(email=application.email)
     school_applications = []
 
-    for school in schools:
-        app = user_applications.filter(school=school).first()
+    for app in user_applications:
         enrollment = None
-        if app and app.status == 'enrolled':
+        if app.status == 'enrolled':
             enrollment = Enrollment.objects.filter(application=app).first()
         school_applications.append({
-            'school': school,
             'application': app,
             'enrollment': enrollment,
-            'title': school.title
+            'title': app.school.title if app.school else 'School of Doctorate'
         })
 
     # Check if user has already enrolled in any school
