@@ -72,7 +72,11 @@ body {
   }
 
   .hero-overlay {
-    display: none;
+    display: none !important;
+  }
+
+  .hero-text {
+    display: none !important;
   }
 
   .hero-text .hero-subtitle,
