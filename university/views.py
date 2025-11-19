@@ -963,7 +963,7 @@ def preview_pdf(request):
     from io import BytesIO
     from django.utils import timezone
 
-    app_id = request.session.get('application_id')
+    app_id = request.GET.get('app_id') or request.session.get('application_id')
     if not app_id:
         return redirect('details')
 
