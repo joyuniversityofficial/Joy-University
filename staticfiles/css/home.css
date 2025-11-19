@@ -96,13 +96,6 @@ body {
   height: 55vh;
 }
 
-/* Mobile Spacer */
-@media (max-width: 767px) {
-  .hero-spacer {
-    height: 30vh;
-  }
-}
-
 /* Marquee Cards Section */
 .marquee-cards-section {
   margin-bottom: 5rem;
