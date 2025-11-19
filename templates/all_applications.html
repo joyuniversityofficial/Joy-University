@@ -87,8 +87,8 @@
       <div class="details">
         <p><strong>Application No.</strong><br>{% if school_app.application %}{{ school_app.application.application_number }}{% else %}-{% endif %}</p>
         <p><strong>Application Submitted On</strong><br>{% if school_app.application %}{{ school_app.application.created_at|date:"d M Y" }}{% else %}-{% endif %}</p>
-        <p><strong>Course</strong><br>{% if school_app.application %}{{ school_app.application.course }}{% else %}-{% endif %}</p>
-        <p><strong>Specialization</strong><br>{% if school_app.application %}{{ school_app.application.specialization }}{% else %}-{% endif %}</p>
+        <p><strong>Course</strong><br>{% if school_app.enrollment %}{{ school_app.enrollment.course }}{% elif school_app.application %}{{ school_app.application.course }}{% else %}-{% endif %}</p>
+        <p><strong>Specialization</strong><br>{% if school_app.enrollment %}{{ school_app.enrollment.specialization }}{% elif school_app.application %}{{ school_app.application.specialization }}{% else %}-{% endif %}</p>
         <p><strong>Application Fees</strong><br>₹1023.60</p>
       </div>
       <div class="action">

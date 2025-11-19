@@ -1,4 +1,0 @@
-- Update mobile media query breakpoint from 767px to 768px in static/css/home.css
-- Apply provided CSS for .hero-overlay and .hero-text alignment on mobile
-- Add height: auto for .hero-wrapper on mobile to remove white space
-- Update HTML spacer div to use class="hero-spacer" for responsive height
