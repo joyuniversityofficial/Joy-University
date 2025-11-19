@@ -880,11 +880,6 @@ def all_applications(request):
             'title': app.school.title if app.school else 'School of Doctorate'
         })
 
-    # Check if user has already enrolled in any school
-    enrolled_applications = user_applications.filter(status='enrolled')
-    enrolled_school_names = [app.school.title for app in enrolled_applications if app.school]
-    enrolled_school_name = ', '.join(enrolled_school_names) if enrolled_school_names else None
-
     initials = ''.join([word[0].upper() for word in application.name.split()])
 
     context = {
