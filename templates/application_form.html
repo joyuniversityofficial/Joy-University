@@ -55,20 +55,20 @@
         <div class="form-section">
           <form method="post">
             {% csrf_token %}
-            <h2 class="admissions-banner">🎓 Admissions Open 2025-2026</h2>
+            <h2 class="admissions-banner">🎓 Admissions Open 2026-2027</h2>
 
             <div class="form-row">
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-user"></i>
-                  <input class="name-input" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" placeholder="Enter Name *" value="{{ form.name.value|default:'' }}">
+                  <input class="name-input" name="{{ form.name.html_name }}" id="{{ form.name.id_for_label }}" placeholder="Enter Name *" value="{{ form.name.value|default:'' }}" required>
                 </div>
                 {% if form.name.errors %}<div class="error">{{ form.name.errors }}</div>{% endif %}
               </div>
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-envelope"></i>
-                  <input class="email-input" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}" placeholder="Candidate's Email*" value="{{ form.email.value|default:'' }}">
+                  <input class="email-input" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}" placeholder="Candidate's Email*" value="{{ form.email.value|default:'' }}" required>
                 </div>
                 {% if form.email.errors %}<div class="error">{{ form.email.errors }}</div>{% endif %}
               </div>
@@ -79,12 +79,12 @@
                 <div class="input-icon">
                   <i class="fas fa-phone"></i>
                   <div class="mobile-container">
-<select name="{{ form.country_code.html_name }}" id="{{ form.country_code.id_for_label }}" class="country-code-select">
+<select name="{{ form.country_code.html_name }}" id="{{ form.country_code.id_for_label }}" class="country-code-select" required>
 {% for code, label in form.country_code.field.choices %}
 <option value="{{ code }}" {% if code == '+91' %}selected{% endif %}>{{ label }}</option>
 {% endfor %}
 </select>
-                    <input class="mobile-input" name="{{ form.mobile.html_name }}" id="{{ form.mobile.id_for_label }}" placeholder="Enter Candidate's Mobile Number *" value="{{ form.mobile.value|default:'' }}">
+                    <input class="mobile-input" name="{{ form.mobile.html_name }}" id="{{ form.mobile.id_for_label }}" placeholder="Enter Candidate's Mobile Number *" value="{{ form.mobile.value|default:'' }}" required>
                   </div>
                 </div>
                 {% if form.mobile.errors %}<div class="error">{{ form.mobile.errors }}</div>{% endif %}
@@ -92,7 +92,7 @@
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-map-marker-alt"></i>
-                  <select name="{{ form.state.html_name }}" id="{{ form.state.id_for_label }}">
+                  <select name="{{ form.state.html_name }}" id="{{ form.state.id_for_label }}" required>
                     <option value="" disabled selected>Select State *</option>
                     {% for state in states %}
                       <option value="{{ state }}">{{ state }}</option>
@@ -106,7 +106,7 @@
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-city"></i>
-                  <select name="{{ form.city.html_name }}" id="{{ form.city.id_for_label }}">
+                  <select name="{{ form.city.html_name }}" id="{{ form.city.id_for_label }}" required>
                     <option value="" disabled selected>Select City *</option>
                   </select>
                 </div>
@@ -114,7 +114,7 @@
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-school"></i>
-                  <select name="{{ form.school.html_name }}" id="{{ form.school.id_for_label }}">
+                  <select name="{{ form.school.html_name }}" id="{{ form.school.id_for_label }}" required>
                     <option value="" disabled selected>Select School Applying for *</option>
                     {% for school in schools %}
                       <option value="{{ school }}">{{ school }}</option>
@@ -128,7 +128,7 @@
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-graduation-cap"></i>
-                  <select name="{{ form.course.html_name }}" id="{{ form.course.id_for_label }}" disabled>
+                  <select name="{{ form.course.html_name }}" id="{{ form.course.id_for_label }}" disabled required>
                     <option value="" disabled selected>Select Course *</option>
                   </select>
                 </div>
@@ -136,7 +136,7 @@
               <div class="form-group">
                 <div class="input-icon">
                   <i class="fas fa-certificate"></i>
-                  <select name="{{ form.specialization.html_name }}" id="{{ form.specialization.id_for_label }}" disabled>
+                  <select name="{{ form.specialization.html_name }}" id="{{ form.specialization.id_for_label }}" disabled required>
                     <option value="" disabled selected>Select Specialization *</option>
                   </select>
                 </div>
@@ -149,7 +149,7 @@
   </div>
   <div class="form-group col-md-6">
     <div class="captcha-input-wrapper">
-      <input type="text" class="form-control" id="textinput" name="captcha" placeholder="Enter Captcha">
+      <input type="text" class="form-control" id="textinput" name="captcha" placeholder="Enter Captcha" required>
       <i class="fas fa-refresh" onclick="location.reload()" style="cursor:pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 20px; color: #b71c1c;" title="Captcha not visible?"></i>
     </div>
   </div>
@@ -157,7 +157,7 @@
 
 <div class="form-row">
   <div class="checkbox-group">
-    {{ form.authorization }}
+    <input type="checkbox" name="{{ form.authorization.html_name }}" id="{{ form.authorization.id_for_label }}" required>
     <label for="{{ form.authorization.id_for_label }}" style="color:#fff;">
       I authorize Joy University and its representatives to contact me via Email, SMS, WhatsApp, or Call for updates and notifications, even if I am on DND/NDNC *
     </label>

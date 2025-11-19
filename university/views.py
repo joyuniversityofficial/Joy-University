@@ -874,9 +874,13 @@ def all_applications(request):
 
     for school in schools:
         app = user_applications.filter(school=school).first()
+        enrollment = None
+        if app and app.status == 'enrolled':
+            enrollment = Enrollment.objects.filter(application=app).first()
         school_applications.append({
             'school': school,
             'application': app,
+            'enrollment': enrollment,
             'title': school.title
         })
 
@@ -918,9 +922,9 @@ def preview_view(request):
         messages.error(request, 'Enrollment details not found.')
         return redirect('details')
 
-    # Generate application number if not set
+    # Set application number from application if not set
     if not enrollment.application_number:
-        enrollment.application_number = enrollment.generate_application_number()
+        enrollment.application_number = enrollment.application.application_number
         enrollment.save()
 
     # Use current date if submitted_at is None
@@ -953,7 +957,7 @@ def preview_pdf(request):
         return redirect("details")
 
     if not enrollment.application_number:
-        enrollment.application_number = enrollment.generate_application_number()
+        enrollment.application_number = enrollment.application.application_number
         enrollment.save()
 
     display_date = enrollment.submitted_at or timezone.now().date()
@@ -1291,7 +1295,7 @@ def declaration(request):
     if request.method == 'POST':
         enrollment.declaration_agreed = True
         enrollment.submitted_at = timezone.now()
-        enrollment.application_number = enrollment.generate_application_number()
+        enrollment.application_number = enrollment.application.application_number
         enrollment.save()
         # Update application status to enrolled
         application.status = 'enrolled'
