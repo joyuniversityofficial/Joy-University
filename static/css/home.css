@@ -66,30 +66,12 @@ body {
 
 /* Mobile Hero */
 @media (max-width: 768px) {
-  .hero-section {
-    justify-content: flex-start !important;
-    padding-left: 15px !important;
-  }
-
-  .hero-overlay {
-    display: none !important;
-  }
-
-  .hero-text {
-    display: none !important;
-  }
-
-  .hero-text .hero-subtitle,
-  .hero-text h2,
-  .hero-text .hero-description {
-    text-align: left !important;
-    line-height: 1.4 !important;
-  }
-
-  .btn-programmes {
-    margin-left: 0 !important;
-    display: inline-block !important;
-  }
+    .hero-overlay {
+        display: none !important;
+    }
+    .hero-text {
+        display: none !important;
+    }
 }
 
 /* Spacer */
@@ -98,9 +80,9 @@ body {
 }
 
 /* Mobile Spacer */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .hero-spacer {
-    height: 30vh;
+    height: 5vh !important;
   }
 }
 
