@@ -67,10 +67,35 @@ body {
 /* Mobile Hero */
 @media (max-width: 768px) {
     .hero-overlay {
-        display: none !important;
+        left: 0 !important;
+        right: auto !important;
+        transform: none !important;
+        text-align: left !important;
+
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+
+        padding-left: 20px !important;
+        width: 100% !important;
     }
+
     .hero-text {
-        display: none !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .hero-section {
+        height: auto !important;
+        min-height: auto !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .hero-section video,
+    .hero-section img {
+        height: auto !important;
+        width: 100% !important;
     }
 }
 
@@ -975,14 +1000,5 @@ body {
 .vision-mission-section {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
-}
-
-@media (max-width: 768px) {
-    .hero-overlay {
-        display: none !important;
-    }
-    .hero-text {
-        display: none !important;
-    }
 }
 
