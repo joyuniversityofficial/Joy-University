@@ -22,7 +22,7 @@
 </div>
 
 <!-- Spacer to push content below hero -->
-<div style="height: 55vh;"></div>
+<div style="height: 55vh;" class="hero-spacer"></div>
 
 <!-- Marquee Cards Section -->
 <section class="marquee-cards-section my-4" style="margin-bottom: 5rem;">
@@ -1228,61 +1228,41 @@
   }
 }
 
-/* Small screen styles */
-@media (max-width: 767px) {
-  .hero-section {
-    height: 70vh; /* reduce height for small screens */
-    padding-left: 15px;
-    justify-content: center; /* center on small screens */
-  }
+/* FULL HERO OVERLAY LEFT ON MOBILE */
+@media (max-width: 768px) {
 
-  .hero-overlay {
-    max-width: 80%; /* reduced to 80% for smaller width */
-    padding: 10px 15px;
-    text-align: center; /* center text */
-  }
-
-  .hero-text .hero-subtitle {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-
-  .hero-text h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .hero-text .hero-description {
-    font-size: 11px;
-    margin-bottom: 20px;
-  }
-
-  .btn-programmes {
-    font-size: 13px;
-    padding: 8px 16px;
-  }
-
-  /* Marquee Cards Section Responsiveness */
-  .marquee-cards-section {
-    margin-top: 2rem;
-  }
-  .marquee-card {
-    flex-basis: calc((100% - 20px) / 2);
-    padding: 15px;
-  }
-  .marquee-card h5 {
-    font-size: 16px;
-  }
-  .marquee-card p {
-    font-size: 14px;
-  }
-
-  /* Very small screens */
-  @media (max-width: 480px) {
-    .marquee-card {
-      flex-basis: 100%;
+    .hero-wrapper,
+    .hero-section {
+        height: 60vh !important; /* reduce height for mobile */
     }
-  }
+
+    .hero-section {
+        justify-content: flex-start !important;
+        align-items: center !important;
+        padding-left: 10px !important;
+    }
+
+    .hero-overlay {
+        position: absolute !important;
+        left: 10px !important;
+        top: 40% !important;
+        transform: translateY(-40%) !important;
+        max-width: 75% !important;
+        text-align: left !important;
+        background: rgba(0,0,0,0.55) !important;
+        padding: 10px 14px !important;
+        border-radius: 8px !important;
+    }
+
+    .hero-text p,
+    .hero-text h2 {
+        text-align: left !important;
+    }
+
+    .hero-spacer {
+        height: 20vh !important; /* reduce spacer for mobile to fill space */
+    }
+
 }
 
 /* Additional responsive styles for marquee cards */
