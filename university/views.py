@@ -936,9 +936,9 @@ def preview_view(request):
         messages.error(request, 'Enrollment details not found.')
         return redirect('details')
 
-    # Set application number from application if not set
+    # Set application number if not set
     if not enrollment.application_number:
-        enrollment.application_number = enrollment.application.application_number
+        enrollment.application_number = enrollment.generate_application_number()
         enrollment.save()
 
     # Use current date if submitted_at is None
@@ -1309,7 +1309,8 @@ def declaration(request):
     if request.method == 'POST':
         enrollment.declaration_agreed = True
         enrollment.submitted_at = timezone.now()
-        enrollment.application_number = enrollment.application.application_number
+        enrollment.save()  # Save to get pk for generating application number
+        enrollment.application_number = enrollment.generate_application_number()
         enrollment.save()
         # Update application status to enrolled
         application.status = 'enrolled'
