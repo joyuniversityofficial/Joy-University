@@ -458,6 +458,57 @@ input[type="text"], input[type="email"], input[type="tel"], select {
         width: 100% !important;
         margin-top: 8px !important;
     }
+
+    /* Reset broken flex rules */
+    .form-row .form-group:first-child,
+    .form-row .form-group:nth-child(2) {
+        flex: 1 !important;
+    }
+
+    /* Ensure nothing overflows horizontally */
+    .form-group,
+    .form-group input,
+    .form-group select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Ensure dropdowns never break layout */
+    select {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Fix state dropdown overflow */
+    #id_state,
+    #id_city,
+    #id_course,
+    #id_specialization {
+        width: 100% !important;
+    }
+
+    /* Keep icon aligned on top of input */
+    .input-icon i {
+        left: 8px !important;
+        font-size: 14px !important;
+    }
+
+    /* Swiper height */
+    .overlay-container,
+    .swiper-container,
+    .swiper-slide {
+        height: 380px !important;
+    }
+}
+
+/* Ultra-small mobile */
+@media (max-width: 420px) {
+    .overlay-container,
+    .swiper-container,
+    .swiper-slide {
+        height: 320px !important;
+    }
 }
 
 @media (max-width: 600px) {
