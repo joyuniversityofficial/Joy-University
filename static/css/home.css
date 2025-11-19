@@ -65,7 +65,11 @@ body {
 }
 
 /* Mobile Hero */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+    .hero-wrapper {
+        height: auto !important;
+    }
+
     .hero-overlay {
         left: 0 !important;
         right: auto !important;

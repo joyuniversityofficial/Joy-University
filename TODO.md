@@ -1,3 +1,4 @@
-- [ ] Add media query for .contact-section to reduce margins on max-width: 767px
-- [ ] Add media query for .sub-header to stack vertically on max-width: 767px
-- [ ] Add media query for .footer to reduce margin-bottom on max-width: 767px
+- Update mobile media query breakpoint from 767px to 768px in static/css/home.css
+- Apply provided CSS for .hero-overlay and .hero-text alignment on mobile
+- Add height: auto for .hero-wrapper on mobile to remove white space
+- Update HTML spacer div to use class="hero-spacer" for responsive height
