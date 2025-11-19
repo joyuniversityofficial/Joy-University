@@ -867,25 +867,23 @@ def all_applications(request):
     except Application.DoesNotExist:
         del request.session['application_id']
         return redirect('login')
-    schools = School.objects.all()
     user_applications = Application.objects.filter(email=application.email)
     school_applications = []
 
-    for school in schools:
-        app = user_applications.filter(school=school).first()
+    for app in user_applications:
         enrollment = None
-        if app and app.status == 'enrolled':
+        if app.status == 'enrolled':
             enrollment = Enrollment.objects.filter(application=app).first()
         school_applications.append({
-            'school': school,
             'application': app,
             'enrollment': enrollment,
-            'title': school.title
+            'title': app.school.title if app.school else 'School of Doctorate'
         })
 
     # Check if user has already enrolled in any school
-    enrolled_application = user_applications.filter(status='enrolled').first()
-    enrolled_school_name = enrolled_application.school.title if enrolled_application and enrolled_application.school else None
+    enrolled_applications = user_applications.filter(status='enrolled')
+    enrolled_school_names = [app.school.title for app in enrolled_applications if app.school]
+    enrolled_school_name = ', '.join(enrolled_school_names) if enrolled_school_names else None
 
     initials = ''.join([word[0].upper() for word in application.name.split()])
 
