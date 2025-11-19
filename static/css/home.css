@@ -66,11 +66,23 @@ body {
 
 /* Mobile Hero */
 @media (max-width: 767px) {
+  .hero-section {
+    justify-content: flex-start !important;
+    padding-left: 15px !important;
+  }
+
   .hero-overlay {
     bottom: 10%;
     left: 5%;
-    max-width: 90%;
-    text-align: left;
+    max-width: 70% !important;
+    text-align: left !important;
+    padding: 10px 12px !important;
+  }
+
+  .hero-text h2,
+  .hero-text .hero-subtitle,
+  .hero-text .hero-description {
+    text-align: left !important;
   }
 
   .hero-text h2 {
