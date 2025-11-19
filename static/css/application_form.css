@@ -373,6 +373,11 @@ input[type="text"], input[type="email"], input[type="tel"], select {
     width: 100%;
   }
 
+  input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   .mobile-container {
     flex-direction: column;
   }
