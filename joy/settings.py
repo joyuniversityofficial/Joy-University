@@ -33,6 +33,10 @@ ALLOWED_HOSTS = [
     "72.61.224.116"
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://joyuniversity.co.in",
+    "https://www.joyuniversity.co.in"
+]
 
 # Application definition
 
@@ -134,6 +138,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
