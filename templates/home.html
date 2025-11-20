@@ -539,134 +539,123 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Career Management Centre Section Styles */
-        /* Main box */
-.career-section {
-    margin-top: 5rem;
-    border-radius: 50px;
-}
-
-.career-bg {
-    background: #b3151c;
-    border-radius: 40px;
-    padding: 60px;
-    position: relative;
-}
-
-/* LEFT CONTENT */
-.career-subtitle {
-    color: white;
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-.career-title {
-    font-size: 45px;
-    font-weight: 700;
-    color: white;
-}
-
-.career-description {
-    font-size: 16px;
-    line-height: 1.6;
-    color: white;
-}
-
-.more-details-btn {
-    background: white;
-    padding: 10px 30px;
-    border-radius: 30px;
-    font-weight: 500;
-    color: #b3151c;
-}
-
-/* BOTTOM LINKS */
-.career-links {
-    display: flex;
-    gap: 60px;
-    margin-top: 40px;
-}
-
-.career-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.link-circle {
-    width: 20px;
-    height: 20px;
-    border: 2px solid white;
-    border-radius: 50%;
-}
-
-/* RIGHT IMAGE */
-.img-col {
-    position: relative;
-}
-
-.placement-image {
-    width: 100%;
-    border-radius: 30px;
-    margin-top: 20px;
-}
-
-/* CIRCLE BADGE */
-.stats-circle {
-    position: absolute;
-    top: 50%;
-    left: -70px;
-    transform: translateY(-50%);
-    width: 220px;
-    height: 220px;
-    background: white;
-    border-radius: 50%;
-    border: 12px solid #b3151c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-}
-
-.stats-content {
-    text-align: center;
-}
-
-.stats-year {
-    font-size: 16px;
-    color: #b3151c;
-    font-weight: 600;
-}
-
-.stats-percentage {
-    font-size: 38px;
-    font-weight: 700;
-    color: #000;
-    margin: 5px 0;
-}
-
-.stats-label {
-    font-size: 14px;
-    color: #333;
-}
-
-/* RESPONSIVE */
-@media(max-width: 992px) {
-    .stats-circle {
-        position: static;
-        margin: 0 auto 20px;
-        transform: none;
-    }
-
-    .career-links {
-        flex-direction: column;
-        gap: 20px;
-    }
-}
-
+        .career-section {
+            position: relative;
+            margin-top: 5rem;
+        }
+        .career-bg {
+            background: linear-gradient(135deg, #b22222, #8b1a1a);
+            padding: 60px 0;
+        }
+        .career-content {
+            padding: 20px;
+        }
+        .career-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .career-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .career-description {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .btn-light {
+            background-color: #f8f9fa;
+            color: #b22222;
+            border: 1px solid #dee2e6;
+        }
+        .btn-light:hover {
+            background-color: #e9ecef;
+        }
+        .career-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 2rem;
+            color: white;
+        }
+        .career-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .link-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #b22222;
+            margin-bottom: 10px;
+            border-color: #ffffff;
+            border-style:solid;
+            position: relative;
+        }
+        .link-circle::after {
+            content: "→";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .placement-stats {
+            position: relative;
+        }
+        .stats-circle {
+            position: absolute;
+            left: -25px;
+            top: 100%;
+            transform: translate(-50%, -50%);
+            margin-top: 230px;
+            width: 170px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        .stats-content {
+            text-align: center;
+            color: #b22222;
+            position: relative;
+            margin-top: 20px;
+        }
+        .stats-content::after {
+            content: "→";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #b22222;
+            font-size: 20px;
+        }
+        .stats-year {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .stats-percentage {
+            font-size: 2rem;
+            font-weight: bold;
+            color:#000
+        }
+        .stats-label {
+            font-size: 0.9rem;
+        }
+        .placement-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
         /* Top Recruiters Section Styles */
         .recruiters-section {
             padding: 2rem 0;
@@ -906,54 +895,46 @@
         </div>
   </section>
     <!-- Career Management Centre Section -->
-<section class="career-section">
-    <div class="career-bg">
+    <section class="career-section position-relative" style="margin-top: 5rem;border-radius: 50px;">
+      <div class="career-bg" style="border-radius: 40px;">
         <div class="container">
-            <div class="row align-items-center">
-
-                <!-- LEFT CONTENT -->
-                <div class="col-lg-7 career-content">
-                    <h3 class="career-subtitle">Career Management Centre</h3>
-                    <h2 class="career-title">JU Placements</h2>
-
-                    <p class="career-description">
-                        Backed by the Rajas Group's legacy, Joy University has placed over 1,00,000 alumni in leading
-                        organizations worldwide over the past 42 years. We provide 100% placement assistance,
-                        connecting every student with top recruiters and global career opportunities.
-                    </p>
-
-                    <a href="#" class="btn more-details-btn">More Details</a>
-
-                    <div class="career-links">
-                        <a href="#" class="career-link">
-                            <div class="link-circle"></div>
-                            <span>FINAL<br>PLACEMENTS</span>
-                        </a>
-
-                        <a href="#" class="career-link">
-                            <div class="link-circle"></div>
-                            <span>ABOUT CAREER<br>MANAGEMENT CENTRE</span>
-                        </a>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-5 position-relative img-col">
-                    <div class="stats-circle">
-                        <div class="stats-content">
-                            <div class="stats-year">2024</div>
-                            <div class="stats-percentage">94.44 %</div>
-                            <div class="stats-label">Campus Placement</div>
-                        </div>
-                    </div>
-
-                    <img src="{% static 'images/placement.jpg' %}" alt="Placement" class="placement-image">
-                </div>
-
+          <div class="row">
+            <div class="col-lg-7 career-content">
+              <h3 class="career-subtitle text-white mb-2">Career Management Centre</h3>
+              <h2 class="career-title text-white mb-4">JU Placements</h2>
+              <p class="career-description text-white mb-4">
+                Backed by the Rajas Group's legacy, Joy University has placed over 1,00,000 alumni in leading organizations worldwide over the past 42 years. We provide 100% placement assistance, connecting every student with top recruiters and global career opportunities.
+              </p>
+              <a href="#" class="btn btn-light more-details-btn">More Details</a>
+              
+              <div class="career-links mt-5">
+                <a href="#" class="career-link">
+                  <div class="link-circle"></div>
+                  <span>FINAL<br>PLACEMENTS</span>
+                </a>
+                <a href="#" class="career-link">
+                  <div class="link-circle"></div>
+                  <span>ABOUT CAREER<br>MANAGEMENT CENTRE</span>
+                </a>
+              </div>
             </div>
+            <div class="col-lg-5 position-relative">
+              <div class="placement-stats">
+                <div class="stats-circle">
+                  <div class="stats-content">
+                    <div class="stats-year">2024</div>
+                    <div class="stats-percentage">94.44 %</div>
+                    <div class="stats-label">Campus Placement</div>
+                  </div>
+                </div>
+              </div>
+              <img src="{% static 'images/placement.jpg' %}" alt="Student Placement" class="placement-image">
+            </div>
+          </div>
+          
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
 <!-- Top Recruiters Section -->
     <section class="recruiters-section my-5">
