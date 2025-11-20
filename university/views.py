@@ -942,7 +942,7 @@ def preview_view(request):
 
     # Set application number if not set
     if not enrollment.application_number:
-        enrollment.application_number = enrollment.generate_application_number()
+        enrollment.application_number = application.application_number
         enrollment.save()
 
     # Use current date if submitted_at is None
